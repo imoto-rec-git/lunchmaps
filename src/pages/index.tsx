@@ -1,4 +1,9 @@
 import Head from 'next/head';
+import { css } from '@emotion/react';
+
+const test = css`
+  color: #f00;
+`
 
 export default function Home() {
   return (
@@ -9,7 +14,9 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main></main>
+      <main>
+        <p css={test}>test</p>
+      </main>
     </>
   );
 }

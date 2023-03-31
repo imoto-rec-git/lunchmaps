@@ -1,22 +1,15 @@
-import Head from 'next/head';
-import { css } from '@emotion/react';
-import Image from 'next/image';
-import { useState } from 'react';
+import Head from "next/head"
+import { css } from "@emotion/react"
+import { Map } from "@/components/Map"
+import { Navigation } from "@/components/Navigation"
+import { Splash } from "@/components/Splash"
 
-const splashContainer = css`
-  background: var(--color-orange);
-  height: 100svh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
+const maps = css`
+  background: var(--color-white);
+  height: calc(100vh - 70px);
+`
 
 export default function Home() {
-  const [active, setActive] = useState('');
-  setTimeout(() => {
-    setActive('action');
-  }, 3000);
-
   return (
     <>
       <Head>
@@ -26,12 +19,14 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div css={splashContainer} className={active}>
-          <p>
-            <Image src="./images/logo.svg" width={72} height={74} alt="" />
-          </p>
-        </div>
+        <Splash />
+        <section>
+          <div css={maps}>
+            <Map />
+          </div>
+        </section>
+        <Navigation />
       </main>
     </>
-  );
+  )
 }

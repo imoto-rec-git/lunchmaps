@@ -1,20 +1,18 @@
+import React from "react"
 import Head from "next/head"
-import { Splash } from "@/components/molecules/Splash"
 import { Navigation } from "@/components/organisms/Navigation"
-import { Homes } from "@/components/organisms/Home"
 
-export default function Home() {
+export default function favorite() {
   return (
     <>
       <Head>
-        <title>Home | Lunch Maps</title>
-        <meta name="description" content="Lunch MapsのHome画面" />
+        <title>お気に入り | Lunch Maps</title>
+        <meta name="description" content="Lunch Mapsのお気に入り画面" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Splash />
-        <Homes />
+        <h1>お気に入り</h1>
         <Navigation />
       </main>
     </>

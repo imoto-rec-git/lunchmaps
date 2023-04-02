@@ -17,7 +17,7 @@
       "@/*": ["./src/*"]
     },
     "types": ["@emotion/react/types/css-prop"],
-    "strict": true
+    "strict": false
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]

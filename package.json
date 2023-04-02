@@ -11,6 +11,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@emotion/babel-preset-css-prop": "^11.10.0",
     "@emotion/react": "^11.10.6",
     "@react-google-maps/api": "^2.18.1",
     "@types/node": "18.15.11",

@@ -2,8 +2,11 @@
 const nextConfig = {
   reactStrictMode: true,
   compiler: {
-    emotion: true
-  }
+    emotion: true,
+  },
+  images: {
+    domains: ["maps.googleapis.com"],
+  },
 }
 
 module.exports = nextConfig

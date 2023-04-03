@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
 
 :root {
   --color-orange: #ff9042;
@@ -19,7 +19,7 @@
 }
 
 html {
-  font-family: "Noto Sans JP", sans-serif;
+  font-family: 'Noto Sans JP', sans-serif;
 }
 body {
   color: var(--color-black);
@@ -34,6 +34,6 @@ a {
   text-decoration: none;
   color: var(--color-white);
 }
-/* 
-div.action {
-} */
+.active {
+  right: 0 !important;
+}

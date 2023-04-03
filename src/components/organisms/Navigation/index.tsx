@@ -1,7 +1,7 @@
-import React from "react"
-import { css } from "@emotion/react"
-import Image from "next/image"
-import Link from "next/link"
+import React from 'react';
+import { css } from '@emotion/react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const Nav = css`
   width: 100%;
@@ -9,7 +9,7 @@ const Nav = css`
   position: absolute;
   background: var(--color-orange);
   bottom: 0;
-  z-index: 1;
+  z-index: 3;
   ul {
     display: flex;
     align-items: center;
@@ -31,7 +31,7 @@ const Nav = css`
       }
     }
   }
-`
+`;
 
 export const Navigation = () => {
   return (
@@ -40,19 +40,19 @@ export const Navigation = () => {
         <ul>
           <li>
             <Link href="./">
-              <Image src="./images/home.svg" width={26} height={26} alt={""} />
+              <Image src="./images/home.svg" width={26} height={26} alt={''} />
               <span>HOME</span>
             </Link>
           </li>
           <li>
             <Link href="./favorite">
-              <Image src="./images/heart.svg" width={26} height={26} alt={""} />
+              <Image src="./images/heart.svg" width={26} height={26} alt={''} />
               <span>お気に入り</span>
             </Link>
           </li>
           <li>
             <Link href="./setting">
-              <Image src="./images/gear.svg" width={26} height={26} alt={""} />
+              <Image src="./images/gear.svg" width={26} height={26} alt={''} />
               <span>設定</span>
             </Link>
           </li>
@@ -62,7 +62,7 @@ export const Navigation = () => {
                 src="./images/loginout.svg"
                 width={26}
                 height={26}
-                alt={""}
+                alt={''}
               />
               <span>ログアウト</span>
             </Link>
@@ -70,5 +70,5 @@ export const Navigation = () => {
         </ul>
       </nav>
     </>
-  )
-}
+  );
+};

@@ -13,6 +13,7 @@
   "dependencies": {
     "@emotion/babel-preset-css-prop": "^11.10.0",
     "@emotion/react": "^11.10.6",
+    "@googlemaps/react-wrapper": "^1.1.35",
     "@react-google-maps/api": "^2.18.1",
     "@types/node": "18.15.11",
     "@types/react": "18.0.31",

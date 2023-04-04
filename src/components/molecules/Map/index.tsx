@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react"
 import { GoogleMap, MarkerF, useJsApiLoader } from "@react-google-maps/api"
 import { css } from "@emotion/react"
-import Link from "next/link"
 import Image from "next/image"
 
+const containerStyle = {
+  width: "100%",
+  height: "calc(100svh - 70px)",
+}
 const shopDetailStyle = css`
   width: calc(100% - 20px);
   height: 100%;
@@ -29,7 +32,6 @@ export const Map = () => {
   const [shopName, setShopName] = useState("")
   const [shopPhoto, setShopPhoto] = useState("")
   const [shopOpen, setShopOpen] = useState("")
-  const [shopImage, setShopImage] = useState("./images/normal.svg")
   const [active, setActive] = useState("")
 
   useEffect(() => {
@@ -39,10 +41,6 @@ export const Map = () => {
       .catch((err) => console.log(err))
   }, [])
 
-  const containerStyle = {
-    width: "100%",
-    height: "calc(100svh - 70px)",
-  }
   const center = {
     lat: 34.69299270474642,
     lng: 135.49621535648794,
@@ -52,22 +50,22 @@ export const Map = () => {
     disableDefaultUI: true,
   }
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ""
-
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: apiKey,
   })
-  // const test2 = (data: number) => {
-  //   data && setShopImage(data > 4 ? "./images/good.svg" : "./images/normal.svg")
-  // }
-  const test2 = () => {
-    if (places.rating > 4) {
-      setShopImage("./images/rating.svg")
+  const getMakerIcon = (place) => {
+    let iconPath
+    if (place.rating >= 4.4 && place.user_ratings_total > 50) {
+      iconPath = "./images/good.svg"
+    } else if (place.price_level <= 2) {
+      iconPath = "./images/reasonable.svg"
     } else {
-      setShopImage("./images/normal.svg")
+      iconPath = "./images/normal.svg"
     }
+    return iconPath
   }
-  const test = (data) => {
+  const handleRestaurantClick = (data) => {
     setShopName(data.name)
     setShopOpen(data.opening_hours.open_now)
     setShopPhoto(
@@ -76,9 +74,10 @@ export const Map = () => {
     )
     setActive("active")
   }
-  const handleBack = () => {
+  const handleBackClick = () => {
     setActive("")
   }
+
   if (isLoaded) {
     return (
       <>
@@ -91,15 +90,17 @@ export const Map = () => {
             clickableIcons={false}
           >
             <MarkerF position={center} />
-            {places.map((e, index: number) => (
+            {places.map((place, index: number) => (
               <MarkerF
                 key={index}
                 position={{
-                  lat: e.geometry.location.lat,
-                  lng: e.geometry.location.lng,
+                  lat: place.geometry.location.lat,
+                  lng: place.geometry.location.lng,
                 }}
-                icon="./images/normal.svg"
-                onClick={() => test(e)}
+                icon={{
+                  url: getMakerIcon(place),
+                }}
+                onClick={() => handleRestaurantClick(place)}
               />
             ))}
           </GoogleMap>
@@ -111,7 +112,7 @@ export const Map = () => {
           )}
           {shopOpen ? <p>営業中</p> : <p>閉店中</p>}
           <button>お気に入り</button>
-          <button onClick={handleBack}>戻る</button>
+          <button onClick={handleBackClick}>戻る</button>
         </div>
       </>
     )

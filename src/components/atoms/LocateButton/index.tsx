@@ -27,9 +27,12 @@ const LocationStyle = css`
 `
 
 export const LocateButton = () => {
+  const handleCurrentLocationClick = () => {
+    console.log("クリック")
+  }
   return (
     <>
-      <div css={LocationStyle}>
+      <div css={LocationStyle} onClick={handleCurrentLocationClick}>
         <Image src="./images/location.svg" width={28} height={36} alt="" />
         <p>現在地</p>
       </div>

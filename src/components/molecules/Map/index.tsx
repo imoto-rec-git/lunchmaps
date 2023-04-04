@@ -17,14 +17,66 @@ const shopDetailStyle = css`
   background: #fff;
   box-shadow: -4px 0px 12px rgba(0, 0, 0, 0.25);
   padding: 14px;
+  h3 {
+    font-size: var(--font-size-large);
+    margin: 0 40px 24px 0;
+  }
+  > img {
+    width: 240px;
+    margin: 0 auto 24px;
+    border-radius: 8px;
+  }
   a {
     color: var(--color-black);
     text-decoration: underline;
   }
-  > img {
-    margin: 42px auto 0;
-    border-radius: 8px;
+  > p {
+    font-size: var(--font-size-medium);
+    font-weight: var(--font-weight-medium);
+    margin: 0 14px;
   }
+`
+const favoriteButton = css`
+  position: absolute;
+  bottom: 90px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 127px;
+  padding: 14px;
+  border-radius: 26px;
+  font-size: var(--font-size-small);
+  color: var(--color-white);
+  background: var(--color-dark-orange);
+  border: none;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+  justify-content: center;
+  &::before {
+    content: "";
+    width: 24px;
+    height: 24px;
+    background-image: url("./images/heart.svg");
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    margin: 0 8px 0 0;
+  }
+`
+const backButton = css`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--color-dark-orange);
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotate(178deg);
 `
 
 export const Map = () => {
@@ -32,6 +84,9 @@ export const Map = () => {
   const [shopName, setShopName] = useState("")
   const [shopPhoto, setShopPhoto] = useState("")
   const [shopOpen, setShopOpen] = useState("")
+  const [shopAddress, setShopAddress] = useState("")
+  const [shopRating, setShopRating] = useState("")
+  const [shopRatingTotal, setRatingTotal] = useState("")
   const [active, setActive] = useState("")
 
   useEffect(() => {
@@ -72,6 +127,9 @@ export const Map = () => {
       data.photos !== undefined &&
         `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${data.photos[0].photo_reference}&key=${apiKey}`
     )
+    setShopAddress(data.vicinity)
+    setShopRating(data.rating)
+    setRatingTotal(data.user_ratings_total)
     setActive("active")
   }
   const handleBackClick = () => {
@@ -106,13 +164,19 @@ export const Map = () => {
           </GoogleMap>
         )}
         <div css={shopDetailStyle} className={active && "active"}>
-          {shopName && <p>{shopName}</p>}
+          {shopName && <h3>{shopName}</h3>}
           {shopPhoto && (
             <Image src={shopPhoto} width={400} height={400} alt="" />
           )}
           {shopOpen ? <p>営業中</p> : <p>閉店中</p>}
-          <button>お気に入り</button>
-          <button onClick={handleBackClick}>戻る</button>
+          <p>{shopAddress}</p>
+          <p>
+            評価：{shopRating}（{shopRatingTotal}）
+          </p>
+          <button css={favoriteButton}>お気に入り</button>
+          <button css={backButton} onClick={handleBackClick}>
+            <Image src="./images/arrow.svg" width={10} height={12} alt="" />
+          </button>
         </div>
       </>
     )

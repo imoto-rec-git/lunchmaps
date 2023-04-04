@@ -7,3 +7,7 @@ const places = async (req, res) => {
 }
 
 export default places
+
+// https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyALKPhTFJYoWODv6U1RyCvHDKkNDl9_Z9k&location=34.69299270474642,135.49621535648794&radius=200&type=restaurant&keyword="ランチ"&language=ja
+
+// https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJCemqKvDmAGARaa9f56LdsFk&key=AIzaSyALKPhTFJYoWODv6U1RyCvHDKkNDl9_Z9k

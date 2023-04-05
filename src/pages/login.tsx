@@ -1,8 +1,19 @@
-import React from "react"
+import React, { useState } from "react"
 import Head from "next/head"
 import { Navigation } from "@/components/organisms/Navigation"
 
 export default function login() {
+  const [text, setText] = useState("")
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log(text)
+  }
+
+  const handleChange = (e) => {
+    setText(e.target.value)
+  }
+
   return (
     <>
       <Head>
@@ -13,6 +24,10 @@ export default function login() {
       </Head>
       <main>
         <h1>ログイン</h1>
+        <form onSubmit={handleSubmit}>
+          <p>{text}</p>
+          <input type="text" value={text} onChange={handleChange} />
+        </form>
         <Navigation />
       </main>
     </>

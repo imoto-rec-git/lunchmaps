@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { css } from '@emotion/react';
+import React, { useEffect, useState } from "react"
+import { css } from "@emotion/react"
 // import { LocateButton } from '@/components/atoms/LocateButton';
 // import { Map } from '@/components/molecules/Map';
 // import { TextBox } from '@/components/atoms/TextBox';
-import { GoogleMap, MarkerF, useJsApiLoader } from '@react-google-maps/api';
-import Image from 'next/image';
+import { GoogleMap, MarkerF, useJsApiLoader } from "@react-google-maps/api"
+import Image from "next/image"
 
 const maps = css`
   background: var(--color-white);
-`;
+`
 
 const containerStyle = {
-  width: '100%',
-  height: 'calc(100svh - 70px)',
-};
+  width: "100%",
+  height: "calc(100svh - 70px)",
+}
 const shopDetailStyle = css`
   width: calc(100% - 20px);
   height: 100%;
@@ -42,7 +42,7 @@ const shopDetailStyle = css`
     font-weight: var(--font-weight-medium);
     margin: 0 14px;
   }
-`;
+`
 const favoriteButton = css`
   position: absolute;
   bottom: 90px;
@@ -61,16 +61,16 @@ const favoriteButton = css`
   line-height: 1;
   justify-content: center;
   &::before {
-    content: '';
+    content: "";
     width: 24px;
     height: 24px;
-    background-image: url('./images/heart.svg');
+    background-image: url("./images/heart.svg");
     background-size: 24px 24px;
     background-repeat: no-repeat;
     display: inline-block;
     margin: 0 8px 0 0;
   }
-`;
+`
 const backButton = css`
   position: absolute;
   top: 10px;
@@ -84,7 +84,7 @@ const backButton = css`
   justify-content: center;
   align-items: center;
   transform: rotate(178deg);
-`;
+`
 
 const LocationStyle = css`
   color: var(--color-white);
@@ -108,7 +108,7 @@ const LocationStyle = css`
     font-size: 10px;
     text-align: center;
   }
-`;
+`
 
 const TextBoxStyle = css`
   form {
@@ -123,7 +123,7 @@ const TextBoxStyle = css`
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   }
   input {
-    width: 100%;
+    width: calc(100% - 55px);
     border-top: 3px solid var(--color-dark-orange);
     border-left: 3px solid var(--color-dark-orange);
     border-bottom: 3px solid var(--color-dark-orange);
@@ -132,6 +132,7 @@ const TextBoxStyle = css`
     border-radius: 24px 0 0 24px;
     padding: 9px 18px;
     ::placeholder {
+      font-size: 12px;
       color: #d2d2d2;
     }
   }
@@ -142,108 +143,108 @@ const TextBoxStyle = css`
     border: none;
     border-radius: 0 24px 24px 0;
     background: var(--color-dark-orange);
-    img {
-      margin: auto;
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
-`;
+`
 
 export const Homes = () => {
-  const [places, setPlaces] = useState(null);
-  const [shopName, setShopName] = useState('');
-  const [shopPhoto, setShopPhoto] = useState('');
-  const [shopOpen, setShopOpen] = useState('');
-  const [shopAddress, setShopAddress] = useState('');
-  const [shopRating, setShopRating] = useState('');
-  const [shopRatingTotal, setRatingTotal] = useState('');
-  const [positionLat, setPositionLat] = useState(34.68740858067861);
-  const [positionLng, setPositionLng] = useState(135.5258174994773);
-  const [active, setActive] = useState('');
+  const [places, setPlaces] = useState(null)
+  const [shopName, setShopName] = useState("")
+  const [shopPhoto, setShopPhoto] = useState("")
+  const [shopOpen, setShopOpen] = useState("")
+  const [shopAddress, setShopAddress] = useState("")
+  const [shopRating, setShopRating] = useState("")
+  const [shopRatingTotal, setRatingTotal] = useState("")
+  const [positionLat, setPositionLat] = useState(34.68740858067861)
+  const [positionLng, setPositionLng] = useState(135.5258174994773)
+  const [active, setActive] = useState("")
 
   useEffect(() => {
     fetch(`/api/places?location=${positionLat},${positionLng}`)
       .then((res) => res.json())
       .then((data) => setPlaces(data.results))
-      .catch((err) => console.log(err));
-  }, [positionLat, positionLng]);
+      .catch((err) => console.log(err))
+  }, [positionLat, positionLng])
 
   const center = {
     lat: positionLat,
     lng: positionLng,
-  };
-  const zoom = 18;
+  }
+  const zoom = 18
   const options = {
     disableDefaultUI: true,
-  };
-  const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '';
+  }
+  const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ""
   const { isLoaded } = useJsApiLoader({
-    id: 'google-map-script',
+    id: "google-map-script",
     googleMapsApiKey: apiKey,
-  });
+  })
   const getMakerIcon = (place) => {
-    let iconPath;
-    if (place.rating >= 4.0 && place.user_ratings_total > 50) {
-      iconPath = './images/good.svg';
+    let iconPath
+    if (place.rating >= 4.3 && place.user_ratings_total > 100) {
+      iconPath = "./images/good.svg"
     } else if (place.price_level <= 2) {
-      iconPath = './images/reasonable.svg';
+      iconPath = "./images/reasonable.svg"
     } else {
-      iconPath = './images/normal.svg';
+      iconPath = "./images/normal.svg"
     }
-    return iconPath;
-  };
+    return iconPath
+  }
   const handleRestaurantClick = (data) => {
-    setShopName(data.name);
-    setShopOpen(data.opening_hours.open_now);
+    setShopName(data.name)
+    setShopOpen(data.opening_hours.open_now)
     setShopPhoto(
       data.photos !== undefined &&
         `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${data.photos[0].photo_reference}&key=${apiKey}`
-    );
-    setShopAddress(data.vicinity);
-    setShopRating(data.rating);
-    setRatingTotal(data.user_ratings_total);
-    setActive('active');
-  };
+    )
+    setShopAddress(data.vicinity)
+    setShopRating(data.rating)
+    setRatingTotal(data.user_ratings_total)
+    setActive("active")
+  }
   const handleBackClick = () => {
-    setActive('');
-  };
+    setActive("")
+  }
 
   const handleCurrentLocationClick = () => {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(successFunc, errorFunc);
+      navigator.geolocation.getCurrentPosition(successFunc, errorFunc)
     } else {
-      console.log('現在地を取得できませんでした。');
+      console.log("現在地を取得できませんでした。")
     }
-  };
+  }
   const successFunc = (position) => {
-    setPositionLat(position.coords.latitude);
-    setPositionLng(position.coords.longitude);
-  };
+    setPositionLat(position.coords.latitude)
+    setPositionLng(position.coords.longitude)
+  }
   const errorFunc = () => {
-    console.log('エラー発生');
-  };
+    console.log("エラー発生")
+  }
 
-  const [areaSearch, setAreaSearch] = useState('');
-  const [areaSubmit, setAreaSubmit] = useState('');
+  const [areaSearch, setAreaSearch] = useState("")
   const codeAddress = () => {
-    const geocoder = new google.maps.Geocoder();
-    geocoder.geocode({ address: areaSubmit }, function (results, status) {
-      console.log('test');
-      if (status == 'OK') {
-        // 続きをここに書く
+    const geocoder = new google.maps.Geocoder()
+    geocoder.geocode({ address: areaSearch }, function (results, status) {
+      if (status == "OK") {
+        const lat = results[0].geometry.location.lat()
+        setPositionLat(lat)
+        const lng = results[0].geometry.location.lng()
+        setPositionLng(lng)
+      } else {
+        console.log("検索結果は0です。")
       }
-    });
-  };
+    })
+  }
   const handleAreaSearch = (e) => {
-    setAreaSearch(e.target.value);
-  };
+    setAreaSearch(e.target.value)
+  }
   const handleAreaSubmit = (e) => {
-    e.preventDefault();
-    setAreaSubmit(areaSearch);
-    // console.log('test');
-
-    setAreaSearch('');
-    codeAddress();
-  };
+    e.preventDefault()
+    codeAddress()
+    setAreaSearch("")
+  }
 
   return (
     <>
@@ -273,7 +274,7 @@ export const Homes = () => {
           </GoogleMap>
         )}
         <div css={maps}>
-          <div css={shopDetailStyle} className={active && 'active'}>
+          <div css={shopDetailStyle} className={active && "active"}>
             {shopName && <h3>{shopName}</h3>}
             {shopPhoto && (
               <Image src={shopPhoto} width={400} height={400} alt="" />
@@ -299,7 +300,7 @@ export const Homes = () => {
               <input
                 type="text"
                 value={areaSearch}
-                placeholder="エリア検索（例：大阪市中央区など）"
+                placeholder="エリア検索（例：大阪市中央区、本町駅など）"
                 onChange={handleAreaSearch}
               />
               <button type="submit">
@@ -315,5 +316,5 @@ export const Homes = () => {
         </div>
       </section>
     </>
-  );
-};
+  )
+}

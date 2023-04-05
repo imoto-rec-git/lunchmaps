@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react"
-import { GoogleMap, MarkerF, useJsApiLoader } from "@react-google-maps/api"
-import { css } from "@emotion/react"
-import Image from "next/image"
+import React, { useEffect, useState } from 'react';
+import { GoogleMap, MarkerF, useJsApiLoader } from '@react-google-maps/api';
+import { css } from '@emotion/react';
+import Image from 'next/image';
 
 const containerStyle = {
-  width: "100%",
-  height: "calc(100svh - 70px)",
-}
+  width: '100%',
+  height: 'calc(100svh - 70px)',
+};
 const shopDetailStyle = css`
   width: calc(100% - 20px);
   height: 100%;
@@ -35,7 +35,7 @@ const shopDetailStyle = css`
     font-weight: var(--font-weight-medium);
     margin: 0 14px;
   }
-`
+`;
 const favoriteButton = css`
   position: absolute;
   bottom: 90px;
@@ -54,16 +54,16 @@ const favoriteButton = css`
   line-height: 1;
   justify-content: center;
   &::before {
-    content: "";
+    content: '';
     width: 24px;
     height: 24px;
-    background-image: url("./images/heart.svg");
+    background-image: url('./images/heart.svg');
     background-size: 24px 24px;
     background-repeat: no-repeat;
     display: inline-block;
     margin: 0 8px 0 0;
   }
-`
+`;
 const backButton = css`
   position: absolute;
   top: 10px;
@@ -77,64 +77,66 @@ const backButton = css`
   justify-content: center;
   align-items: center;
   transform: rotate(178deg);
-`
+`;
 
 export const Map = () => {
-  const [places, setPlaces] = useState(null)
-  const [shopName, setShopName] = useState("")
-  const [shopPhoto, setShopPhoto] = useState("")
-  const [shopOpen, setShopOpen] = useState("")
-  const [shopAddress, setShopAddress] = useState("")
-  const [shopRating, setShopRating] = useState("")
-  const [shopRatingTotal, setRatingTotal] = useState("")
-  const [active, setActive] = useState("")
+  const [places, setPlaces] = useState(null);
+  const [shopName, setShopName] = useState('');
+  const [shopPhoto, setShopPhoto] = useState('');
+  const [shopOpen, setShopOpen] = useState('');
+  const [shopAddress, setShopAddress] = useState('');
+  const [shopRating, setShopRating] = useState('');
+  const [shopRatingTotal, setRatingTotal] = useState('');
+  const [positionLat, setPositionLat] = useState(34.69299270474642);
+  const [positionLng, setPositionLng] = useState(135.49621535648794);
+  const [active, setActive] = useState('');
 
   useEffect(() => {
-    fetch("/api/places")
+    fetch('/api/places')
       .then((res) => res.json())
       .then((data) => setPlaces(data.results))
-      .catch((err) => console.log(err))
-  }, [])
+      .catch((err) => console.log(err));
+  }, []);
 
   const center = {
-    lat: 34.69299270474642,
-    lng: 135.49621535648794,
-  }
-  const zoom = 18
+    lat: positionLat,
+    lng: positionLng,
+  };
+  const zoom = 18;
   const options = {
     disableDefaultUI: true,
-  }
-  const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ""
+  };
+  const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '';
   const { isLoaded } = useJsApiLoader({
-    id: "google-map-script",
+    id: 'google-map-script',
     googleMapsApiKey: apiKey,
-  })
+  });
   const getMakerIcon = (place) => {
-    let iconPath
+    let iconPath;
     if (place.rating >= 4.4 && place.user_ratings_total > 50) {
-      iconPath = "./images/good.svg"
+      iconPath = './images/good.svg';
     } else if (place.price_level <= 2) {
-      iconPath = "./images/reasonable.svg"
+      iconPath = './images/reasonable.svg';
     } else {
-      iconPath = "./images/normal.svg"
+      iconPath = './images/normal.svg';
     }
-    return iconPath
-  }
+    return iconPath;
+  };
   const handleRestaurantClick = (data) => {
-    setShopName(data.name)
-    setShopOpen(data.opening_hours.open_now)
+    setShopName(data.name);
+    setShopOpen(data.opening_hours.open_now);
     setShopPhoto(
       data.photos !== undefined &&
         `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${data.photos[0].photo_reference}&key=${apiKey}`
-    )
-    setShopAddress(data.vicinity)
-    setShopRating(data.rating)
-    setRatingTotal(data.user_ratings_total)
-    setActive("active")
-  }
+    );
+    setShopAddress(data.vicinity);
+    setShopRating(data.rating);
+    setRatingTotal(data.user_ratings_total);
+    setActive('active');
+  };
   const handleBackClick = () => {
-    setActive("")
-  }
+    setActive('');
+  };
 
   if (isLoaded) {
     return (
@@ -163,7 +165,7 @@ export const Map = () => {
             ))}
           </GoogleMap>
         )}
-        <div css={shopDetailStyle} className={active && "active"}>
+        <div css={shopDetailStyle} className={active && 'active'}>
           {shopName && <h3>{shopName}</h3>}
           {shopPhoto && (
             <Image src={shopPhoto} width={400} height={400} alt="" />
@@ -179,12 +181,12 @@ export const Map = () => {
           </button>
         </div>
       </>
-    )
+    );
   } else {
     return (
       <>
         <p>マップ読み込み中...</p>
       </>
-    )
+    );
   }
-}
+};

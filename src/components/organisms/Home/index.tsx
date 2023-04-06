@@ -324,7 +324,8 @@ export const Homes = () => {
   const [active, setActive] = useState("")
 
   useEffect(() => {
-    fetch(`/api/places?location=${positionLat},${positionLng}`)
+    // fetch(`/api/places?location=${positionLat},${positionLng}`)
+    fetch(`/api/places`)
       .then((res) => res.json())
       .then((data) => setPlaces(data.results))
       .catch((err) => console.log(err))
@@ -357,7 +358,8 @@ export const Homes = () => {
 
   const handleRestaurantClick = (data) => {
     if (data.place_id) {
-      fetch(`/api/details?place_id=${data.place_id}`)
+      // fetch(`/api/details?place_id=${data.place_id}`)
+      fetch(`/api/details`)
         .then((res) => res.json())
         .then((detail_data) =>
           setShopBusinessHours(detail_data.result.opening_hours.weekday_text)

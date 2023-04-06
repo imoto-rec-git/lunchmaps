@@ -1,0 +1,981 @@
+{
+   "html_attributions" : [],
+   "next_page_token" : "AUjq9jnGz0hZvjlYmxPYgYuxmLxoJgcFoSoAKaIqxLvASxyVjE9FPy1X1L7Ww2p8DHaL8k30AUafnIIeYIt9bjAAn-Aj8J-tH1Uj3NxkJHgXdxp7kAglFo9njn-rKNXhPX_nIxG26IfVaWtGuCZpFw95_vc6pz70WFk0siTze-YHLcJNpYqYNLz9rZFcvcjZGNXDsXzm5UxjZ438i8sAp6jj23pA9gjA-teA1wExlLGZIIbqFJJpsiwiWQinIRBi5coF5xHkJKzn4o--mHZMPcBrBbyTuvy_FbFQsh4N5-praz9pkqN1lOCUAX-QmAOJsOQxtTw98KscgE2emt6nK4c81HnPUBB8ZDoTvj-3g-YdJJ9JbieRPDfxEHdJ8LVErt7NCTdFdZznLaOiI1gpbHoIfXS7K2taCHDhD8apWDU_xClSSIOPObhpNS6H",
+   "results" : [
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" : {
+            "location" : {
+               "lat" : 34.6937845,
+               "lng" : 135.4967409
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 34.69524438029151,
+                  "lng" : 135.4978737302915
+               },
+               "southwest" : {
+                  "lat" : 34.69254641970851,
+                  "lng" : 135.4951757697085
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+         "icon_background_color" : "#FF9E67",
+         "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+         "name" : "ラ・フェットひらまつ",
+         "opening_hours" : {
+            "open_now" : false
+         },
+         "photos" : [
+            {
+               "height" : 1000,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/110706731793567910345\"\u003eラ・フェットひらまつ\u003c/a\u003e"
+               ],
+               "photo_reference" : "AUjq9jnPHDOePxvwedtplGEbjQMmhnCKyZno6DgvXlqisLa2JczQpeU_Li-yDO61-VX7r7W1vWpoPBCi-taQ4Hq2RYi7gIMtSmyVn46MmEXJ5IPi6ui3prol6UFKngw50HA9JveNS-OwFkF4RJqJg3FElb2opcjlMdUhmh_-lQuj3DVpNeF1",
+               "width" : 1500
+            }
+         ],
+         "place_id" : "ChIJCemqKvDmAGARaa9f56LdsFk",
+         "plus_code" : {
+            "compound_code" : "MFVW+GM 日本、大阪府大阪市",
+            "global_code" : "8Q6QMFVW+GM"
+         },
+         "price_level" : 3,
+         "rating" : 4.4,
+         "reference" : "ChIJCemqKvDmAGARaa9f56LdsFk",
+         "scope" : "GOOGLE",
+         "types" : [ "restaurant", "food", "point_of_interest", "establishment" ],
+         "user_ratings_total" : 441,
+         "vicinity" : "大阪市北区中之島２丁目３−１８ 中之島フェスティバルタワー 37F"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" : {
+            "location" : {
+               "lat" : 34.6934479,
+               "lng" : 135.4957172
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 34.6945771302915,
+                  "lng" : 135.4971110302915
+               },
+               "southwest" : {
+                  "lat" : 34.6918791697085,
+                  "lng" : 135.4944130697085
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+         "icon_background_color" : "#FF9E67",
+         "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+         "name" : "ラーメン而今 中之島フェスティバルプラザ店",
+         "opening_hours" : {
+            "open_now" : false
+         },
+         "photos" : [
+            {
+               "height" : 3464,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/110458739289944073294\"\u003eyoshinori tanaka\u003c/a\u003e"
+               ],
+               "photo_reference" : "AUjq9jk_-pfUuwvgCFIHiT_89kLboznzaJhPlIhLDXQG54jEwSpaOVMSgo2o6wAd1m8wCGpkZCFwB8OOdReQli9j8WiWN1amgcH7BiNJAeSbXIbbkugSNyMX_Vc7Pn8mGNXJQWJaGSwWf98cEe6LPsJt1TbwEAqdgQYIa0Dla676VjEniEEd",
+               "width" : 4618
+            }
+         ],
+         "place_id" : "ChIJteQJKfDmAGARJr5qawLnUv4",
+         "plus_code" : {
+            "compound_code" : "MFVW+97 日本、大阪府大阪市",
+            "global_code" : "8Q6QMFVW+97"
+         },
+         "price_level" : 2,
+         "rating" : 3.5,
+         "reference" : "ChIJteQJKfDmAGARJr5qawLnUv4",
+         "scope" : "GOOGLE",
+         "types" : [ "restaurant", "food", "point_of_interest", "establishment" ],
+         "user_ratings_total" : 262,
+         "vicinity" : "大阪市北区中之島３丁目２−４ 中之島フェスティバルタワー・ウエスト B1F"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" : {
+            "location" : {
+               "lat" : 34.69361380000001,
+               "lng" : 135.496351
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 34.6951698802915,
+                  "lng" : 135.4976309302915
+               },
+               "southwest" : {
+                  "lat" : 34.6924719197085,
+                  "lng" : 135.4949329697085
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+         "icon_background_color" : "#FF9E67",
+         "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+         "name" : "Mano-e-Mano（マーノ エ マーノ）",
+         "opening_hours" : {
+            "open_now" : false
+         },
+         "photos" : [
+            {
+               "height" : 2250,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/103395088690497662812\"\u003eY U\u003c/a\u003e"
+               ],
+               "photo_reference" : "AUjq9jkEfGWfrCTwTHpRjddBn12gucLnL_vCv5SQqrXEjF-8iePcGfjTvY1MBmGPGb4rB196kHgcDAqackrs0eYGc0X1DDuz6QDMAaSH3ElCt2tND21jshGG1lqoRYx6rqjamnCGy7m1DYa_ofkCG9oOm7NN8k0kQG9aNCfYU4P2RyyF3OKK",
+               "width" : 4000
+            }
+         ],
+         "place_id" : "ChIJSQGq1vHmAGARv_S7L6eChMQ",
+         "plus_code" : {
+            "compound_code" : "MFVW+CG 日本、大阪府大阪市",
+            "global_code" : "8Q6QMFVW+CG"
+         },
+         "price_level" : 2,
+         "rating" : 3.7,
+         "reference" : "ChIJSQGq1vHmAGARv_S7L6eChMQ",
+         "scope" : "GOOGLE",
+         "types" : [ "restaurant", "food", "point_of_interest", "establishment" ],
+         "user_ratings_total" : 211,
+         "vicinity" : "大阪市北区中之島２丁目３−１８ 中之島フェスティバルタワー B1F"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" : {
+            "location" : {
+               "lat" : 34.6936927,
+               "lng" : 135.4960556
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 34.6950471302915,
+                  "lng" : 135.4972981302915
+               },
+               "southwest" : {
+                  "lat" : 34.6923491697085,
+                  "lng" : 135.4946001697085
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+         "icon_background_color" : "#FF9E67",
+         "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+         "name" : "旬魚旬菜 遊遊 中之島フェスティバルプラザ",
+         "opening_hours" : {
+            "open_now" : false
+         },
+         "photos" : [
+            {
+               "height" : 3456,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/102525011369054582616\"\u003eMasa Taka\u003c/a\u003e"
+               ],
+               "photo_reference" : "AUjq9jlZXVHqyFJusK_NcX6rfNOInP5TNVlXYd9Qy-MzgzmtRo9C9J3Ly4pZrEFfj--AB3vBsu0D8IY9Ht1KVQPw9zBxPkFiblcpArtodvBw2nEsDIdYo-D1LMiBNmft7Ga4Yc2n3V4fzVLWeF58iYvjFLuANrn3GrwiL6-04AxXDWLBgq5Q",
+               "width" : 4608
+            }
+         ],
+         "place_id" : "ChIJSQGq1vHmAGARJIBhuoge_gg",
+         "plus_code" : {
+            "compound_code" : "MFVW+FC 日本、大阪府大阪市",
+            "global_code" : "8Q6QMFVW+FC"
+         },
+         "rating" : 4,
+         "reference" : "ChIJSQGq1vHmAGARJIBhuoge_gg",
+         "scope" : "GOOGLE",
+         "types" : [ "restaurant", "food", "point_of_interest", "establishment" ],
+         "user_ratings_total" : 109,
+         "vicinity" : "大阪市北区中之島２丁目３−１８ 中之島フェスティバルタワー B1"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" : {
+            "location" : {
+               "lat" : 34.69347709999999,
+               "lng" : 135.4960837
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 34.6949351802915,
+                  "lng" : 135.4973158302915
+               },
+               "southwest" : {
+                  "lat" : 34.6922372197085,
+                  "lng" : 135.4946178697085
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+         "icon_background_color" : "#FF9E67",
+         "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+         "name" : "キッチンジロー中之島フェスティバルプラザ店",
+         "opening_hours" : {
+            "open_now" : false
+         },
+         "photos" : [
+            {
+               "height" : 2160,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/113825214343105128912\"\u003ejk kouyou\u003c/a\u003e"
+               ],
+               "photo_reference" : "AUjq9jm7hyJgy4RNaAFCqJ8upUwMLU0_YhDJe5CjwOKTGlF3nZ7R6Q76_xScLJcCyq4fjSrE6ghzOaOKUDgExj9dDjVpNGOApjt-hNDULApiMPk6SJZlXWBdwkPRKOI0kbXtGFWVU_2MR208Czsi1GktEymiqx-i6_DaBMYnxctWXGzh4V-X",
+               "width" : 3840
+            }
+         ],
+         "place_id" : "ChIJp6RCz_HmAGARgzXRPkwESIs",
+         "plus_code" : {
+            "compound_code" : "MFVW+9C 日本、大阪府大阪市",
+            "global_code" : "8Q6QMFVW+9C"
+         },
+         "price_level" : 2,
+         "rating" : 3.9,
+         "reference" : "ChIJp6RCz_HmAGARgzXRPkwESIs",
+         "scope" : "GOOGLE",
+         "types" : [ "restaurant", "food", "point_of_interest", "establishment" ],
+         "user_ratings_total" : 227,
+         "vicinity" : "大阪市北区中之島２丁目３−１８ 中之島フェスティバルタワー B1F プラザ"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" : {
+            "location" : {
+               "lat" : 34.6935988,
+               "lng" : 135.495399
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 34.6946622302915,
+                  "lng" : 135.4970296302915
+               },
+               "southwest" : {
+                  "lat" : 34.6919642697085,
+                  "lng" : 135.4943316697085
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+         "icon_background_color" : "#FF9E67",
+         "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+         "name" : "アトモス・ダイニング",
+         "opening_hours" : {
+            "open_now" : false
+         },
+         "photos" : [
+            {
+               "height" : 3456,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/101756906865627102262\"\u003eアトモス・ダイニング\u003c/a\u003e"
+               ],
+               "photo_reference" : "AUjq9jlgzb7bf2wS7nZsiPVlIq6bQkX_zb6vq606RxK5ChVok6WJsuXGm-8Y5mmLfp3Jfr6vW3zfseRz5eSMXY3xCH1olnJTSm5i53XtpeJrpZE5zZflOxBaCZysZzVkpyII5v1rrd8P0CIrDonTwEKymDWF1fKg0-eIHGqX42xrSPMmbpL3",
+               "width" : 5184
+            }
+         ],
+         "place_id" : "ChIJ0YkmyvHmAGAR2yu-h6s4qs8",
+         "plus_code" : {
+            "compound_code" : "MFVW+C5 日本、大阪府大阪市",
+            "global_code" : "8Q6QMFVW+C5"
+         },
+         "price_level" : 3,
+         "rating" : 4.2,
+         "reference" : "ChIJ0YkmyvHmAGAR2yu-h6s4qs8",
+         "scope" : "GOOGLE",
+         "types" : [ "restaurant", "food", "point_of_interest", "establishment" ],
+         "user_ratings_total" : 268,
+         "vicinity" : "大阪市北区中之島３丁目２−４"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" : {
+            "location" : {
+               "lat" : 34.6935117,
+               "lng" : 135.4953805
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 34.6946186802915,
+                  "lng" : 135.4970203802915
+               },
+               "southwest" : {
+                  "lat" : 34.6919207197085,
+                  "lng" : 135.4943224197085
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/bar-71.png",
+         "icon_background_color" : "#FF9E67",
+         "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/bar_pinlet",
+         "name" : "40スカイバー＆ラウンジ",
+         "opening_hours" : {
+            "open_now" : false
+         },
+         "photos" : [
+            {
+               "height" : 4912,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/107317980822816636684\"\u003e40スカイバー＆ラウンジ\u003c/a\u003e"
+               ],
+               "photo_reference" : "AUjq9jldZ1X1FjdNDQI9ZckiW8McPo78fLkxp2lmgNGjDxs9HUprlOWO_0Z7YEI7-sJ0Sor08MAACWQfczQwgKPAePJQA7yOFoCGoguaeNNs0skgQtCj8Sf4pwJ1AMaqs3eOC-P69mcIHVeh20wR4WxB7l-aIHvBmfK2CiHrC2qs83CVW8Zz",
+               "width" : 7360
+            }
+         ],
+         "place_id" : "ChIJ0YkmyvHmAGARY_rvI2dS7g4",
+         "plus_code" : {
+            "compound_code" : "MFVW+C5 日本、大阪府大阪市",
+            "global_code" : "8Q6QMFVW+C5"
+         },
+         "price_level" : 3,
+         "rating" : 4.4,
+         "reference" : "ChIJ0YkmyvHmAGARY_rvI2dS7g4",
+         "scope" : "GOOGLE",
+         "types" : [
+            "bar",
+            "restaurant",
+            "food",
+            "night_club",
+            "point_of_interest",
+            "establishment"
+         ],
+         "user_ratings_total" : 235,
+         "vicinity" : "大阪市北区中之島３丁目２−４"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" : {
+            "location" : {
+               "lat" : 34.6934048,
+               "lng" : 135.4955867
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 34.6945480302915,
+                  "lng" : 135.4970457802915
+               },
+               "southwest" : {
+                  "lat" : 34.6918500697085,
+                  "lng" : 135.4943478197085
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+         "icon_background_color" : "#FF9E67",
+         "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+         "name" : "ダイナミックキッチン＆バー 響 中之島フェスティバルプラザ店",
+         "opening_hours" : {
+            "open_now" : false
+         },
+         "photos" : [
+            {
+               "height" : 360,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/113012246173819264892\"\u003eダイナミックキッチン＆バー 響 中之島フェスティバルプラザ店\u003c/a\u003e"
+               ],
+               "photo_reference" : "AUjq9jk-gTLJAFNPcIWgYUxUDWLB4yeCXihdBmzHgtyHpEV5uBXEUzzKvAux2VOKWkSQZ6HuFDN6x2ExhMQuALuG5y9uiVFDDIOhrYBDwnOehdgCUPWJJb5zO92gNj13x5WMybyr5eaZJT3AHis0wQvd_X43pFdWLj6mHFykx701BHQrYzxZ",
+               "width" : 640
+            }
+         ],
+         "place_id" : "ChIJAz8P1fDmAGARZAEYjuWpCJg",
+         "plus_code" : {
+            "compound_code" : "MFVW+96 日本、大阪府大阪市",
+            "global_code" : "8Q6QMFVW+96"
+         },
+         "price_level" : 2,
+         "rating" : 3.9,
+         "reference" : "ChIJAz8P1fDmAGARZAEYjuWpCJg",
+         "scope" : "GOOGLE",
+         "types" : [ "restaurant", "food", "point_of_interest", "establishment" ],
+         "user_ratings_total" : 219,
+         "vicinity" : "大阪市北区中之島３丁目２ 中之島フェスティバルタワー・ウエスト 2F"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" : {
+            "location" : {
+               "lat" : 34.6934048,
+               "lng" : 135.4955867
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 34.6945480302915,
+                  "lng" : 135.4970130302915
+               },
+               "southwest" : {
+                  "lat" : 34.6918500697085,
+                  "lng" : 135.4943150697085
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+         "icon_background_color" : "#FF9E67",
+         "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+         "name" : "鮨 美寿志",
+         "opening_hours" : {
+            "open_now" : false
+         },
+         "photos" : [
+            {
+               "height" : 533,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/105911905319319842597\"\u003e鮨 美寿志\u003c/a\u003e"
+               ],
+               "photo_reference" : "AUjq9jkwUdJ1wzxX5rMZsiKWm04_9-Hv3Lg6DUg6DZ8Ic7C7JEP0Ti9PjFEULAKSZ5R1sOgYhdGnEUiTyIBJSytFLsjXNt9wSV_bc9HqWW3bHVdHaNNGNWpMyM4xI8Wnwv99mulmp6T2BzxAHNpQkSTbI-m_fHgTS4-bdnbuYqB1hORDwVQP",
+               "width" : 533
+            }
+         ],
+         "place_id" : "ChIJ0YkmyvHmAGARZFKFUn35OgY",
+         "plus_code" : {
+            "compound_code" : "MFVW+96 日本、大阪府大阪市",
+            "global_code" : "8Q6QMFVW+96"
+         },
+         "rating" : 4.4,
+         "reference" : "ChIJ0YkmyvHmAGARZFKFUn35OgY",
+         "scope" : "GOOGLE",
+         "types" : [
+            "meal_takeaway",
+            "liquor_store",
+            "bar",
+            "store",
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+         ],
+         "user_ratings_total" : 114,
+         "vicinity" : "大阪市北区中之島３丁目２−４ 中之島フェスティバルタワー・ウエスト 2F"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" : {
+            "location" : {
+               "lat" : 34.6938347,
+               "lng" : 135.494829
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 34.69524273029149,
+                  "lng" : 135.4961944802915
+               },
+               "southwest" : {
+                  "lat" : 34.6925447697085,
+                  "lng" : 135.4934965197085
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+         "icon_background_color" : "#FF9E67",
+         "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+         "name" : "中之島 吉祥庵",
+         "opening_hours" : {
+            "open_now" : false
+         },
+         "photos" : [
+            {
+               "height" : 4032,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/108966550143330574389\"\u003eYYT JT\u003c/a\u003e"
+               ],
+               "photo_reference" : "AUjq9jnsDkIhzNGeNGBCV8Vr8zDKDB8R3ywip4IlELFyANjDbKBTzKnAeW8TBUQkkV5qXfbVCzh10TqJ6ForyZF81sU0l7rSxk0bW5zjX7sYCz7G4iYkwlIAyuSETXVhPbaXfVE-teFTuo6uxtKlD0eCeudjQviApERGJeGcBTt72xrHBHfR",
+               "width" : 3024
+            }
+         ],
+         "place_id" : "ChIJJwNMoPHmAGAR1CeKiQpyCQo",
+         "plus_code" : {
+            "compound_code" : "MFVV+GW 日本、大阪府大阪市",
+            "global_code" : "8Q6QMFVV+GW"
+         },
+         "rating" : 3.6,
+         "reference" : "ChIJJwNMoPHmAGAR1CeKiQpyCQo",
+         "scope" : "GOOGLE",
+         "types" : [ "restaurant", "food", "point_of_interest", "establishment" ],
+         "user_ratings_total" : 58,
+         "vicinity" : "大阪市北区中之島３丁目２−３０ 京阪渡辺橋駅 B1F"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" : {
+            "location" : {
+               "lat" : 34.6938336,
+               "lng" : 135.4948289
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 34.69524218029149,
+                  "lng" : 135.4961942802915
+               },
+               "southwest" : {
+                  "lat" : 34.69254421970849,
+                  "lng" : 135.4934963197085
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+         "icon_background_color" : "#FF9E67",
+         "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+         "name" : "ロッテリア 京阪渡辺橋駅店",
+         "opening_hours" : {
+            "open_now" : false
+         },
+         "photos" : [
+            {
+               "height" : 2304,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/100281653066384289450\"\u003eLufy Score\u003c/a\u003e"
+               ],
+               "photo_reference" : "AUjq9jlFa4wqlK2dvbDuxWtlHOD9QZzbXHFmZjqBHDjeC-BiJtXuFPuvvt77iL73QjatD6eMsvEpV5kFYWLPg6gcQ_t0k9IKePIB7FkuB6ECsBpDPvI3TJGkesb1XV_BAhRZjOen3fxlsDK7NTwK3KW-YYS9U4WlWi21tdcjWI-rQ5n2a3vg",
+               "width" : 4096
+            }
+         ],
+         "place_id" : "ChIJEVHQvPHmAGAR2ub59dVb3xw",
+         "plus_code" : {
+            "compound_code" : "MFVV+GW 日本、大阪府大阪市",
+            "global_code" : "8Q6QMFVV+GW"
+         },
+         "price_level" : 2,
+         "rating" : 3.6,
+         "reference" : "ChIJEVHQvPHmAGAR2ub59dVb3xw",
+         "scope" : "GOOGLE",
+         "types" : [ "restaurant", "food", "point_of_interest", "establishment" ],
+         "user_ratings_total" : 129,
+         "vicinity" : "大阪市北区中之島３丁目２−３０"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" : {
+            "location" : {
+               "lat" : 34.6914002,
+               "lng" : 135.4955301
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 34.69279318029149,
+                  "lng" : 135.4968823302915
+               },
+               "southwest" : {
+                  "lat" : 34.69009521970849,
+                  "lng" : 135.4941843697085
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+         "icon_background_color" : "#FF9E67",
+         "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+         "name" : "徐園",
+         "opening_hours" : {
+            "open_now" : false
+         },
+         "photos" : [
+            {
+               "height" : 768,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/106620469801669140369\"\u003e購買部龍驤さん\u003c/a\u003e"
+               ],
+               "photo_reference" : "AUjq9jmJS9BUFXWiHTmP40GP-XsyCbtNa5EtPk0yPw175mIno6fsutw_PrmBz65aJG5gVA2JMlfQb-wuMps0QoHCpDxpPAHKxPp6eFAZZUNDd26SFBnpn5wTEgMYYT2p6jH8oX7VaX4EbaH1TsBGz59_egf5vbBHCy1hdEGQbQz84OI-m9v4",
+               "width" : 1024
+            }
+         ],
+         "place_id" : "ChIJe12Ka_DmAGAR30bUqGGnCFo",
+         "plus_code" : {
+            "compound_code" : "MFRW+H6 日本、大阪府大阪市",
+            "global_code" : "8Q6QMFRW+H6"
+         },
+         "price_level" : 2,
+         "rating" : 3.5,
+         "reference" : "ChIJe12Ka_DmAGAR30bUqGGnCFo",
+         "scope" : "GOOGLE",
+         "types" : [ "restaurant", "food", "point_of_interest", "establishment" ],
+         "user_ratings_total" : 566,
+         "vicinity" : "大阪市西区江戸堀１丁目１５−３０"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" : {
+            "location" : {
+               "lat" : 34.6934019,
+               "lng" : 135.4954892
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 34.69454118029149,
+                  "lng" : 135.4969642802915
+               },
+               "southwest" : {
+                  "lat" : 34.6918432197085,
+                  "lng" : 135.4942663197085
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+         "icon_background_color" : "#FF9E67",
+         "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+         "name" : "藤よし 中之島フェスティバルプラザ",
+         "opening_hours" : {
+            "open_now" : false
+         },
+         "photos" : [
+            {
+               "height" : 3000,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/111959507712774424431\"\u003e矢田久子\u003c/a\u003e"
+               ],
+               "photo_reference" : "AUjq9jmar53XERyGIFNyQI5epkQWnd2ZOEJUrXWqvHuiqqeHoM9HeDm6lvHx42uNnpjVCRTekO8Xv9IU3rVzexfvUy5TbmuWrwdG1-xxE36krHvC-Tc71pUMefOhz-7-299GIpHdIqx4DXbBUC2uJ0W7aVVbTR6KLcOss0k1fG18sFkMsfel",
+               "width" : 5333
+            }
+         ],
+         "place_id" : "ChIJXVxuufHmAGAR7BY1dVikeyk",
+         "plus_code" : {
+            "compound_code" : "MFVW+95 日本、大阪府大阪市",
+            "global_code" : "8Q6QMFVW+95"
+         },
+         "rating" : 3.3,
+         "reference" : "ChIJXVxuufHmAGAR7BY1dVikeyk",
+         "scope" : "GOOGLE",
+         "types" : [ "restaurant", "food", "point_of_interest", "establishment" ],
+         "user_ratings_total" : 27,
+         "vicinity" : "大阪市北区中之島３丁目２−番 フェスティバル タワー ウエスト Ｂ１ 階"
+      },
+      {
+         "business_status" : "CLOSED_TEMPORARILY",
+         "geometry" : {
+            "location" : {
+               "lat" : 34.692087,
+               "lng" : 135.495279
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 34.6935025802915,
+                  "lng" : 135.4965416802915
+               },
+               "southwest" : {
+                  "lat" : 34.6908046197085,
+                  "lng" : 135.4938437197085
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+         "icon_background_color" : "#FF9E67",
+         "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+         "name" : "チャオ サイゴン",
+         "permanently_closed" : true,
+         "photos" : [
+            {
+               "height" : 800,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/109062913778017138731\"\u003eエイジSAN\u003c/a\u003e"
+               ],
+               "photo_reference" : "AUjq9jnqGN8RKp4EXOIX9y4uR5SQQsIIThkZbjzra6sfx2U3oJQZHGfXQpqdk5Mr42TxuV9AIfrpQ1_nAAbzk7Veg9uHVkxLX_ZkxRIbs8fHujEGgyn7V40tcwJrr0EhoGsaA8y1mJmh4rf2fVGgjzGa2sBU8atbrM56kduTg-KT8ZLS9kzx",
+               "width" : 800
+            }
+         ],
+         "place_id" : "ChIJoXhgT_DmAGARGYbT5hpk-UU",
+         "plus_code" : {
+            "compound_code" : "MFRW+R4 日本、大阪府大阪市",
+            "global_code" : "8Q6QMFRW+R4"
+         },
+         "rating" : 3.8,
+         "reference" : "ChIJoXhgT_DmAGARGYbT5hpk-UU",
+         "scope" : "GOOGLE",
+         "types" : [ "restaurant", "food", "point_of_interest", "establishment" ],
+         "user_ratings_total" : 130,
+         "vicinity" : "大阪市西区土佐堀１丁目２−１ APAホテル大阪肥後橋駅前店 30F"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" : {
+            "location" : {
+               "lat" : 34.69157089999999,
+               "lng" : 135.4957151
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 34.6929198802915,
+                  "lng" : 135.4970628802915
+               },
+               "southwest" : {
+                  "lat" : 34.6902219197085,
+                  "lng" : 135.4943649197085
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+         "icon_background_color" : "#FF9E67",
+         "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+         "name" : "板前焼肉 一笑 江戸堀店",
+         "opening_hours" : {
+            "open_now" : false
+         },
+         "photos" : [
+            {
+               "height" : 2636,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/110160574660947668253\"\u003e板前焼肉 一笑 江戸堀\u003c/a\u003e"
+               ],
+               "photo_reference" : "AUjq9jkHucsX2M8fcSZOODQfPsrlKd9NTTeLNVvRAVkJ06GU_TpWNo6-sfiK46UtVAPsfg9JHmLP7yPNvA3kz2yFI_hQVxgOKri5Vp2CpSNSvFVUdIjTF61KujroLO9rPurOMt0MSwICiOtjWfVS7XN8SMB4ZtOtITlxKzatEDoMw46OuPCU",
+               "width" : 2636
+            }
+         ],
+         "place_id" : "ChIJH_u3avDmAGARInvjdAdN3fs",
+         "plus_code" : {
+            "compound_code" : "MFRW+J7 日本、大阪府大阪市",
+            "global_code" : "8Q6QMFRW+J7"
+         },
+         "rating" : 4.1,
+         "reference" : "ChIJH_u3avDmAGARInvjdAdN3fs",
+         "scope" : "GOOGLE",
+         "types" : [ "restaurant", "food", "point_of_interest", "establishment" ],
+         "user_ratings_total" : 118,
+         "vicinity" : "大阪市西区江戸堀１丁目１４−４"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" : {
+            "location" : {
+               "lat" : 34.6937051,
+               "lng" : 135.4958996
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 34.69506963029151,
+                  "lng" : 135.4972578302915
+               },
+               "southwest" : {
+                  "lat" : 34.69237166970851,
+                  "lng" : 135.4945598697085
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+         "icon_background_color" : "#FF9E67",
+         "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+         "name" : "讃岐うどん 千万喜 中之島店",
+         "opening_hours" : {
+            "open_now" : false
+         },
+         "photos" : [
+            {
+               "height" : 3024,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/114027719188331305844\"\u003eNAOKI SUGI\u003c/a\u003e"
+               ],
+               "photo_reference" : "AUjq9jlVDfh86vg6il3qfbSNR0zNnrHM7JQ4GY1OvrbrsXyjgQlhmdplIunwuBGOHUIt6wMFRt2nLfwO_Upc7wQ6saK1q3nhDrxfJBdC-uwkwgn17Vbhn8fJEURdpTE-aO9P4FBu9pKrZhh3BIm89VxwNOM7B-LnEk_fkpZgK_CFig6bT9zD",
+               "width" : 4032
+            }
+         ],
+         "place_id" : "ChIJQwiNMfDmAGARFvhz44AQBUM",
+         "plus_code" : {
+            "compound_code" : "MFVW+F9 日本、大阪府大阪市",
+            "global_code" : "8Q6QMFVW+F9"
+         },
+         "price_level" : 1,
+         "rating" : 3.3,
+         "reference" : "ChIJQwiNMfDmAGARFvhz44AQBUM",
+         "scope" : "GOOGLE",
+         "types" : [ "restaurant", "food", "point_of_interest", "establishment" ],
+         "user_ratings_total" : 116,
+         "vicinity" : "大阪市北区中之島２丁目３−１８"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" : {
+            "location" : {
+               "lat" : 34.6933721,
+               "lng" : 135.4941534
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 34.6943890302915,
+                  "lng" : 135.4955831302915
+               },
+               "southwest" : {
+                  "lat" : 34.6916910697085,
+                  "lng" : 135.4928851697085
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/cafe-71.png",
+         "icon_background_color" : "#FF9E67",
+         "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/cafe_pinlet",
+         "name" : "スターバックス コーヒー 中之島三井ビル店",
+         "opening_hours" : {
+            "open_now" : false
+         },
+         "photos" : [
+            {
+               "height" : 1080,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/100243606762811056730\"\u003er1 seo\u003c/a\u003e"
+               ],
+               "photo_reference" : "AUjq9jkx28CnOSRf39AoY3KsC0i3cn3qgw03ope7AY191z2vR8C0hA8jFBgFQi1Xe1pf8LGsvyfudzvu966IvSaRb5hjcVqGg258szieZNIpjdL3rL52WJri-mWPv2nbSdr2cn76DAenCnML62EyE5jejNu0KVUEajHC-1huS5Jk11Oz3q7p",
+               "width" : 1920
+            }
+         ],
+         "place_id" : "ChIJB2_ocvHmAGARBAXTtnMTlEE",
+         "plus_code" : {
+            "compound_code" : "MFVV+8M 日本、大阪府大阪市",
+            "global_code" : "8Q6QMFVV+8M"
+         },
+         "price_level" : 2,
+         "rating" : 3.8,
+         "reference" : "ChIJB2_ocvHmAGARBAXTtnMTlEE",
+         "scope" : "GOOGLE",
+         "types" : [
+            "meal_takeaway",
+            "cafe",
+            "store",
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+         ],
+         "user_ratings_total" : 253,
+         "vicinity" : "大阪市北区中之島３丁目３−３ 三井ビルディング"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" : {
+            "location" : {
+               "lat" : 34.6932163,
+               "lng" : 135.4954244
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 34.6944431802915,
+                  "lng" : 135.4969318802915
+               },
+               "southwest" : {
+                  "lat" : 34.6917452197085,
+                  "lng" : 135.4942339197085
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+         "icon_background_color" : "#FF9E67",
+         "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+         "name" : "C:GRILL （シーグリル）",
+         "opening_hours" : {
+            "open_now" : false
+         },
+         "photos" : [
+            {
+               "height" : 4912,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/118002380148183101429\"\u003eC:GRILL （シーグリル）\u003c/a\u003e"
+               ],
+               "photo_reference" : "AUjq9jnNy-B7ICtZrQNdmny9GN55F2Y8ZKRB_xFlJOACRCLVQUBDRroa6RSg4hr-9V7F_EcHLMMquLh_x2IwdjPMyLJPo0DFkM_OxFHUjBU51eiWMCUZddxLWEA3HMaDiQT-xDGY6YHzvY9XBjr3s25ZHVW_DwcCB6_htEu1EmPueEuDF0Wa",
+               "width" : 7360
+            }
+         ],
+         "place_id" : "ChIJ0YkmyvHmAGARpUzzhvjtvQo",
+         "plus_code" : {
+            "compound_code" : "MFVW+75 日本、大阪府大阪市",
+            "global_code" : "8Q6QMFVW+75"
+         },
+         "price_level" : 3,
+         "rating" : 4.5,
+         "reference" : "ChIJ0YkmyvHmAGARpUzzhvjtvQo",
+         "scope" : "GOOGLE",
+         "types" : [ "restaurant", "food", "point_of_interest", "establishment" ],
+         "user_ratings_total" : 101,
+         "vicinity" : "大阪市北区中之島３丁目２−４ 40F"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" : {
+            "location" : {
+               "lat" : 34.6924327,
+               "lng" : 135.4956591
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 34.6937482802915,
+                  "lng" : 135.4970190302915
+               },
+               "southwest" : {
+                  "lat" : 34.6910503197085,
+                  "lng" : 135.4943210697085
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+         "icon_background_color" : "#FF9E67",
+         "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+         "name" : "バルピコ",
+         "opening_hours" : {
+            "open_now" : false
+         },
+         "photos" : [
+            {
+               "height" : 5504,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/111563729914528259766\"\u003eおかっち様TypeR\u003c/a\u003e"
+               ],
+               "photo_reference" : "AUjq9jnDQ0-H1qWxv-8IsjBgou0ubkD3kuSa7uuIPCpmEh3y89Lr3X9KfKMBlN0Mw-jqLgJF3m3wOHlx4spEqoxBYG-tH4CCmDyjJGs1b75tnFndet1RePtKqIiKs3gRP_ceXKnarX3l1QeMuqLCDZjg6DmsXk2MkqzEbCShRLmHhREotiq_",
+               "width" : 3096
+            }
+         ],
+         "place_id" : "ChIJGYGSSfDmAGARvQfm4VkKo1g",
+         "plus_code" : {
+            "compound_code" : "MFRW+X7 日本、大阪府大阪市",
+            "global_code" : "8Q6QMFRW+X7"
+         },
+         "rating" : 3.6,
+         "reference" : "ChIJGYGSSfDmAGARvQfm4VkKo1g",
+         "scope" : "GOOGLE",
+         "types" : [ "restaurant", "food", "point_of_interest", "establishment" ],
+         "user_ratings_total" : 45,
+         "vicinity" : "大阪市西区土佐堀１丁目１−４ 山内ビル2F"
+      },
+      {
+         "business_status" : "OPERATIONAL",
+         "geometry" : {
+            "location" : {
+               "lat" : 34.69359599999999,
+               "lng" : 135.496606
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 34.69512718029149,
+                  "lng" : 135.4977465802915
+               },
+               "southwest" : {
+                  "lat" : 34.6924292197085,
+                  "lng" : 135.4950486197085
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+         "icon_background_color" : "#FF9E67",
+         "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
+         "name" : "株式会社 アラスカ 大阪本社",
+         "opening_hours" : {
+            "open_now" : false
+         },
+         "photos" : [
+            {
+               "height" : 500,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/112502291797002752718\"\u003e株式会社 アラスカ 大阪本社\u003c/a\u003e"
+               ],
+               "photo_reference" : "AUjq9jnCkr4NwlVB5hF4lOlP931aAy0VtiiomW_ZAWviodJgnn4UjBqVKJcAxIwo3lShMEyFmyHZXP1pWXkDvyZkDYRXwrL1Hj-G4CwHrlfo08RpcFpZnVSXiHudgnhFQIXJD7EpvXE7le3ojFlL6hYAdVb_JOB2v-aY7FiSdeP40_g2UL5S",
+               "width" : 500
+            }
+         ],
+         "place_id" : "ChIJKVtEv_HmAGARj9TEnBHH64w",
+         "plus_code" : {
+            "compound_code" : "MFVW+CJ 日本、大阪府大阪市",
+            "global_code" : "8Q6QMFVW+CJ"
+         },
+         "rating" : 1,
+         "reference" : "ChIJKVtEv_HmAGARj9TEnBHH64w",
+         "scope" : "GOOGLE",
+         "types" : [ "restaurant", "food", "point_of_interest", "establishment" ],
+         "user_ratings_total" : 1,
+         "vicinity" : "大阪市北区中之島２丁目３−１８ 中之島フェスティバルタワー2階"
+      }
+   ],
+   "status" : "OK"
+}

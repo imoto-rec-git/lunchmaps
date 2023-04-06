@@ -1,7 +1,7 @@
-import Head from 'next/head';
-import { Splash } from '@/components/molecules/Splash';
-import { Navigation } from '@/components/organisms/Navigation';
-import { Homes } from '@/components/organisms/Home';
+import Head from "next/head"
+import { Splash } from "@/components/molecules/Splash"
+import { Navigation } from "@/components/organisms/Navigation"
+import { Homes } from "@/components/organisms/Home"
 
 export default function Home() {
   return (
@@ -18,5 +18,5 @@ export default function Home() {
         <Navigation />
       </main>
     </>
-  );
+  )
 }

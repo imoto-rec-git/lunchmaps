@@ -1,19 +1,9 @@
-import React, { useState } from "react"
-import Head from "next/head"
-import { Navigation } from "@/components/organisms/Navigation"
+import React from 'react';
+import Head from 'next/head';
+import { css } from '@emotion/react';
+import Link from 'next/link';
 
 export default function login() {
-  const [text, setText] = useState("")
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log(text)
-  }
-
-  const handleChange = (e) => {
-    setText(e.target.value)
-  }
-
   return (
     <>
       <Head>
@@ -23,13 +13,90 @@ export default function login() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <h1>ログイン</h1>
-        <form onSubmit={handleSubmit}>
-          <p>{text}</p>
-          <input type="text" value={text} onChange={handleChange} />
-        </form>
-        <Navigation />
+        <section>
+          <div css={Container}>
+            <div css={loginContents}>
+              <p>かんたんログイン</p>
+              <button css={gooleButton}>Googleで続ける</button>
+              <p>または</p>
+              <button css={otherButton}>
+                メール/パスワードを入力してログイン{' '}
+                <span>（既に会員登録がお済みの方）</span>
+              </button>
+              <button css={otherButton}>
+                ログインしない<span>（一部機能が使用できません）</span>
+              </button>
+            </div>
+            <Link href="./register" css={registration}>
+              新規会員登録はこちら
+            </Link>
+          </div>
+        </section>
       </main>
     </>
-  )
+  );
 }
+
+const Container = css`
+  height: 100vh;
+  background: #ff9042;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+`;
+const loginContents = css`
+  text-align: center;
+  p {
+    font-size: var(--font-size-medium);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-white);
+    text-align: center;
+    margin: 0 0 12px;
+  }
+`;
+const gooleButton = css`
+  width: 280px;
+  background-color: var(--color-white);
+  border: 1px solid #e7e7e7;
+  border-radius: 40px;
+  padding: 12px 0;
+  font-size: 16px;
+  font-weight: var(--font-weight-medium);
+  margin: 0 auto 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &::before {
+    width: 23px;
+    height: 23px;
+    content: '';
+    background-image: url('./images/google.svg');
+    background-repeat: no-repeat;
+    background-size: 23px 23px;
+    display: inline-block;
+    margin: 0 8px 0 0;
+  }
+`;
+const otherButton = css`
+  width: 280px;
+  background: var(--color-white);
+  border: 1px solid #e7e7e7;
+  border-radius: 40px;
+  padding: 5px 0;
+  font-size: var(--font-size-medium);
+  font-weight: var(--font-weight-medium);
+  margin: 0 auto 12px;
+  span {
+    display: block;
+    font-size: 10px;
+  }
+`;
+const registration = css`
+  color: var(--color-white);
+  font-size: var(--font-size-medium);
+  position: absolute;
+  bottom: 20px;
+  text-decoration: underline;
+`;

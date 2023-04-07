@@ -1,18 +1,9 @@
-import React, { useState } from "react"
-import Image from "next/image"
-import { css } from "@emotion/react"
-
-const splashContainer = css`
-  background: var(--color-orange);
-  height: 100svh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  display: none;
-`
+import React, { useState } from 'react';
+import Image from 'next/image';
+import { css } from '@emotion/react';
 
 export const Splash = () => {
-  const [active, setActive] = useState("")
+  const [active, setActive] = useState('');
   // setTimeout(() => {
   //   setActive("action")
   // }, 3000)
@@ -31,5 +22,14 @@ export const Splash = () => {
         </div>
       </section>
     </>
-  )
-}
+  );
+};
+
+const splashContainer = css`
+  background: var(--color-orange);
+  height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+`;

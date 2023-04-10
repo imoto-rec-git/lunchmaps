@@ -3,14 +3,14 @@ import Image from 'next/image';
 import { css } from '@emotion/react';
 
 export const Splash = () => {
-  const [display, setDisplay] = useState('display');
-  // setTimeout(() => {
-  //   setActive("action")
-  // }, 3000)
+  const [Load, setLoad] = useState('loading');
+  setTimeout(() => {
+    setLoad('loadComplete');
+  }, 3000);
   return (
     <>
-      <section>
-        <div css={splashContainer} className={display}>
+      <section css={splashSection} className={Load}>
+        <div css={splashContainer}>
           <p>
             <Image
               src="./images/logo.svg"
@@ -25,6 +25,13 @@ export const Splash = () => {
   );
 };
 
+const splashSection = css`
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  z-index: 4;
+`;
 const splashContainer = css`
   background: var(--color-orange);
   height: 100vh;
@@ -32,5 +39,6 @@ const splashContainer = css`
   display: flex;
   align-items: center;
   justify-content: center;
-  display: none;
+  position: relative;
+  z-index: 100;
 `;

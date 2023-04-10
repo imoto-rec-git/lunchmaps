@@ -37,3 +37,10 @@ a {
 .active {
   right: 0 !important;
 }
+.loading {
+  display: block;
+  transition: all 0.8s ease;
+}
+.loadComplete {
+  display: none;
+}

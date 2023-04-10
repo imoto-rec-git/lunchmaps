@@ -19,17 +19,17 @@ export default function login() {
               <p>かんたんログイン</p>
               <button css={gooleButton}>Googleで続ける</button>
               <p>または</p>
-              <button css={otherButton}>
+              {/* <Link href="./register" css={otherButton}>
                 メール/パスワードを入力してログイン{' '}
                 <span>（既に会員登録がお済みの方）</span>
-              </button>
-              <button css={otherButton}>
-                ログインしない<span>（一部機能が使用できません）</span>
-              </button>
+              </Link> */}
+              <Link href="./" css={otherButton}>
+                ログインしない<span>※一部機能が使用できません</span>
+              </Link>
             </div>
-            <Link href="./register" css={registration}>
+            {/* <Link href="./" css={registration}>
               新規会員登録はこちら
-            </Link>
+            </Link> */}
           </div>
         </section>
       </main>
@@ -88,15 +88,18 @@ const otherButton = css`
   font-size: var(--font-size-medium);
   font-weight: var(--font-weight-medium);
   margin: 0 auto 12px;
+  color: var(--color-black);
+  display: block;
   span {
     display: block;
     font-size: 10px;
   }
 `;
-const registration = css`
-  color: var(--color-white);
-  font-size: var(--font-size-medium);
-  position: absolute;
-  bottom: 20px;
-  text-decoration: underline;
-`;
+// const registration = css`
+//   color: var(--color-white);
+//   font-size: var(--font-size-medium);
+//   font-weight: var(--font-weight-medium);
+//   position: absolute;
+//   bottom: 20px;
+//   text-decoration: underline;
+// `;

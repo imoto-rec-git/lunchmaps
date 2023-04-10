@@ -3,36 +3,6 @@ import { css } from '@emotion/react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const Nav = css`
-  width: 100%;
-  height: 70px;
-  position: absolute;
-  background: var(--color-orange);
-  bottom: 0;
-  z-index: 3;
-  ul {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    height: 100%;
-    li {
-      width: 25%;
-      text-align: center;
-      a {
-        img {
-          margin: 0 auto;
-          width: 26px;
-          height: 26px;
-        }
-        span {
-          font-size: 10px;
-          line-height: 1;
-        }
-      }
-    }
-  }
-`;
-
 export const Navigation = () => {
   return (
     <>
@@ -72,3 +42,33 @@ export const Navigation = () => {
     </>
   );
 };
+
+const Nav = css`
+  width: 100%;
+  height: 70px;
+  position: sticky;
+  background: var(--color-orange);
+  bottom: 0;
+  z-index: 3;
+  ul {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    height: 100%;
+    li {
+      width: 25%;
+      text-align: center;
+      a {
+        img {
+          margin: 0 auto;
+          width: 26px;
+          height: 26px;
+        }
+        span {
+          font-size: 10px;
+          line-height: 1;
+        }
+      }
+    }
+  }
+`;

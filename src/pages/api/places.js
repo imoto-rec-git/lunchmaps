@@ -14,3 +14,5 @@ export default places;
 // https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJCemqKvDmAGARaa9f56LdsFk&key=AIzaSyALKPhTFJYoWODv6U1RyCvHDKkNDl9_Z9k
 
 // https://maps.googleapis.com/maps/api/place/details/json?fields=opening_hours&place_id=ChIJN1t_tDeuEmsRUsoyG83frY4&key=AIzaSyALKPhTFJYoWODv6U1RyCvHDKkNDl9_Z9k
+
+// https://maps.googleapis.com/maps/api/directions/json?key=AIzaSyALKPhTFJYoWODv6U1RyCvHDKkNDl9_Z9k&origin=34.691125259452555,135.4964441534794&destination=34.6919463,135.4950131&mode=walking&alternatives=false&language=ja

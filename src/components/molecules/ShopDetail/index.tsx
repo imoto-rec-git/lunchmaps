@@ -67,7 +67,6 @@ const shopDetailStyle = css`
   right: 100%;
   background: #fff;
   box-shadow: -4px 0px 12px rgba(0, 0, 0, 0.25);
-  overflow: scroll;
   h3 {
     font-size: 24px;
     font-weight: var(--font-weight-medium);
@@ -220,7 +219,7 @@ const shopDetailOpen = css`
   }
 `;
 const shopDetailBusinessHours = css`
-  margin: 0 0 14px 21px;
+  margin: 0 0 14px 24px;
   li {
     font-size: var(--font-size-small);
     font-weight: var(--font-weight-medium);

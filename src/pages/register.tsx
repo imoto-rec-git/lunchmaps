@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { css } from '@emotion/react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { HeadTitle } from '@/components/molecules/HeadTitle';
 
 export default function login() {
   return (
@@ -13,12 +14,7 @@ export default function login() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div css={headLine}>
-        <button>
-          <Image src="./images/arrow.svg" width={12} height={20} alt="" />
-        </button>
-        <p>ログイン</p>
-      </div>
+      <HeadTitle link={'./login'} title={'ログイン'} />
       <main>
         <section>
           <div css={Container}>
@@ -32,8 +28,12 @@ export default function login() {
               />
               <label htmlFor="mail">パスワード</label>
               <input type="password" id="password" />
-              <Link href="/">パスワードをお忘れの方</Link>
-              <button type="submit">ログイン</button>
+              <Link href="/" css={passwordForget}>
+                パスワードをお忘れの方
+              </Link>
+              <button type="submit" css={botton}>
+                ログイン
+              </button>
             </form>
           </div>
         </section>
@@ -41,36 +41,6 @@ export default function login() {
     </>
   );
 }
-
-const headLine = css`
-  align-items: center;
-  background: var(--color-white);
-  height: 46px;
-  border-bottom: 1px solid #ddd;
-  position: relative;
-  button {
-    position: absolute;
-    top: 0;
-    left: 10px;
-    bottom: 0;
-    margin: auto;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background: var(--color-dark-orange);
-    border: none;
-    img {
-      margin: 0 8px;
-    }
-  }
-  p {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    font-weight: var(--font-weight-medium);
-  }
-`;
 
 const Container = css`
   height: 100vh;
@@ -91,8 +61,33 @@ const Container = css`
   }
   input {
     border: 1px solid #f5f5f5;
-    border-radius: 14px;
+    border-radius: 8px;
     width: 100%;
-    padding: 8px 0;
+    padding: 10px 12px;
+    margin: 0 0 24px;
+    color: #333;
+    font-size: var(--font-size-medium);
+    &::placeholder {
+      color: #ccc;
+    }
   }
+`;
+
+const passwordForget = css`
+  text-decoration: underline;
+  display: block;
+  text-align: right;
+  font-size: var(--font-size-small);
+  margin: 0 0 40px;
+`;
+
+const botton = css`
+  border: none;
+  border-radius: 60px;
+  background: var(--color-dark-orange);
+  font-size: var(--font-size-small);
+  padding: 19px 37px;
+  line-height: 1;
+  margin: auto;
+  display: block;
 `;

@@ -1,6 +1,6 @@
-import React from 'react';
-import { css } from '@emotion/react';
-import Image from 'next/image';
+import React from "react"
+import { css } from "@emotion/react"
+import Image from "next/image"
 
 export const ShopDetail = ({
   setActive,
@@ -12,21 +12,17 @@ export const ShopDetail = ({
   shopOpen,
   shopBusinessHours,
   shopAddress,
-  setFavoriteList,
-  favoriteList,
 }) => {
   const handleBackClick = () => {
-    setActive('');
-  };
+    setActive("")
+  }
   const handleFavoritAdd = () => {
-    setFavoriteList('aaaa');
-  };
-  console.log(favoriteList);
+    console.log("お気に入りボタン押下")
+  }
 
   return (
     <>
-      {favoriteList && <p>{favoriteList}</p>}
-      <div css={shopDetailStyle} className={active && 'active'}>
+      <div css={shopDetailStyle} className={active && "active"}>
         {shopPhoto && (
           <div css={shopDetailImg}>
             <Image src={shopPhoto} width={400} height={400} alt="" />
@@ -49,7 +45,7 @@ export const ShopDetail = ({
           {shopBusinessHours && (
             <ul css={shopDetailBusinessHours}>
               {shopBusinessHours.map((e, index) => {
-                return <li key={index}>{e}</li>;
+                return <li key={index}>{e}</li>
               })}
             </ul>
           )}
@@ -63,8 +59,8 @@ export const ShopDetail = ({
         </button>
       </div>
     </>
-  );
-};
+  )
+}
 
 const shopDetailStyle = css`
   max-width: 394px;
@@ -86,7 +82,7 @@ const shopDetailStyle = css`
     color: var(--color-black);
     text-decoration: underline;
   }
-`;
+`
 const shopDetailImg = css`
   margin: 0 auto 12px;
   height: 28vh;
@@ -101,16 +97,16 @@ const shopDetailImg = css`
     bottom: 0;
     margin: auto;
   }
-`;
+`
 const shopDetailTxt = css`
   padding: 0 16px 30px;
-`;
+`
 const shopDetailRate = css`
   font-size: var(--font-size-medium);
   font-weight: var(--font-weight-regular);
   margin: 0 0 14px 2px;
   line-height: 1;
-`;
+`
 const shopDetailRateDesign = css`
   position: relative;
   z-index: 0;
@@ -122,7 +118,7 @@ const shopDetailRateDesign = css`
   line-height: 1;
   &::before,
   &::after {
-    content: '★★★★★';
+    content: "★★★★★";
   }
   &::after {
     position: absolute;
@@ -133,80 +129,80 @@ const shopDetailRateDesign = css`
     white-space: nowrap;
     color: #ffcf32;
   }
-  &[data-rate='5']::after {
+  &[data-rate="5"]::after {
     width: 100%;
   }
-  &[data-rate='4.9']::after,
-  &[data-rate='4.8']::after,
-  &[data-rate='4.7']::after,
-  &[data-rate='4.6']::after,
-  &[data-rate='4.5']::after {
+  &[data-rate="4.9"]::after,
+  &[data-rate="4.8"]::after,
+  &[data-rate="4.7"]::after,
+  &[data-rate="4.6"]::after,
+  &[data-rate="4.5"]::after {
     width: 90%;
   }
-  &[data-rate='4.4']::after,
-  &[data-rate='4.3']::after,
-  &[data-rate='4.2']::after,
-  &[data-rate='4.1']::after,
-  &[data-rate='4']::after {
+  &[data-rate="4.4"]::after,
+  &[data-rate="4.3"]::after,
+  &[data-rate="4.2"]::after,
+  &[data-rate="4.1"]::after,
+  &[data-rate="4"]::after {
     width: 80%;
   }
-  &[data-rate='3.9']::after,
-  &[data-rate='3.8']::after,
-  &[data-rate='3.7']::after,
-  &[data-rate='3.6']::after,
-  &[data-rate='3.5']::after {
+  &[data-rate="3.9"]::after,
+  &[data-rate="3.8"]::after,
+  &[data-rate="3.7"]::after,
+  &[data-rate="3.6"]::after,
+  &[data-rate="3.5"]::after {
     width: 70%;
   }
-  &[data-rate='3.4']::after,
-  &[data-rate='3.3']::after,
-  &[data-rate='3.2']::after,
-  &[data-rate='3.1']::after,
-  &[data-rate='3']::after {
+  &[data-rate="3.4"]::after,
+  &[data-rate="3.3"]::after,
+  &[data-rate="3.2"]::after,
+  &[data-rate="3.1"]::after,
+  &[data-rate="3"]::after {
     width: 60%;
   }
-  &[data-rate='2.9']::after,
-  &[data-rate='2.8']::after,
-  &[data-rate='2.7']::after,
-  &[data-rate='2.6']::after,
-  &[data-rate='2.5']::after {
+  &[data-rate="2.9"]::after,
+  &[data-rate="2.8"]::after,
+  &[data-rate="2.7"]::after,
+  &[data-rate="2.6"]::after,
+  &[data-rate="2.5"]::after {
     width: 50%;
   }
-  &[data-rate='2.4']::after,
-  &[data-rate='2.3']::after,
-  &[data-rate='2.2']::after,
-  &[data-rate='2.1']::after,
-  &[data-rate='2']::after {
+  &[data-rate="2.4"]::after,
+  &[data-rate="2.3"]::after,
+  &[data-rate="2.2"]::after,
+  &[data-rate="2.1"]::after,
+  &[data-rate="2"]::after {
     width: 40%;
   }
-  &[data-rate='1.9']::after,
-  &[data-rate='1.8']::after,
-  &[data-rate='1.7']::after,
-  &[data-rate='1.6']::after,
-  &[data-rate='1.5']::after {
+  &[data-rate="1.9"]::after,
+  &[data-rate="1.8"]::after,
+  &[data-rate="1.7"]::after,
+  &[data-rate="1.6"]::after,
+  &[data-rate="1.5"]::after {
     width: 30%;
   }
-  &[data-rate='1.4']::after,
-  &[data-rate='1.3']::after,
-  &[data-rate='1.2']::after,
-  &[data-rate='1.1']::after,
-  &[data-rate='1']::after {
+  &[data-rate="1.4"]::after,
+  &[data-rate="1.3"]::after,
+  &[data-rate="1.2"]::after,
+  &[data-rate="1.1"]::after,
+  &[data-rate="1"]::after {
     width: 20%;
   }
-  &[data-rate='0.9']::after,
-  &[data-rate='0.8']::after,
-  &[data-rate='0.7']::after,
-  &[data-rate='0.6']::after,
-  &[data-rate='0.5']::after {
+  &[data-rate="0.9"]::after,
+  &[data-rate="0.8"]::after,
+  &[data-rate="0.7"]::after,
+  &[data-rate="0.6"]::after,
+  &[data-rate="0.5"]::after {
     width: 10%;
   }
-  &[data-rate='0.4']::after,
-  &[data-rate='0.3']::after,
-  &[data-rate='0.2']::after,
-  &[data-rate='0.1']::after,
-  &[data-rate='0']::after {
+  &[data-rate="0.4"]::after,
+  &[data-rate="0.3"]::after,
+  &[data-rate="0.2"]::after,
+  &[data-rate="0.1"]::after,
+  &[data-rate="0"]::after {
     width: 0%;
   }
-`;
+`
 const shopDetailOpen = css`
   font-size: var(--font-size-medium);
   font-weight: var(--font-weight-bold);
@@ -214,7 +210,7 @@ const shopDetailOpen = css`
   position: relative;
   padding: 0 0 0 24px;
   &::before {
-    content: '';
+    content: "";
     background-image: url(./images/time.svg);
     background-size: 20px 20px;
     background-repeat: no-repeat;
@@ -227,7 +223,7 @@ const shopDetailOpen = css`
     bottom: 0;
     margin: auto;
   }
-`;
+`
 const shopDetailBusinessHours = css`
   margin: 0 0 14px 24px;
   li {
@@ -236,7 +232,7 @@ const shopDetailBusinessHours = css`
     text-indent: -44px;
     padding: 0 0 0 44px;
   }
-`;
+`
 const shopDetailAddress = css`
   font-size: var(--font-size-medium);
   font-weight: var(--font-weight-bold);
@@ -244,7 +240,7 @@ const shopDetailAddress = css`
   position: relative;
   padding: 0 0 0 24px;
   &::before {
-    content: '';
+    content: "";
     background-image: url(./images/address.svg);
     background-repeat: no-repeat;
     background-size: 20px 25px;
@@ -256,7 +252,7 @@ const shopDetailAddress = css`
     left: 0;
     margin: auto;
   }
-`;
+`
 const favoriteButton = css`
   margin: auto;
   width: 127px;
@@ -271,16 +267,16 @@ const favoriteButton = css`
   line-height: 1;
   justify-content: center;
   &::before {
-    content: '';
+    content: "";
     width: 24px;
     height: 24px;
-    background-image: url('./images/heart.svg');
+    background-image: url("./images/heart.svg");
     background-size: 24px 24px;
     background-repeat: no-repeat;
     display: inline-block;
     margin: 0 8px 0 0;
   }
-`;
+`
 const backButton = css`
   position: absolute;
   top: 10px;
@@ -294,4 +290,4 @@ const backButton = css`
   justify-content: center;
   align-items: center;
   transform: rotate(178deg);
-`;
+`

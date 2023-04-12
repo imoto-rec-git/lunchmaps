@@ -1,32 +1,32 @@
-import React, { useContext } from 'react';
-import { css } from '@emotion/react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { IsAuthContext } from '@/pages/providers/IsAuthProvider';
-import { useRouter } from 'next/router';
-import { signOut } from 'firebase/auth';
-import { auth } from '../../../../firebase';
+import React, { useContext } from "react"
+import { css } from "@emotion/react"
+import Image from "next/image"
+import Link from "next/link"
+import { IsAuthContext } from "@/providers/IsAuthProvider"
+import { useRouter } from "next/router"
+import { signOut } from "firebase/auth"
+import { auth } from "../../../../firebase"
 
 export const Navigation = () => {
-  const { isAuth, setIsAuth } = useContext(IsAuthContext);
-  const router = useRouter();
+  const { isAuth, setIsAuth } = useContext(IsAuthContext)
+  const router = useRouter()
   const handleLogoutDialogOpen = () => {
-    const logoutModal: HTMLDialogElement = document.querySelector('#logout');
-    logoutModal.showModal();
-  };
+    const logoutModal: HTMLDialogElement = document.querySelector("#logout")
+    logoutModal.showModal()
+  }
   const handleLogoutDialogClose = () => {
-    const logoutModal: HTMLDialogElement = document.querySelector('#logout');
-    logoutModal.close();
-  };
+    const logoutModal: HTMLDialogElement = document.querySelector("#logout")
+    logoutModal.close()
+  }
   const handleLogout = () => {
     signOut(auth)
       .then(() => {
-        setIsAuth(false);
-        router.push('/');
+        setIsAuth(false)
+        router.push("/")
       })
-      .catch((error) => console.log(error));
-    handleLogoutDialogClose();
-  };
+      .catch((error) => console.log(error))
+    handleLogoutDialogClose()
+  }
 
   return (
     <>
@@ -41,7 +41,7 @@ export const Navigation = () => {
         <ul>
           <li>
             <Link href="./">
-              <Image src="./images/home.svg" width={26} height={26} alt={''} />
+              <Image src="./images/home.svg" width={26} height={26} alt={""} />
               <span>HOME</span>
             </Link>
           </li>
@@ -53,7 +53,7 @@ export const Navigation = () => {
                     src="./images/heart.svg"
                     width={26}
                     height={26}
-                    alt={''}
+                    alt={""}
                   />
                   <span>お気に入り</span>
                 </Link>
@@ -65,7 +65,7 @@ export const Navigation = () => {
                     src="./images/heart_logout.svg"
                     width={26}
                     height={26}
-                    alt={''}
+                    alt={""}
                   />
                   <span>お気に入り</span>
                 </span>
@@ -80,7 +80,7 @@ export const Navigation = () => {
                     src="./images/gear.svg"
                     width={26}
                     height={26}
-                    alt={''}
+                    alt={""}
                   />
                   <span>設定</span>
                 </Link>
@@ -92,7 +92,7 @@ export const Navigation = () => {
                     src="./images/gear_logout.svg"
                     width={26}
                     height={26}
-                    alt={''}
+                    alt={""}
                   />
                   <span>設定</span>
                 </span>
@@ -107,7 +107,7 @@ export const Navigation = () => {
                     src="./images/loginout.svg"
                     width={26}
                     height={26}
-                    alt={''}
+                    alt={""}
                   />
                   <span>ログアウト</span>
                 </span>
@@ -119,7 +119,7 @@ export const Navigation = () => {
                     src="./images/loginout.svg"
                     width={26}
                     height={26}
-                    alt={''}
+                    alt={""}
                   />
                   <span>ログイン</span>
                 </Link>
@@ -129,8 +129,8 @@ export const Navigation = () => {
         </ul>
       </nav>
     </>
-  );
-};
+  )
+}
 
 const Nav = css`
   width: 100%;
@@ -161,17 +161,17 @@ const Nav = css`
       }
     }
   }
-`;
+`
 const grayScale = css`
   > span {
     color: var(--color-gray);
   }
-`;
+`
 const logout = css`
   > span {
     color: var(--color-white);
   }
-`;
+`
 
 const favShopDelDialog = css`
   width: 280px;
@@ -210,4 +210,4 @@ const favShopDelDialog = css`
       }
     }
   }
-`;
+`

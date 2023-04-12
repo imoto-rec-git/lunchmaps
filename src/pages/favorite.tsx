@@ -142,7 +142,7 @@ const favShopDelDialog = css`
   box-sizing: border-box;
   border: none;
   border-radius: 8px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   > p {
     font-size: var(--font-size-medium);
     font-weight: var(--font-weight-regular);

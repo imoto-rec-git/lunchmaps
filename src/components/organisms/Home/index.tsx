@@ -17,6 +17,7 @@ export const Homes = () => {
   const [positionLat, setPositionLat] = useState(34.691125259452555);
   const [positionLng, setPositionLng] = useState(135.4964441534794);
   const [active, setActive] = useState('');
+  const [favoriteList, setFavoriteList] = useState('');
 
   useEffect(() => {
     fetch(`/api/places?location=${positionLat},${positionLng}`)
@@ -40,6 +41,7 @@ export const Homes = () => {
           setShopRating={setShopRating}
           setRatingTotal={setRatingTotal}
           setActive={setActive}
+          setFavoriteList={setFavoriteList}
         />
         <div css={maps}>
           <ShopDetail
@@ -52,6 +54,8 @@ export const Homes = () => {
             shopOpen={shopOpen}
             shopBusinessHours={shopBusinessHours}
             shopAddress={shopAddress}
+            setFavoriteList={setFavoriteList}
+            favoriteList={favoriteList}
           />
           <LocateButton setLat={setPositionLat} setLng={setPositionLng} />
           <TextBox setLat={setPositionLat} setLng={setPositionLng} />

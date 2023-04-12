@@ -13,6 +13,7 @@ export const Map = ({
   setShopRating,
   setRatingTotal,
   setActive,
+  setFavoriteList,
 }) => {
   const center = {
     lat: positionLat,
@@ -59,6 +60,7 @@ export const Map = ({
     data.vicinity && setShopAddress(data.vicinity);
     data.rating && setShopRating(data.rating);
     data.user_ratings_total && setRatingTotal(data.user_ratings_total);
+    setFavoriteList('test');
     setActive('active');
   };
   return (

@@ -1,9 +1,34 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Head from 'next/head';
 import { css } from '@emotion/react';
 import Link from 'next/link';
+import { IsAuthContext } from './providers/IsAuthProvider';
+import { useRouter } from 'next/router';
+import { auth, googleProvider } from '../../firebase';
+import { signInWithPopup } from 'firebase/auth';
+import { signOut } from 'firebase/auth';
 
 export default function login() {
+  const { isAuth, setIsAuth } = useContext(IsAuthContext);
+  const router = useRouter();
+  const loginWithGoogle = () => {
+    signInWithPopup(auth, googleProvider)
+      .then(() => {
+        console.log(isAuth);
+        setIsAuth(true);
+        router.push('/');
+      })
+      .catch((error) => console.log(error));
+  };
+  const logout = () => {
+    signOut(auth)
+      .then(() => {
+        setIsAuth(false);
+        router.push('/');
+      })
+      .catch((error) => console.log(error));
+  };
+
   return (
     <>
       <Head>
@@ -17,15 +42,25 @@ export default function login() {
           <div css={Container}>
             <div css={loginContents}>
               <p>かんたんログイン</p>
-              <button css={gooleButton}>Googleで続ける</button>
-              <p>または</p>
-              {/* <Link href="./register" css={otherButton}>
-                メール/パスワードを入力してログイン{' '}
-                <span>（既に会員登録がお済みの方）</span>
-              </Link> */}
-              <Link href="./" css={otherButton}>
-                ログインしない<span>※一部機能が使用できません</span>
-              </Link>
+              {isAuth ? (
+                <button css={gooleButton} onClick={logout}>
+                  ログアウト
+                </button>
+              ) : (
+                <>
+                  <button css={gooleButton} onClick={loginWithGoogle}>
+                    Googleで続ける
+                  </button>
+                  <p>または</p>
+                  {/* <Link href="./register" css={otherButton}>
+                                メール/パスワードを入力してログイン{' '}
+                                <span>（既に会員登録がお済みの方）</span>
+                              </Link> */}
+                  <Link href="./" css={otherButton}>
+                    ログインしない<span>※一部機能が使用できません</span>
+                  </Link>
+                </>
+              )}
             </div>
             {/* <Link href="./" css={registration}>
               新規会員登録はこちら

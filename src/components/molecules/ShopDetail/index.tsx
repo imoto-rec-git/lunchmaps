@@ -12,12 +12,20 @@ export const ShopDetail = ({
   shopOpen,
   shopBusinessHours,
   shopAddress,
+  setFavoriteList,
+  favoriteList,
 }) => {
   const handleBackClick = () => {
     setActive('');
   };
+  const handleFavoritAdd = () => {
+    setFavoriteList('aaaa');
+  };
+  console.log(favoriteList);
+
   return (
     <>
+      {favoriteList && <p>{favoriteList}</p>}
       <div css={shopDetailStyle} className={active && 'active'}>
         {shopPhoto && (
           <div css={shopDetailImg}>
@@ -46,7 +54,9 @@ export const ShopDetail = ({
             </ul>
           )}
           {shopAddress && <p css={shopDetailAddress}>{shopAddress}</p>}
-          <button css={favoriteButton}>お気に入り</button>
+          <button css={favoriteButton} onClick={handleFavoritAdd}>
+            お気に入り
+          </button>
         </div>
         <button css={backButton} onClick={handleBackClick}>
           <Image src="./images/arrow.svg" width={10} height={12} alt="" />

@@ -1,5 +1,5 @@
-import { GoogleMap, MarkerF, useJsApiLoader } from "@react-google-maps/api"
-import React from "react"
+import { GoogleMap, MarkerF, useJsApiLoader } from '@react-google-maps/api';
+import React from 'react';
 
 export const Map = ({
   positionLat,
@@ -12,33 +12,33 @@ export const Map = ({
   setShopAddress,
   setShopRating,
   setRatingTotal,
+  setPlaceId,
   setActive,
-  setFavoriteList,
 }) => {
   const center = {
     lat: positionLat,
     lng: positionLng,
-  }
-  const zoom = 18
+  };
+  const zoom = 18;
   const options = {
     disableDefaultUI: true,
-  }
+  };
   const getMakerIcon = (place) => {
-    let iconPath
+    let iconPath;
     if (place.rating >= 4 && place.user_ratings_total > 80) {
-      iconPath = "./images/good.svg"
+      iconPath = './images/good.svg';
     } else if (place.price_level <= 2) {
-      iconPath = "./images/reasonable.svg"
+      iconPath = './images/reasonable.svg';
     } else {
-      iconPath = "./images/normal.svg"
+      iconPath = './images/normal.svg';
     }
-    return iconPath
-  }
-  const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ""
+    return iconPath;
+  };
+  const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '';
   const { isLoaded } = useJsApiLoader({
-    id: "google-map-script",
+    id: 'google-map-script',
     googleMapsApiKey: apiKey,
-  })
+  });
   const handleRestaurantClick = (data) => {
     if (data.place_id) {
       fetch(
@@ -48,20 +48,21 @@ export const Map = ({
         .then((detail_data) =>
           setShopBusinessHours(detail_data.result.opening_hours.weekday_text)
         )
-        .catch((err) => console.log(err))
+        .catch((err) => console.log(err));
     }
-    data.name && setShopName(data.name)
-    data.opening_hours && setShopOpen(data.opening_hours.open_now)
+    data.name && setShopName(data.name);
+    data.opening_hours && setShopOpen(data.opening_hours.open_now);
     data.photos &&
       setShopPhoto(
         data.photos !== undefined &&
           `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${data.photos[0].photo_reference}&key=${apiKey}`
-      )
-    data.vicinity && setShopAddress(data.vicinity)
-    data.rating && setShopRating(data.rating)
-    data.user_ratings_total && setRatingTotal(data.user_ratings_total)
-    setActive("active")
-  }
+      );
+    data.vicinity && setShopAddress(data.vicinity);
+    data.rating && setShopRating(data.rating);
+    data.user_ratings_total && setRatingTotal(data.user_ratings_total);
+    setPlaceId(data.place_id);
+    setActive('active');
+  };
   return (
     <>
       {isLoaded && places && (
@@ -89,10 +90,10 @@ export const Map = ({
         </GoogleMap>
       )}
     </>
-  )
-}
+  );
+};
 
 const containerStyle = {
-  width: "100%",
-  height: "calc(100svh - 70px)",
-}
+  width: '100%',
+  height: 'calc(100svh - 70px)',
+};

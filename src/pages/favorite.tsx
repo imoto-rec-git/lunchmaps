@@ -1,24 +1,36 @@
-import React, { useState } from "react"
-import Head from "next/head"
-import { Navigation } from "@/components/organisms/Navigation"
-import { HeadTitle } from "@/components/molecules/HeadTitle"
-import { css } from "@emotion/react"
-import Image from "next/image"
-import { ShopDetail } from "@/components/molecules/ShopDetail"
+import React, { useEffect, useState } from 'react';
+import Head from 'next/head';
+import { Navigation } from '@/components/organisms/Navigation';
+import { HeadTitle } from '@/components/molecules/HeadTitle';
+import { css } from '@emotion/react';
+import Image from 'next/image';
+import { ShopDetail } from '@/components/molecules/ShopDetail';
+import { collection, doc, getDoc, getDocs } from 'firebase/firestore';
+import { auth, db } from '../../firebase';
 
 export default function favorite() {
-  const [active, setActive] = useState("")
+  const [active, setActive] = useState('');
+
+  const fetchData = async () => {
+    const test = auth;
+    console.log(test);
+  };
   const handleFavShopDetail = () => {
-    setActive("active")
-  }
+    setActive('active');
+  };
   const handleDialogOpen = () => {
-    const modal = document.querySelector("dialog")
-    modal.showModal()
-  }
+    const modal = document.querySelector('dialog');
+    modal.showModal();
+  };
   const handleDialogClose = () => {
-    const modal = document.querySelector("dialog")
-    modal.close()
-  }
+    const modal = document.querySelector('dialog');
+    modal.close();
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <>
       <Head>
@@ -28,7 +40,7 @@ export default function favorite() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <HeadTitle link={"./"} title={"お気に入り"} />
+        <HeadTitle link={'./'} title={'お気に入り'} />
         <div css={conatiner}>
           <p>全5件</p>
           <ul css={favList}>
@@ -51,17 +63,16 @@ export default function favorite() {
           </ul>
         </div>
         <ShopDetail
+          placeId={''}
           setActive={setActive}
           active={active}
-          shopPhoto={""}
-          shopName={""}
-          shopRating={""}
-          shopRatingTotal={""}
-          shopOpen={""}
-          shopBusinessHours={""}
-          shopAddress={""}
-          setFavoriteList={""}
-          favoriteList={""}
+          shopPhoto={''}
+          shopName={''}
+          shopRating={''}
+          shopRatingTotal={''}
+          shopOpen={''}
+          shopBusinessHours={''}
+          shopAddress={''}
         />
         <dialog css={favShopDelDialog}>
           <p>「CRITTERS BUEGER」をお気に入りから削除しますか？</p>
@@ -73,7 +84,7 @@ export default function favorite() {
         <Navigation />
       </main>
     </>
-  )
+  );
 }
 const conatiner = css`
   min-height: calc(100vh - 120px);
@@ -85,8 +96,8 @@ const conatiner = css`
     text-align: center;
     margin: 0 0 8px;
   }
-`
-const favList = css``
+`;
+const favList = css``;
 const favItem = css`
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
   background: var(--color-white);
@@ -95,7 +106,7 @@ const favItem = css`
   display: flex;
   gap: 8px;
   margin: 0 0 10px;
-`
+`;
 const favShopImg = css`
   > img {
     width: 53px;
@@ -103,14 +114,14 @@ const favShopImg = css`
     border-radius: 4px;
     object-fit: cover;
   }
-`
+`;
 const favShopDetail = css`
   display: flex;
   align-items: center;
   text-decoration: underline;
   font-size: var(--font-size-large);
   font-weight: var(--font-weight-normal);
-`
+`;
 const favShopDel = css`
   border-left: 1px solid #ececec;
   padding: 8px;
@@ -123,15 +134,15 @@ const favShopDel = css`
     font-size: 11px;
     font-weight: var(--font-weight-light);
     &::before {
-      content: "";
+      content: '';
       display: block;
       width: 12px;
       height: 12px;
-      background: url("./images/close.svg");
+      background: url('./images/close.svg');
       margin: 0 auto 4px;
     }
   }
-`
+`;
 
 const favShopDelDialog = css`
   width: 280px;
@@ -170,4 +181,4 @@ const favShopDelDialog = css`
       }
     }
   }
-`
+`;

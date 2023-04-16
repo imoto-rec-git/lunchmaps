@@ -1,43 +1,78 @@
-import React, { useEffect, useState } from 'react';
-import Head from 'next/head';
-import { Navigation } from '@/components/organisms/Navigation';
-import { HeadTitle } from '@/components/molecules/HeadTitle';
-import { css } from '@emotion/react';
-import Image from 'next/image';
-import { ShopDetail } from '@/components/molecules/ShopDetail';
-import { collection, doc, getDoc, getDocs } from 'firebase/firestore';
-import { auth, db } from '../../firebase';
+import React, { useEffect, useState } from 'react'
+import Head from 'next/head'
+import { Navigation } from '@/components/organisms/Navigation'
+import { HeadTitle } from '@/components/molecules/HeadTitle'
+import { css } from '@emotion/react'
+import Image from 'next/image'
+import { ShopDetail } from '@/components/molecules/ShopDetail'
+import { auth, db } from '../../firebase'
+import { onAuthStateChanged } from 'firebase/auth'
+import { doc, getDoc } from 'firebase/firestore'
 
 export default function favorite() {
-  const [active, setActive] = useState('');
-
-  const fetchData = async () => {
-    const test = auth;
-    console.log(test);
-  };
-  const handleFavShopDetail = () => {
-    setActive('active');
-  };
-  const handleDialogOpen = () => {
-    const modal = document.querySelector('dialog');
-    modal.showModal();
-  };
-  const handleDialogClose = () => {
-    const modal = document.querySelector('dialog');
-    modal.close();
-  };
-
+  const [user, setUser] = useState(null)
+  const [userFavPlaceId, setUserFavPlaceIdList] = useState([])
+  const [userFavShpoList, setUserFavShopList] = useState([])
   useEffect(() => {
-    fetchData();
-  }, []);
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user)
+      if (user) {
+        fetchData(user)
+      }
+    })
+    return () => {
+      unsubscribe()
+    }
+  }, [])
+
+  const fetchData = async (user) => {
+    // placeAPI(details)
+    const placeAPI = (data) => {
+      fetch(`/api/details?place_id=${data}`)
+        .then((res) => res.json())
+        .then((data) => console.log(data.result.name))
+        .catch((err) => console.log(err))
+    }
+    // fireStore読み込み
+    const userFavListData = async () => {
+      const docRef = doc(db, 'users', user.uid)
+      const docSnap = await getDoc(docRef)
+      if (docSnap.exists()) {
+        setUserFavPlaceIdList(docSnap.data().favoriteList)
+        for (let i = 0; i < docSnap.data().favoriteList.length; i++) {
+          setUserFavShopList([
+            ...userFavShpoList,
+            placeAPI(docSnap.data().favoriteList[i]),
+          ])
+        }
+      } else {
+        console.log('No such document!')
+      }
+    }
+
+    userFavListData()
+  }
+  const [active, setActive] = useState(null)
+
+  const handleFavShopDetail = () => {
+    setActive('active')
+  }
+  const handleDialogOpen = () => {
+    const modal = document.querySelector('dialog')
+    modal.showModal()
+  }
+  const handleDialogClose = () => {
+    const modal = document.querySelector('dialog')
+    modal.close()
+  }
 
   return (
     <>
       <Head>
         <title>お気に入り | Lunch Maps</title>
-        <meta name="description" content="Lunch Mapsのお気に入り画面" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <meta name='description' content='Lunch Mapsのお気に入り画面' />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <link rel='icon' href='/favicon.ico' />
       </Head>
       <main>
         <HeadTitle link={'./'} title={'お気に入り'} />
@@ -47,10 +82,10 @@ export default function favorite() {
             <li css={favItem}>
               <div css={favShopImg}>
                 <Image
-                  src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=AUjq9jl3XodICgx5RFrwcGc2_UpQKd1E0Lv-KhNjp1hs9VZmw4wwoUtg5kPZxwhvhLovX_IuEUOMgjhxFWLgKz-nG7HxOfBOuwasCgtH2YemqefZnH7C-2CRFhaVOlaraAZIHN7DiKi5rb5e4o6ZDnXPGC6eWZNue4_bh1crxNTHbCL6rQbG&key=AIzaSyALKPhTFJYoWODv6 U1RyCvHDKkNDl9_Z9k"
+                  src='https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=AUjq9jl3XodICgx5RFrwcGc2_UpQKd1E0Lv-KhNjp1hs9VZmw4wwoUtg5kPZxwhvhLovX_IuEUOMgjhxFWLgKz-nG7HxOfBOuwasCgtH2YemqefZnH7C-2CRFhaVOlaraAZIHN7DiKi5rb5e4o6ZDnXPGC6eWZNue4_bh1crxNTHbCL6rQbG&key=AIzaSyALKPhTFJYoWODv6 U1RyCvHDKkNDl9_Z9k'
                   width={50}
                   height={50}
-                  alt=""
+                  alt=''
                 />
               </div>
               <div css={favShopDetail}>
@@ -61,6 +96,10 @@ export default function favorite() {
               </div>
             </li>
           </ul>
+          {/* {userFavShpoList.map((userFavShpo) => (
+            <p key={userFavShpo}>{userFavShpo}</p>
+          ))} */}
+          {/* <p> {userFavShpoList[1]}</p> */}
         </div>
         <ShopDetail
           placeId={''}
@@ -84,7 +123,7 @@ export default function favorite() {
         <Navigation />
       </main>
     </>
-  );
+  )
 }
 const conatiner = css`
   min-height: calc(100vh - 120px);
@@ -96,8 +135,8 @@ const conatiner = css`
     text-align: center;
     margin: 0 0 8px;
   }
-`;
-const favList = css``;
+`
+const favList = css``
 const favItem = css`
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
   background: var(--color-white);
@@ -106,7 +145,7 @@ const favItem = css`
   display: flex;
   gap: 8px;
   margin: 0 0 10px;
-`;
+`
 const favShopImg = css`
   > img {
     width: 53px;
@@ -114,14 +153,14 @@ const favShopImg = css`
     border-radius: 4px;
     object-fit: cover;
   }
-`;
+`
 const favShopDetail = css`
   display: flex;
   align-items: center;
   text-decoration: underline;
   font-size: var(--font-size-large);
   font-weight: var(--font-weight-normal);
-`;
+`
 const favShopDel = css`
   border-left: 1px solid #ececec;
   padding: 8px;
@@ -142,7 +181,7 @@ const favShopDel = css`
       margin: 0 auto 4px;
     }
   }
-`;
+`
 
 const favShopDelDialog = css`
   width: 280px;
@@ -181,4 +220,4 @@ const favShopDelDialog = css`
       }
     }
   }
-`;
+`

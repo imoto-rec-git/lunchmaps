@@ -41,7 +41,7 @@ export const Map = ({
   })
   const handleRestaurantClick = (data) => {
     if (data.place_id) {
-      fetch(`/api/details?place_id=${data.place_id}`)
+      fetch(`/api/details_open_hours?place_id=${data.place_id}`)
         .then((res) => res.json())
         .then((detail_data) =>
           setShopBusinessHours(detail_data.result.opening_hours.weekday_text)

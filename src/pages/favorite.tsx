@@ -11,7 +11,6 @@ import { doc, getDoc } from 'firebase/firestore'
 
 export default function favorite() {
   const [user, setUser] = useState(null)
-  const [userFavPlaceId, setUserFavPlaceIdList] = useState([])
   const [userFavShpoList, setUserFavShopList] = useState([])
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -26,30 +25,24 @@ export default function favorite() {
   }, [])
 
   const fetchData = async (user) => {
-    // placeAPI(details)
-    const placeAPI = (data) => {
-      fetch(`/api/details?place_id=${data}`)
-        .then((res) => res.json())
-        .then((data) => console.log(data.result.name))
-        .catch((err) => console.log(err))
-    }
     // fireStore読み込み
     const userFavListData = async () => {
       const docRef = doc(db, 'users', user.uid)
       const docSnap = await getDoc(docRef)
       if (docSnap.exists()) {
-        setUserFavPlaceIdList(docSnap.data().favoriteList)
+        const fetchedData = []
         for (let i = 0; i < docSnap.data().favoriteList.length; i++) {
-          setUserFavShopList([
-            ...userFavShpoList,
-            placeAPI(docSnap.data().favoriteList[i]),
-          ])
+          const res = await fetch(
+            `/api/details?place_id=${docSnap.data().favoriteList[i]}`
+          )
+          const data = await res.json()
+          fetchedData.push(data.result)
         }
+        setUserFavShopList(fetchedData)
       } else {
         console.log('No such document!')
       }
     }
-
     userFavListData()
   }
   const [active, setActive] = useState(null)
@@ -96,10 +89,9 @@ export default function favorite() {
               </div>
             </li>
           </ul>
-          {/* {userFavShpoList.map((userFavShpo) => (
-            <p key={userFavShpo}>{userFavShpo}</p>
-          ))} */}
-          {/* <p> {userFavShpoList[1]}</p> */}
+          {userFavShpoList.map((shop, index) => (
+            <p key={index}>{shop.name}</p>
+          ))}
         </div>
         <ShopDetail
           placeId={''}
@@ -182,7 +174,6 @@ const favShopDel = css`
     }
   }
 `
-
 const favShopDelDialog = css`
   width: 280px;
   top: 0;

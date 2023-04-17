@@ -1,8 +1,8 @@
-import React, { useEffect } from "react"
-import { css } from "@emotion/react"
-import Image from "next/image"
-import { arrayUnion, doc, getDoc, updateDoc } from "firebase/firestore"
-import { auth, db } from "../../../../firebase"
+import React, { useEffect } from 'react'
+import { css } from '@emotion/react'
+import Image from 'next/image'
+import { arrayUnion, doc, getDoc, updateDoc } from 'firebase/firestore'
+import { auth, db } from '../../../../firebase'
 
 export const ShopDetail = ({
   placeId,
@@ -17,10 +17,10 @@ export const ShopDetail = ({
   shopAddress,
 }) => {
   const handleBackClick = () => {
-    setActive("")
+    setActive('')
   }
   const handleFavoritAdd = async () => {
-    const docRef = doc(db, "users", auth.currentUser.uid)
+    const docRef = doc(db, 'users', auth.currentUser.uid)
     // fireStore書き込み
     const washing = async () => {
       await updateDoc(docRef, {
@@ -32,7 +32,7 @@ export const ShopDetail = ({
 
   return (
     <>
-      <div css={shopDetailStyle} className={active && "active"}>
+      <div css={shopDetailStyle} className={active && 'active'}>
         {shopPhoto && (
           <div css={shopDetailImg}>
             <Image src={shopPhoto} width={400} height={400} alt="" />
@@ -83,6 +83,7 @@ const shopDetailStyle = css`
   right: 100%;
   background: #fff;
   box-shadow: -4px 0px 12px rgba(0, 0, 0, 0.25);
+  overflow-y: scroll;
   h3 {
     font-size: 24px;
     font-weight: var(--font-weight-medium);
@@ -128,7 +129,7 @@ const shopDetailRateDesign = css`
   line-height: 1;
   &::before,
   &::after {
-    content: "★★★★★";
+    content: '★★★★★';
   }
   &::after {
     position: absolute;
@@ -139,77 +140,77 @@ const shopDetailRateDesign = css`
     white-space: nowrap;
     color: #ffcf32;
   }
-  &[data-rate="5"]::after {
+  &[data-rate='5']::after {
     width: 100%;
   }
-  &[data-rate="4.9"]::after,
-  &[data-rate="4.8"]::after,
-  &[data-rate="4.7"]::after,
-  &[data-rate="4.6"]::after,
-  &[data-rate="4.5"]::after {
+  &[data-rate='4.9']::after,
+  &[data-rate='4.8']::after,
+  &[data-rate='4.7']::after,
+  &[data-rate='4.6']::after,
+  &[data-rate='4.5']::after {
     width: 90%;
   }
-  &[data-rate="4.4"]::after,
-  &[data-rate="4.3"]::after,
-  &[data-rate="4.2"]::after,
-  &[data-rate="4.1"]::after,
-  &[data-rate="4"]::after {
+  &[data-rate='4.4']::after,
+  &[data-rate='4.3']::after,
+  &[data-rate='4.2']::after,
+  &[data-rate='4.1']::after,
+  &[data-rate='4']::after {
     width: 80%;
   }
-  &[data-rate="3.9"]::after,
-  &[data-rate="3.8"]::after,
-  &[data-rate="3.7"]::after,
-  &[data-rate="3.6"]::after,
-  &[data-rate="3.5"]::after {
+  &[data-rate='3.9']::after,
+  &[data-rate='3.8']::after,
+  &[data-rate='3.7']::after,
+  &[data-rate='3.6']::after,
+  &[data-rate='3.5']::after {
     width: 70%;
   }
-  &[data-rate="3.4"]::after,
-  &[data-rate="3.3"]::after,
-  &[data-rate="3.2"]::after,
-  &[data-rate="3.1"]::after,
-  &[data-rate="3"]::after {
+  &[data-rate='3.4']::after,
+  &[data-rate='3.3']::after,
+  &[data-rate='3.2']::after,
+  &[data-rate='3.1']::after,
+  &[data-rate='3']::after {
     width: 60%;
   }
-  &[data-rate="2.9"]::after,
-  &[data-rate="2.8"]::after,
-  &[data-rate="2.7"]::after,
-  &[data-rate="2.6"]::after,
-  &[data-rate="2.5"]::after {
+  &[data-rate='2.9']::after,
+  &[data-rate='2.8']::after,
+  &[data-rate='2.7']::after,
+  &[data-rate='2.6']::after,
+  &[data-rate='2.5']::after {
     width: 50%;
   }
-  &[data-rate="2.4"]::after,
-  &[data-rate="2.3"]::after,
-  &[data-rate="2.2"]::after,
-  &[data-rate="2.1"]::after,
-  &[data-rate="2"]::after {
+  &[data-rate='2.4']::after,
+  &[data-rate='2.3']::after,
+  &[data-rate='2.2']::after,
+  &[data-rate='2.1']::after,
+  &[data-rate='2']::after {
     width: 40%;
   }
-  &[data-rate="1.9"]::after,
-  &[data-rate="1.8"]::after,
-  &[data-rate="1.7"]::after,
-  &[data-rate="1.6"]::after,
-  &[data-rate="1.5"]::after {
+  &[data-rate='1.9']::after,
+  &[data-rate='1.8']::after,
+  &[data-rate='1.7']::after,
+  &[data-rate='1.6']::after,
+  &[data-rate='1.5']::after {
     width: 30%;
   }
-  &[data-rate="1.4"]::after,
-  &[data-rate="1.3"]::after,
-  &[data-rate="1.2"]::after,
-  &[data-rate="1.1"]::after,
-  &[data-rate="1"]::after {
+  &[data-rate='1.4']::after,
+  &[data-rate='1.3']::after,
+  &[data-rate='1.2']::after,
+  &[data-rate='1.1']::after,
+  &[data-rate='1']::after {
     width: 20%;
   }
-  &[data-rate="0.9"]::after,
-  &[data-rate="0.8"]::after,
-  &[data-rate="0.7"]::after,
-  &[data-rate="0.6"]::after,
-  &[data-rate="0.5"]::after {
+  &[data-rate='0.9']::after,
+  &[data-rate='0.8']::after,
+  &[data-rate='0.7']::after,
+  &[data-rate='0.6']::after,
+  &[data-rate='0.5']::after {
     width: 10%;
   }
-  &[data-rate="0.4"]::after,
-  &[data-rate="0.3"]::after,
-  &[data-rate="0.2"]::after,
-  &[data-rate="0.1"]::after,
-  &[data-rate="0"]::after {
+  &[data-rate='0.4']::after,
+  &[data-rate='0.3']::after,
+  &[data-rate='0.2']::after,
+  &[data-rate='0.1']::after,
+  &[data-rate='0']::after {
     width: 0%;
   }
 `
@@ -220,7 +221,7 @@ const shopDetailOpen = css`
   position: relative;
   padding: 0 0 0 24px;
   &::before {
-    content: "";
+    content: '';
     background-image: url(./images/time.svg);
     background-size: 20px 20px;
     background-repeat: no-repeat;
@@ -250,7 +251,7 @@ const shopDetailAddress = css`
   position: relative;
   padding: 0 0 0 24px;
   &::before {
-    content: "";
+    content: '';
     background-image: url(./images/address.svg);
     background-repeat: no-repeat;
     background-size: 20px 25px;
@@ -277,10 +278,10 @@ const favoriteButton = css`
   line-height: 1;
   justify-content: center;
   &::before {
-    content: "";
+    content: '';
     width: 24px;
     height: 24px;
-    background-image: url("./images/heart.svg");
+    background-image: url('./images/heart.svg');
     background-size: 24px 24px;
     background-repeat: no-repeat;
     display: inline-block;

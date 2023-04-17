@@ -1,43 +1,43 @@
-import React, { useContext } from 'react';
-import Head from 'next/head';
-import { css } from '@emotion/react';
-import Link from 'next/link';
-import { IsAuthContext } from '../providers/IsAuthProvider';
-import { useRouter } from 'next/router';
-import { auth, googleProvider } from '../../firebase';
-import { signInWithPopup } from 'firebase/auth';
-import { signOut } from 'firebase/auth';
+import React, { useContext } from 'react'
+import Head from 'next/head'
+import { css } from '@emotion/react'
+import Link from 'next/link'
+import { IsAuthContext } from '../providers/IsAuthProvider'
+import { useRouter } from 'next/router'
+import { auth, googleProvider } from '../../firebase'
+import { signInWithPopup } from 'firebase/auth'
+import { signOut } from 'firebase/auth'
 
 export default function login() {
-  const { isAuth, setIsAuth } = useContext(IsAuthContext);
-  const router = useRouter();
+  const { isAuth, setIsAuth } = useContext(IsAuthContext)
+  const router = useRouter()
   const loginWithGoogle = () => {
     signInWithPopup(auth, googleProvider)
       .then(() => {
-        console.log(auth);
+        console.log(auth)
 
-        console.log(isAuth);
-        setIsAuth(true);
-        router.push('/');
+        console.log(isAuth)
+        setIsAuth(true)
+        router.push('/')
       })
-      .catch((error) => console.log(error));
-  };
+      .catch((error) => console.log(error))
+  }
   const logout = () => {
     signOut(auth)
       .then(() => {
-        setIsAuth(false);
-        router.push('/');
+        setIsAuth(false)
+        router.push('/')
       })
-      .catch((error) => console.log(error));
-  };
+      .catch((error) => console.log(error))
+  }
 
   return (
     <>
       <Head>
         <title>ログイン | Lunch Maps</title>
-        <meta name="description" content="Lunch Mapsのログイン画面" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <meta name='description' content='Lunch Mapsのログイン画面' />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <link rel='icon' href='/favicon.ico' />
       </Head>
       <main>
         <section>
@@ -58,7 +58,7 @@ export default function login() {
                                 メール/パスワードを入力してログイン{' '}
                                 <span>（既に会員登録がお済みの方）</span>
                               </Link> */}
-                  <Link href="./" css={otherButton}>
+                  <Link href='./' css={otherButton}>
                     ログインしない<span>※一部機能が使用できません</span>
                   </Link>
                 </>
@@ -71,7 +71,7 @@ export default function login() {
         </section>
       </main>
     </>
-  );
+  )
 }
 
 const Container = css`
@@ -82,7 +82,7 @@ const Container = css`
   justify-content: center;
   flex-direction: column;
   position: relative;
-`;
+`
 const loginContents = css`
   text-align: center;
   p {
@@ -92,7 +92,7 @@ const loginContents = css`
     text-align: center;
     margin: 0 0 12px;
   }
-`;
+`
 const gooleButton = css`
   width: 280px;
   background-color: var(--color-white);
@@ -115,7 +115,7 @@ const gooleButton = css`
     display: inline-block;
     margin: 0 8px 0 0;
   }
-`;
+`
 const otherButton = css`
   width: 280px;
   background: var(--color-white);
@@ -131,7 +131,7 @@ const otherButton = css`
     display: block;
     font-size: 10px;
   }
-`;
+`
 // const registration = css`
 //   color: var(--color-white);
 //   font-size: var(--font-size-medium);

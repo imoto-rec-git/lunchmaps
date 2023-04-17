@@ -1,39 +1,59 @@
-import React from 'react';
-import Head from 'next/head';
-import { Navigation } from '@/components/organisms/Navigation';
-import { HeadTitle } from '@/components/molecules/HeadTitle';
-import { css } from '@emotion/react';
+import React, { useEffect, useState } from 'react'
+import Head from 'next/head'
+import { Navigation } from '@/components/organisms/Navigation'
+import { HeadTitle } from '@/components/molecules/HeadTitle'
+import { css } from '@emotion/react'
+import { auth } from '../../firebase'
 
 export default function setting() {
+  const [userEmail, setUserEmail] = useState('')
+  const [isGoogleSignIn, setIsGoogleSignIn] = useState(false)
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        console.log(user)
+        setUserEmail(user.email)
+        setIsGoogleSignIn(user.providerData[0].providerId === 'google.com')
+      } else {
+        setUserEmail('')
+      }
+    })
+    return unsubscribe
+  }, [])
   return (
     <>
       <Head>
         <title>設定 | Lunch Maps</title>
-        <meta name="description" content="Lunch Mapsの設定画面" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <meta name='description' content='Lunch Mapsの設定画面' />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <link rel='icon' href='/favicon.ico' />
       </Head>
       <main>
         <HeadTitle link={'./'} title={'設定'} />
         <div css={conatiner}>
           <div css={settingWrapper}>
             <p css={settingTitle}>メールアドレス</p>
-            <p css={settingContent}>yamada.taro@gmail.com</p>
-            <p css={settingChange}>変更</p>
+            <p css={settingContent}>{userEmail}</p>
+            {!isGoogleSignIn && <p css={settingChange}>変更</p>}
           </div>
-          <div css={settingWrapper}>
-            <p css={settingTitle}>パスワード</p>
-            <p css={settingContent}>●●●●●●●●●</p>
-            <p css={settingChange}>変更</p>
-          </div>
-          <div css={memberDelWrapper}>
-            <p>会員情報削除</p>
-          </div>
+          {!isGoogleSignIn && (
+            <>
+              <div css={settingWrapper}>
+                <p css={settingTitle}>パスワード</p>
+                <p css={settingContent}>●●●●●●●●●</p>
+                <p css={settingChange}>変更</p>
+              </div>
+
+              <div css={memberDelWrapper}>
+                <p>会員情報削除</p>
+              </div>
+            </>
+          )}
         </div>
         <Navigation />
       </main>
     </>
-  );
+  )
 }
 
 const conatiner = css`
@@ -47,7 +67,7 @@ const conatiner = css`
     text-align: center;
     margin: 0 0 8px;
   }
-`;
+`
 
 const settingWrapper = css`
   width: 100%;
@@ -63,18 +83,18 @@ const settingWrapper = css`
   &:nth-child(n + 2) {
     margin: -1px 0 0;
   }
-`;
+`
 const settingTitle = css`
   width: 84px;
   margin: 0 12px 0 0;
-`;
+`
 const settingContent = css`
   font-size: var(--font-size-medium);
   color: #333;
-`;
+`
 const settingChange = css`
   margin: 0 0 0 auto;
-`;
+`
 const memberDelWrapper = css`
   width: 100%;
   padding: 16px 14px;
@@ -93,4 +113,4 @@ const memberDelWrapper = css`
     color: #ff4936;
     margin: auto;
   }
-`;
+`

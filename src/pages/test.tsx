@@ -1,15 +1,22 @@
-import Head from "next/head"
-import { css } from "@emotion/react"
-import { useDataContext } from "../providers/DataProvider"
-import { useEffect } from "react"
-import { useRouter } from "next/router"
+import Head from 'next/head'
+import { css } from '@emotion/react'
+import { useRouter } from 'next/router'
+import { auth, db } from '../../firebase'
+import { arrayRemove, doc, updateDoc } from 'firebase/firestore'
 
 export default function Test() {
   const router = useRouter()
-  const { data, setData } = useDataContext()
-  const testFunc = () => {
-    setData("testです")
-    router.push("./favorite")
+  const testFunc = async () => {
+    const docRef = doc(db, 'users', 'testId')
+    console.log('削除処理開始')
+    try {
+      await updateDoc(docRef, {
+        testField: arrayRemove('test1'),
+      })
+      console.log('削除完了')
+    } catch (err) {
+      console.log(err)
+    }
   }
   return (
     <>
@@ -21,7 +28,6 @@ export default function Test() {
       </Head>
       <main>
         <div css={container}>
-          <p>{data}</p>
           <button onClick={testFunc}>ボタン</button>
         </div>
       </main>

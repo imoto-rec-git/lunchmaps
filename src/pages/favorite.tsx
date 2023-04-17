@@ -6,14 +6,15 @@ import { css } from '@emotion/react'
 import Image from 'next/image'
 import { ShopDetail } from '@/components/molecules/ShopDetail'
 import { auth, db } from '../../firebase'
-import { onAuthStateChanged } from 'firebase/auth'
-import { doc, getDoc } from 'firebase/firestore'
+import { onAuthStateChanged, User } from 'firebase/auth'
+import { arrayRemove, doc, getDoc, updateDoc } from 'firebase/firestore'
+import { useRouter } from 'next/router'
 
 export default function favorite() {
   const [user, setUser] = useState(null)
-  const [shopName, setShopName] = useState('')
   const [userFavShpoList, setUserFavShopList] = useState([])
   const [active, setActive] = useState(null)
+  const router = useRouter()
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -27,12 +28,12 @@ export default function favorite() {
     }
   }, [])
 
-  const fetchData = async (user) => {
+  const fetchData = async (user: User) => {
     // fireStore読み込み
     const userFavListData = async () => {
       const docRef = doc(db, 'users', user.uid)
       const docSnap = await getDoc(docRef)
-      if (docSnap.exists()) {
+      if (docSnap.exists() && docSnap.data().favoriteList) {
         const fetchedData = []
         for (let i = 0; i < docSnap.data().favoriteList.length; i++) {
           const res = await fetch(
@@ -52,18 +53,18 @@ export default function favorite() {
   const handleFavShopDetail = () => {
     setActive('active')
   }
-  const handleDeleteFav = (data: string) => {
-    console.log('削除')
-    console.log(data)
+  const handleDeleteFav = async (placeId: string) => {
+    // firestoreの特定の要素削除
+    const docRef = doc(db, 'users', auth.currentUser.uid)
+    try {
+      await updateDoc(docRef, {
+        favoriteList: arrayRemove(placeId),
+      })
+      router.reload()
+    } catch (error) {
+      console.error(error)
+    }
   }
-  // const handleDialogOpen = () => {
-  //   const modal = document.querySelector('dialog');
-  //   modal.showModal();
-  // };
-  // const handleDialogClose = () => {
-  //   const modal = document.querySelector('dialog');
-  //   modal.close();
-  // };
 
   return (
     <>
@@ -95,7 +96,7 @@ export default function favorite() {
                     </div>
                     <div
                       css={favShopDel}
-                      onClick={() => handleDeleteFav(shop.name)}
+                      onClick={() => handleDeleteFav(shop.place_id)}
                     >
                       <p>削除</p>
                     </div>
@@ -114,13 +115,6 @@ export default function favorite() {
                 shopBusinessHours={''}
                 shopAddress={''}
               />
-              {/* <dialog css={favShopDelDialog}>
-                <p>「」をお気に入りから削除しますか？</p>
-                <div>
-                  <button onClick={handleDialogClose}>はい</button>
-                  <button onClick={handleDialogClose}>いいえ</button>
-                </div>
-              </dialog> */}
             </>
           )}
         </div>
@@ -184,44 +178,6 @@ const favShopDel = css`
       height: 12px;
       background: url('./images/close.svg');
       margin: 0 auto 4px;
-    }
-  }
-`
-const favShopDelDialog = css`
-  width: 280px;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
-  padding: 14px;
-  box-sizing: border-box;
-  border: none;
-  border-radius: 8px;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  > p {
-    font-size: var(--font-size-medium);
-    font-weight: var(--font-weight-regular);
-    text-align: center;
-    margin: 45px 0;
-  }
-  div {
-    display: flex;
-    > button {
-      width: 113px;
-      color: var(--color-white);
-      border: none;
-      border-radius: 60px;
-      background: var(--color-dark-orange);
-      font-size: var(--font-size-small);
-      padding: 19px 0;
-      line-height: 1;
-      margin: auto;
-      display: block;
-      &:last-child {
-        color: var(--color-black);
-        background: var(--color-gray);
-      }
     }
   }
 `

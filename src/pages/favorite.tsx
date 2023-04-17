@@ -11,7 +11,10 @@ import { doc, getDoc } from 'firebase/firestore'
 
 export default function favorite() {
   const [user, setUser] = useState(null)
+  const [shopName, setShopName] = useState('')
   const [userFavShpoList, setUserFavShopList] = useState([])
+  const [active, setActive] = useState(null)
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user)
@@ -45,73 +48,82 @@ export default function favorite() {
     }
     userFavListData()
   }
-  const [active, setActive] = useState(null)
 
   const handleFavShopDetail = () => {
     setActive('active')
   }
-  const handleDialogOpen = () => {
-    const modal = document.querySelector('dialog')
-    modal.showModal()
+  const handleDeleteFav = (data: string) => {
+    console.log('削除')
+    console.log(data)
   }
-  const handleDialogClose = () => {
-    const modal = document.querySelector('dialog')
-    modal.close()
-  }
+  // const handleDialogOpen = () => {
+  //   const modal = document.querySelector('dialog');
+  //   modal.showModal();
+  // };
+  // const handleDialogClose = () => {
+  //   const modal = document.querySelector('dialog');
+  //   modal.close();
+  // };
 
   return (
     <>
       <Head>
         <title>お気に入り | Lunch Maps</title>
-        <meta name='description' content='Lunch Mapsのお気に入り画面' />
-        <meta name='viewport' content='width=device-width, initial-scale=1' />
-        <link rel='icon' href='/favicon.ico' />
+        <meta name="description" content="Lunch Mapsのお気に入り画面" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
         <HeadTitle link={'./'} title={'お気に入り'} />
         <div css={conatiner}>
-          <p>全5件</p>
-          <ul css={favList}>
-            <li css={favItem}>
-              <div css={favShopImg}>
-                <Image
-                  src='https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=AUjq9jl3XodICgx5RFrwcGc2_UpQKd1E0Lv-KhNjp1hs9VZmw4wwoUtg5kPZxwhvhLovX_IuEUOMgjhxFWLgKz-nG7HxOfBOuwasCgtH2YemqefZnH7C-2CRFhaVOlaraAZIHN7DiKi5rb5e4o6ZDnXPGC6eWZNue4_bh1crxNTHbCL6rQbG&key=AIzaSyALKPhTFJYoWODv6 U1RyCvHDKkNDl9_Z9k'
-                  width={50}
-                  height={50}
-                  alt=''
-                />
-              </div>
-              <div css={favShopDetail}>
-                <p onClick={handleFavShopDetail}>CRITTERS BUEGER</p>
-              </div>
-              <div css={favShopDel} onClick={handleDialogOpen}>
-                <p>削除</p>
-              </div>
-            </li>
-          </ul>
-          {userFavShpoList.map((shop, index) => (
-            <p key={index}>{shop.name}</p>
-          ))}
+          {userFavShpoList && (
+            <>
+              <p>全{userFavShpoList.length}件</p>
+              <ul css={favList}>
+                {userFavShpoList.map((shop) => (
+                  <li key={shop.name} css={favItem}>
+                    <div css={favShopImg}>
+                      <Image
+                        src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${shop.photos[0].photo_reference}&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`}
+                        width={50}
+                        height={50}
+                        alt={shop.name}
+                      />
+                    </div>
+                    <div css={favShopDetail}>
+                      <p onClick={handleFavShopDetail}>{shop.name}</p>
+                    </div>
+                    <div
+                      css={favShopDel}
+                      onClick={() => handleDeleteFav(shop.name)}
+                    >
+                      <p>削除</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+              <ShopDetail
+                placeId={''}
+                setActive={setActive}
+                active={active}
+                shopPhoto={''}
+                shopName={''}
+                shopRating={''}
+                shopRatingTotal={''}
+                shopOpen={''}
+                shopBusinessHours={''}
+                shopAddress={''}
+              />
+              {/* <dialog css={favShopDelDialog}>
+                <p>「」をお気に入りから削除しますか？</p>
+                <div>
+                  <button onClick={handleDialogClose}>はい</button>
+                  <button onClick={handleDialogClose}>いいえ</button>
+                </div>
+              </dialog> */}
+            </>
+          )}
         </div>
-        <ShopDetail
-          placeId={''}
-          setActive={setActive}
-          active={active}
-          shopPhoto={''}
-          shopName={''}
-          shopRating={''}
-          shopRatingTotal={''}
-          shopOpen={''}
-          shopBusinessHours={''}
-          shopAddress={''}
-        />
-        <dialog css={favShopDelDialog}>
-          <p>「CRITTERS BUEGER」をお気に入りから削除しますか？</p>
-          <div>
-            <button onClick={handleDialogClose}>はい</button>
-            <button onClick={handleDialogClose}>いいえ</button>
-          </div>
-        </dialog>
         <Navigation />
       </main>
     </>
@@ -147,6 +159,7 @@ const favShopImg = css`
   }
 `
 const favShopDetail = css`
+  width: calc(100% - 103px);
   display: flex;
   align-items: center;
   text-decoration: underline;

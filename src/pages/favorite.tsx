@@ -11,11 +11,42 @@ import { arrayRemove, doc, getDoc, updateDoc } from 'firebase/firestore'
 import { useRouter } from 'next/router'
 
 export default function favorite() {
+  interface Data {
+    name: string
+    opening_hours: {
+      open_now: boolean
+      weekday_text: string[]
+    }
+    photos: {
+      0: {
+        photo_reference: string
+      }
+    }
+    place_id: string
+    rating: string
+    user_ratings_total: string
+    vicinity: string
+  }
   const [user, setUser] = useState(null)
   const [userFavShpoList, setUserFavShopList] = useState([])
+  const [favoriteShopInfo, setFavoriteShopInfo] = useState<Data>({
+    name: '',
+    opening_hours: {
+      open_now: false,
+      weekday_text: [],
+    },
+    photos: {
+      0: {
+        photo_reference: '',
+      },
+    },
+    place_id: '',
+    rating: '',
+    user_ratings_total: '',
+    vicinity: '',
+  })
   const [active, setActive] = useState(null)
   const router = useRouter()
-
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user)
@@ -50,8 +81,18 @@ export default function favorite() {
     userFavListData()
   }
 
-  const handleFavShopDetail = () => {
-    setActive('active')
+  const handleFavShopDetail = async () => {
+    const docRef = doc(db, 'users', user.uid)
+    const docSnap = await getDoc(docRef)
+    if (docSnap.exists() && docSnap.data().favoriteList) {
+      const favoriteId = docSnap.data().favoriteList
+      const res = await fetch(`/api/details?place_id=${favoriteId}`)
+      const data = await res.json()
+      setFavoriteShopInfo(data.result)
+      setActive('active')
+    } else {
+      setActive('')
+    }
   }
   const handleDeleteFav = async (placeId: string) => {
     // firestoreの特定の要素削除
@@ -70,9 +111,9 @@ export default function favorite() {
     <>
       <Head>
         <title>お気に入り | Lunch Maps</title>
-        <meta name="description" content="Lunch Mapsのお気に入り画面" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <meta name='description' content='Lunch Mapsのお気に入り画面' />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <link rel='icon' href='/favicon.ico' />
       </Head>
       <main>
         <HeadTitle link={'./'} title={'お気に入り'} />
@@ -104,16 +145,16 @@ export default function favorite() {
                 ))}
               </ul>
               <ShopDetail
-                placeId={''}
+                placeId={favoriteShopInfo.place_id}
                 setActive={setActive}
                 active={active}
-                shopPhoto={''}
-                shopName={''}
-                shopRating={''}
-                shopRatingTotal={''}
-                shopOpen={''}
-                shopBusinessHours={''}
-                shopAddress={''}
+                shopPhoto={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${favoriteShopInfo.photos[0].photo_reference}&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`}
+                shopName={favoriteShopInfo.name}
+                shopRating={favoriteShopInfo.rating}
+                shopRatingTotal={favoriteShopInfo.user_ratings_total}
+                shopOpen={favoriteShopInfo.opening_hours.open_now}
+                shopBusinessHours={favoriteShopInfo.opening_hours.weekday_text}
+                shopAddress={favoriteShopInfo.vicinity}
               />
             </>
           )}

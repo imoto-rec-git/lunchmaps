@@ -155,6 +155,7 @@ export default function favorite() {
                 shopOpen={favoriteShopInfo.opening_hours.open_now}
                 shopBusinessHours={favoriteShopInfo.opening_hours.weekday_text}
                 shopAddress={favoriteShopInfo.vicinity}
+                state={false}
               />
             </>
           )}

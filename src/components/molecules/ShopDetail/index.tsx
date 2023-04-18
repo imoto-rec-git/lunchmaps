@@ -15,6 +15,7 @@ export const ShopDetail = ({
   shopOpen,
   shopBusinessHours,
   shopAddress,
+  state,
 }) => {
   const handleBackClick = () => {
     setActive('')
@@ -35,7 +36,7 @@ export const ShopDetail = ({
       <div css={shopDetailStyle} className={active && 'active'}>
         {shopPhoto && (
           <div css={shopDetailImg}>
-            <Image src={shopPhoto} width={400} height={400} alt="" />
+            <Image src={shopPhoto} width={400} height={400} alt='' />
           </div>
         )}
         <div css={shopDetailTxt}>
@@ -60,12 +61,14 @@ export const ShopDetail = ({
             </ul>
           )}
           {shopAddress && <p css={shopDetailAddress}>{shopAddress}</p>}
-          <button css={favoriteButton} onClick={handleFavoritAdd}>
-            お気に入り
-          </button>
+          {state && (
+            <button css={favoriteButton} onClick={handleFavoritAdd}>
+              お気に入り
+            </button>
+          )}
         </div>
         <button css={backButton} onClick={handleBackClick}>
-          <Image src="./images/arrow.svg" width={10} height={12} alt="" />
+          <Image src='./images/arrow.svg' width={10} height={12} alt='' />
         </button>
       </div>
     </>

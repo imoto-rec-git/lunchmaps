@@ -55,6 +55,7 @@ export const Homes = () => {
             shopOpen={shopOpen}
             shopBusinessHours={shopBusinessHours}
             shopAddress={shopAddress}
+            state={true}
           />
           <LocateButton setLat={setPositionLat} setLng={setPositionLng} />
           <TextBox setLat={setPositionLat} setLng={setPositionLng} />

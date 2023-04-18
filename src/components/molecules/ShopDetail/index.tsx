@@ -109,7 +109,7 @@ const shopDetailImg = css`
     left: 0;
     right: 0;
     bottom: 0;
-    margin: auto;
+    margin: 0 auto;
   }
 `
 const shopDetailTxt = css`

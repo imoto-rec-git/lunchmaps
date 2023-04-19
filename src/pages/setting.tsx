@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Head from 'next/head'
 import { Navigation } from '@/components/organisms/Navigation'
 import { HeadTitle } from '@/components/molecules/HeadTitle'
 import { css } from '@emotion/react'
 import { auth } from '../../firebase'
+import { FirstLoadingContext } from '@/providers/IsFirstLoadingProvider'
 
 export default function setting() {
+  const { setIsFirstLoading } = useContext(FirstLoadingContext)
   const [userEmail, setUserEmail] = useState('')
   const [isGoogleSignIn, setIsGoogleSignIn] = useState(false)
   useEffect(() => {
+    setIsFirstLoading(false)
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         setUserEmail(user.email)

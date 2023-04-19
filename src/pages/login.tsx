@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Head from 'next/head'
 import { css } from '@emotion/react'
 import Link from 'next/link'
@@ -8,10 +8,15 @@ import { auth, googleProvider } from '../../firebase'
 import { signInWithPopup } from 'firebase/auth'
 import { HeadTitle } from '@/components/molecules/HeadTitle'
 import { Navigation } from '@/components/organisms/Navigation'
+import { FirstLoadingContext } from '@/providers/IsFirstLoadingProvider'
 
 export default function login() {
+  const { setIsFirstLoading } = useContext(FirstLoadingContext)
   const { isAuth, setIsAuth } = useContext(IsAuthContext)
   const router = useRouter()
+  useEffect(() => {
+    setIsFirstLoading(false)
+  }, [])
   const loginWithGoogle = () => {
     signInWithPopup(auth, googleProvider)
       .then(() => {

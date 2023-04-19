@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Head from 'next/head'
 import { Navigation } from '@/components/organisms/Navigation'
 import { HeadTitle } from '@/components/molecules/HeadTitle'
@@ -9,6 +9,7 @@ import { auth, db } from '../../firebase'
 import { onAuthStateChanged, User } from 'firebase/auth'
 import { arrayRemove, doc, getDoc, updateDoc } from 'firebase/firestore'
 import { useRouter } from 'next/router'
+import { FirstLoadingContext } from '@/providers/IsFirstLoadingProvider'
 
 export default function favorite() {
   interface Data {
@@ -27,6 +28,7 @@ export default function favorite() {
     user_ratings_total: string
     vicinity: string
   }
+  const { setIsFirstLoading } = useContext(FirstLoadingContext)
   const [user, setUser] = useState(null)
   const [userFavShpoList, setUserFavShopList] = useState([])
   const [favoriteShopInfo, setFavoriteShopInfo] = useState<Data>({
@@ -48,6 +50,7 @@ export default function favorite() {
   const [active, setActive] = useState(null)
   const router = useRouter()
   useEffect(() => {
+    setIsFirstLoading(false)
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user)
       if (user) {

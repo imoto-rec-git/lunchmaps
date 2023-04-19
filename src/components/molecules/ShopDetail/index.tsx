@@ -36,7 +36,7 @@ export const ShopDetail = ({
       <div css={shopDetailStyle} className={active && 'active'}>
         {shopPhoto && (
           <div css={shopDetailImg}>
-            <Image src={shopPhoto} width={400} height={400} alt='' />
+            <Image src={shopPhoto} width={400} height={400} alt="" />
           </div>
         )}
         <div css={shopDetailTxt}>
@@ -68,7 +68,7 @@ export const ShopDetail = ({
           )}
         </div>
         <button css={backButton} onClick={handleBackClick}>
-          <Image src='./images/arrow.svg' width={10} height={12} alt='' />
+          <Image src="./images/arrow.svg" width={10} height={12} alt="" />
         </button>
       </div>
     </>
@@ -83,10 +83,11 @@ const shopDetailStyle = css`
   z-index: 2;
   position: absolute;
   top: 0;
-  right: 100%;
+  right: -100%;
   background: #fff;
   box-shadow: -4px 0px 12px rgba(0, 0, 0, 0.25);
   overflow-y: scroll;
+  transition: all 0.2s ease-out;
   h3 {
     font-size: 24px;
     font-weight: var(--font-weight-medium);
@@ -99,17 +100,10 @@ const shopDetailStyle = css`
 `
 const shopDetailImg = css`
   margin: 0 auto 12px;
-  height: 28vh;
-  max-height: 250px;
-  overflow: hidden;
-  position: relative;
   img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: 0 auto;
+    max-height: 200px;
+    width: 100%;
+    object-fit: cover;
   }
 `
 const shopDetailTxt = css`

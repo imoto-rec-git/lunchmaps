@@ -36,6 +36,7 @@ a {
 }
 .active {
   right: 0 !important;
+  transition: all 0.2s ease-out !important;
 }
 .loading {
   display: block;

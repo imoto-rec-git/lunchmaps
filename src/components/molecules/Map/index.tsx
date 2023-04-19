@@ -1,5 +1,8 @@
 import { GoogleMap, MarkerF, useJsApiLoader } from '@react-google-maps/api'
-import React from 'react'
+import { User, onAuthStateChanged } from 'firebase/auth'
+import React, { useEffect, useState } from 'react'
+import { auth, db } from '../../../../firebase'
+import { doc, getDoc } from 'firebase/firestore'
 
 export const Map = ({
   positionLat,
@@ -15,6 +18,46 @@ export const Map = ({
   setPlaceId,
   setActive,
 }) => {
+  const [user, setUser] = useState(null)
+  const [userFavShpoList, setUserFavShopList] = useState([])
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user)
+      if (user) {
+        fetchData(user)
+      }
+    })
+    return () => {
+      unsubscribe()
+    }
+  }, [])
+  const fetchData = async (user: User) => {
+    // fireStore読み込み
+    const userFavListData = async () => {
+      const docRef = doc(db, 'users', user.uid)
+      const docSnap = await getDoc(docRef)
+      if (docSnap.exists() && docSnap.data().favoriteList) {
+        console.log(docSnap.data().favoriteList)
+
+        const fetchedData = []
+        for (let i = 0; i < docSnap.data().favoriteList.length; i++) {
+          console.log(docSnap.data().favoriteList[i])
+          fetchedData.push(docSnap.data().favoriteList[i])
+          // const res = await fetch(
+          //   `/api/details?place_id=${docSnap.data().favoriteList[i]}`
+          // )
+          // const data = await res.json()
+          // console.log(data.result)
+
+          // fetchedData.push(data.result)
+        }
+        setUserFavShopList(fetchedData)
+      } else {
+        console.log('No such document!')
+      }
+    }
+    userFavListData()
+  }
   const center = {
     lat: positionLat,
     lng: positionLng,
@@ -85,13 +128,17 @@ export const Map = ({
               onClick={() => handleRestaurantClick(place)}
             />
           ))}
-          <MarkerF
-            position={{
-              lat: 34.69096426501372,
-              lng: 135.49688512700368,
-            }}
-            icon="./images/favorite.svg"
-          />
+          {userFavShpoList.map((favShopList, index) => (
+            <MarkerF
+              key={index}
+              position={{
+                lat: 34.69096426501372,
+                lng: 135.49688512700368,
+              }}
+              icon='./images/favorite.svg'
+              onClick={() => handleRestaurantClick(favShopList)}
+            />
+          ))}
         </GoogleMap>
       )}
     </>

@@ -1,12 +1,17 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { css } from '@emotion/react'
 
 export const Splash = () => {
-  const [Load, setLoad] = useState('loading')
-  setTimeout(() => {
-    setLoad('loadComplete')
-  }, 3000)
+  const [Load, setLoad] = useState('load')
+  useEffect(() => {
+    setTimeout(() => {
+      setLoad('loaded')
+    }, 3000)
+    setTimeout(() => {
+      setLoad('loadNone')
+    }, 3800)
+  }, [])
   return (
     <>
       <section css={splashSection} className={Load}>
@@ -24,7 +29,6 @@ export const Splash = () => {
     </>
   )
 }
-
 const splashSection = css`
   position: absolute;
   width: 100%;

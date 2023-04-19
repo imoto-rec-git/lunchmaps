@@ -11,7 +11,6 @@ export default function setting() {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
-        console.log(user)
         setUserEmail(user.email)
         setIsGoogleSignIn(user.providerData[0].providerId === 'google.com')
       } else {
@@ -24,9 +23,9 @@ export default function setting() {
     <>
       <Head>
         <title>設定 | Lunch Maps</title>
-        <meta name='description' content='Lunch Mapsの設定画面' />
-        <meta name='viewport' content='width=device-width, initial-scale=1' />
-        <link rel='icon' href='/favicon.ico' />
+        <meta name="description" content="Lunch Mapsの設定画面" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
         <HeadTitle link={'./'} title={'設定'} />

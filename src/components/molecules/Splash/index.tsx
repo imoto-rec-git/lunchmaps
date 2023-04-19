@@ -1,16 +1,24 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Image from 'next/image'
 import { css } from '@emotion/react'
+import { FirstLoadingContext } from '../../../providers/IsFirstLoadingProvider'
 
 export const Splash = () => {
+  const { isfirstLoading, setIsFirstLoading } = useContext(FirstLoadingContext)
   const [Load, setLoad] = useState('load')
   useEffect(() => {
-    setTimeout(() => {
-      setLoad('loaded')
-    }, 3000)
-    setTimeout(() => {
+    if (isfirstLoading) {
+      setTimeout(() => {
+        setLoad('loaded')
+      }, 3000)
+      setTimeout(() => {
+        setLoad('loadNone')
+      }, 3800)
+      setIsFirstLoading(false)
+    } else {
       setLoad('loadNone')
-    }, 3800)
+      setIsFirstLoading(false)
+    }
   }, [])
   return (
     <>

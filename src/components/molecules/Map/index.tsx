@@ -85,6 +85,13 @@ export const Map = ({
               onClick={() => handleRestaurantClick(place)}
             />
           ))}
+          <MarkerF
+            position={{
+              lat: 34.69096426501372,
+              lng: 135.49688512700368,
+            }}
+            icon="./images/favorite.svg"
+          />
         </GoogleMap>
       )}
     </>

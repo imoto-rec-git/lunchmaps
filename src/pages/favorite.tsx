@@ -80,19 +80,11 @@ export default function favorite() {
     }
     userFavListData()
   }
-
-  const handleFavShopDetail = async () => {
-    const docRef = doc(db, 'users', user.uid)
-    const docSnap = await getDoc(docRef)
-    if (docSnap.exists() && docSnap.data().favoriteList) {
-      const favoriteId = docSnap.data().favoriteList
-      const res = await fetch(`/api/details?place_id=${favoriteId}`)
-      const data = await res.json()
-      setFavoriteShopInfo(data.result)
-      setActive('active')
-    } else {
-      setActive('')
-    }
+  const handleFavShopDetail = async (place_id: string) => {
+    const res = await fetch(`/api/details?place_id=${place_id}`)
+    const data = await res.json()
+    setFavoriteShopInfo(data.result)
+    setActive('active')
   }
   const handleDeleteFav = async (placeId: string) => {
     // firestoreの特定の要素削除
@@ -133,7 +125,9 @@ export default function favorite() {
                       />
                     </div>
                     <div css={favShopDetail}>
-                      <p onClick={handleFavShopDetail}>{shop.name}</p>
+                      <p onClick={() => handleFavShopDetail(shop.place_id)}>
+                        {shop.name}
+                      </p>
                     </div>
                     <div
                       css={favShopDel}

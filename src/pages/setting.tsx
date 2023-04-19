@@ -79,7 +79,7 @@ const settingWrapper = css`
   color: #999;
   border-top: 1px solid var(--color-light-gray);
   border-bottom: 1px solid var(--color-light-gray);
-  &:nth-child(n + 2) {
+  &:nth-of-type(n + 2) {
     margin: -1px 0 0;
   }
 `

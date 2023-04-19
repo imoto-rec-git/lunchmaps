@@ -28,7 +28,7 @@ export const Homes = () => {
 
   return (
     <>
-      <section>
+      <section css={mapContainer}>
         <Map
           positionLat={positionLat}
           positionLng={positionLng}
@@ -65,6 +65,10 @@ export const Homes = () => {
   )
 }
 
+const mapContainer = css`
+  height: calc(100svh - 70px);
+  height: calc(100vh - 70px);
+`
 const maps = css`
   background: var(--color-white);
 `

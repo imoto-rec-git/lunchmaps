@@ -127,8 +127,8 @@ export default function favorite() {
                     <div css={favShopImg}>
                       <Image
                         src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${shop.photos[0].photo_reference}&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`}
-                        width={50}
-                        height={50}
+                        width={53}
+                        height={53}
                         alt={shop.name}
                       />
                     </div>

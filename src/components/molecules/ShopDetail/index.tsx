@@ -68,7 +68,7 @@ export const ShopDetail = ({
           )}
         </div>
         <button css={backButton} onClick={handleBackClick}>
-          <Image src="./images/arrow.svg" width={10} height={12} alt="" />
+          <Image src="./images/arrow.svg" width={9} height={15} alt="" />
         </button>
       </div>
     </>
@@ -298,4 +298,8 @@ const backButton = css`
   justify-content: center;
   align-items: center;
   transform: rotate(178deg);
+  img {
+    width: 9px;
+    height: auto;
+  }
 `

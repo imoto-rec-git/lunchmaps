@@ -7,6 +7,8 @@ import { useRouter } from 'next/router'
 import { auth, googleProvider } from '../../firebase'
 import { signInWithPopup } from 'firebase/auth'
 import { signOut } from 'firebase/auth'
+import { HeadTitle } from '@/components/molecules/HeadTitle'
+import { Navigation } from '@/components/organisms/Navigation'
 
 export default function login() {
   const { isAuth, setIsAuth } = useContext(IsAuthContext)
@@ -35,60 +37,54 @@ export default function login() {
     <>
       <Head>
         <title>ログイン | Lunch Maps</title>
-        <meta name='description' content='Lunch Mapsのログイン画面' />
-        <meta name='viewport' content='width=device-width, initial-scale=1' />
-        <link rel='icon' href='/favicon.ico' />
+        <meta name="description" content="Lunch Mapsのログイン画面" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
+        <HeadTitle link={'./'} title={'ログイン'} />
         <section>
-          <div css={Container}>
+          <div css={container}>
             <div css={loginContents}>
               <p>かんたんログイン</p>
-              {isAuth ? (
-                <button css={gooleButton} onClick={logout}>
-                  ログアウト
-                </button>
-              ) : (
-                <>
-                  <button css={gooleButton} onClick={loginWithGoogle}>
-                    Googleで続ける
-                  </button>
-                  <p>または</p>
-                  {/* <Link href="./register" css={otherButton}>
+              <button css={gooleButton} onClick={loginWithGoogle}>
+                Googleで続ける
+              </button>
+              <p>または</p>
+              {/* <Link href="./register" css={otherButton}>
                                 メール/パスワードを入力してログイン{' '}
                                 <span>（既に会員登録がお済みの方）</span>
                               </Link> */}
-                  <Link href='./' css={otherButton}>
-                    ログインしない<span>※一部機能が使用できません</span>
-                  </Link>
-                </>
-              )}
+              <Link href="./" css={otherButton}>
+                ログインしない<span>※一部機能が使用できません</span>
+              </Link>
             </div>
             {/* <Link href="./" css={registration}>
               新規会員登録はこちら
             </Link> */}
           </div>
         </section>
+        <Navigation />
       </main>
     </>
   )
 }
 
-const Container = css`
-  height: 100vh;
-  background: #ff9042;
+const container = css`
+  min-height: calc(100vh - 120px);
+  background: var(--color-dark-white);
+  padding: 14px 0;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  position: relative;
 `
 const loginContents = css`
   text-align: center;
   p {
     font-size: var(--font-size-medium);
     font-weight: var(--font-weight-bold);
-    color: var(--color-white);
+    color: var(--color-black);
     text-align: center;
     margin: 0 0 12px;
   }

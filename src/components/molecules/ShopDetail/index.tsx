@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { css } from '@emotion/react'
 import Image from 'next/image'
-import { arrayUnion, doc, getDoc, updateDoc } from 'firebase/firestore'
+import { arrayUnion, doc, updateDoc } from 'firebase/firestore'
 import { auth, db } from '../../../../firebase'
 
 export const ShopDetail = ({

@@ -29,6 +29,7 @@ main {
   position: relative;
   height: 100vh;
   height: 100svh;
+  overflow: hidden;
 }
 a {
   text-decoration: none;

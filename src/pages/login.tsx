@@ -6,7 +6,6 @@ import { IsAuthContext } from '../providers/IsAuthProvider'
 import { useRouter } from 'next/router'
 import { auth, googleProvider } from '../../firebase'
 import { signInWithPopup } from 'firebase/auth'
-import { signOut } from 'firebase/auth'
 import { HeadTitle } from '@/components/molecules/HeadTitle'
 import { Navigation } from '@/components/organisms/Navigation'
 
@@ -20,14 +19,6 @@ export default function login() {
 
         console.log(isAuth)
         setIsAuth(true)
-        router.push('/')
-      })
-      .catch((error) => console.log(error))
-  }
-  const logout = () => {
-    signOut(auth)
-      .then(() => {
-        setIsAuth(false)
         router.push('/')
       })
       .catch((error) => console.log(error))

@@ -20,6 +20,7 @@ export const Map = ({
 }) => {
   const [user, setUser] = useState(null)
   const [userFavShpoList, setUserFavShopList] = useState([])
+  const [userFavShopLocation, setUserFavShopLoaction] = useState([])
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user)
@@ -37,21 +38,22 @@ export const Map = ({
       const docRef = doc(db, 'users', user.uid)
       const docSnap = await getDoc(docRef)
       if (docSnap.exists() && docSnap.data().favoriteList) {
-        console.log(docSnap.data().favoriteList)
+        const placeIdData = []
+        const latLngData = []
 
-        const fetchedData = []
         for (let i = 0; i < docSnap.data().favoriteList.length; i++) {
-          console.log(docSnap.data().favoriteList[i])
-          fetchedData.push(docSnap.data().favoriteList[i])
-          // const res = await fetch(
-          //   `/api/details?place_id=${docSnap.data().favoriteList[i]}`
-          // )
-          // const data = await res.json()
-          // console.log(data.result)
-
-          // fetchedData.push(data.result)
+          placeIdData.push(docSnap.data().favoriteList[i])
+          const res = await fetch(
+            `/api/details_latlng?place_id=${docSnap.data().favoriteList[i]}`
+          )
+          const data = await res.json()
+          latLngData.push([
+            data.result.geometry.location.lat,
+            data.result.geometry.location.lng,
+          ])
         }
-        setUserFavShopList(fetchedData)
+        setUserFavShopList(placeIdData)
+        setUserFavShopLoaction(latLngData)
       } else {
         console.log('No such document!')
       }
@@ -104,6 +106,28 @@ export const Map = ({
     setPlaceId(data.place_id)
     setActive('active')
   }
+  const handleFavClick = async (data) => {
+    if (data) {
+      const res = await fetch(`/api/details?place_id=${data}`)
+      const detailData = await res.json()
+      const favData = detailData.result
+
+      favData.name && setShopName(favData.name)
+      favData.opening_hours.weekday_text &&
+        setShopBusinessHours(favData.opening_hours.weekday_text)
+      favData.opening_hours && setShopOpen(favData.opening_hours.open_now)
+      favData.photos &&
+        setShopPhoto(
+          favData.photos !== undefined &&
+            `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${favData.photos[0].photo_reference}&key=${apiKey}`
+        )
+      favData.vicinity && setShopAddress(favData.vicinity)
+      favData.rating && setShopRating(favData.rating)
+      favData.user_ratings_total && setRatingTotal(favData.user_ratings_total)
+      setPlaceId(favData.place_id)
+      setActive('active')
+    }
+  }
   return (
     <>
       {isLoaded && places && (
@@ -128,15 +152,15 @@ export const Map = ({
               onClick={() => handleRestaurantClick(place)}
             />
           ))}
-          {userFavShpoList.map((favShopList, index) => (
+          {userFavShpoList.map((userFavShpo, index) => (
             <MarkerF
               key={index}
               position={{
-                lat: 34.69096426501372,
-                lng: 135.49688512700368,
+                lat: userFavShopLocation[index][0],
+                lng: userFavShopLocation[index][1],
               }}
-              icon='./images/favorite.svg'
-              onClick={() => handleRestaurantClick(favShopList)}
+              icon="./images/favorite.svg"
+              onClick={() => handleFavClick(userFavShpo)}
             />
           ))}
         </GoogleMap>

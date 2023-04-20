@@ -1,28 +1,28 @@
-import React, { useContext } from "react"
-import { css } from "@emotion/react"
-import Image from "next/image"
-import Link from "next/link"
-import { IsAuthContext } from "@/providers/IsAuthProvider"
-import { useRouter } from "next/router"
-import { signOut } from "firebase/auth"
-import { auth } from "../../../../firebase"
+import React, { useContext } from 'react'
+import { css } from '@emotion/react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { IsAuthContext } from '@/providers/IsAuthProvider'
+import { useRouter } from 'next/router'
+import { signOut } from 'firebase/auth'
+import { auth } from '../../../../firebase'
 
 export const Navigation = () => {
   const { isAuth, setIsAuth } = useContext(IsAuthContext)
   const router = useRouter()
   const handleLogoutDialogOpen = () => {
-    const logoutModal: HTMLDialogElement = document.querySelector("#logout")
+    const logoutModal: HTMLDialogElement = document.querySelector('#logout')
     logoutModal.showModal()
   }
   const handleLogoutDialogClose = () => {
-    const logoutModal: HTMLDialogElement = document.querySelector("#logout")
+    const logoutModal: HTMLDialogElement = document.querySelector('#logout')
     logoutModal.close()
   }
   const handleLogout = () => {
     signOut(auth)
       .then(() => {
         setIsAuth(false)
-        router.push("/")
+        router.push('/')
       })
       .catch((error) => console.log(error))
     handleLogoutDialogClose()
@@ -30,7 +30,7 @@ export const Navigation = () => {
 
   return (
     <>
-      <dialog id="logout" css={favShopDelDialog}>
+      <dialog id='logout' css={favShopDelDialog}>
         <p>ログアウトしますか？</p>
         <div>
           <button onClick={handleLogout}>はい</button>
@@ -40,20 +40,20 @@ export const Navigation = () => {
       <nav css={Nav}>
         <ul>
           <li>
-            <Link href="./">
-              <Image src="./images/home.svg" width={26} height={26} alt={""} />
-              <span>HOME</span>
+            <Link href='./'>
+              <Image src='./images/map.svg' width={26} height={26} alt={''} />
+              <span>MAP</span>
             </Link>
           </li>
           <li>
             {isAuth ? (
               <>
-                <Link href="./favorite">
+                <Link href='./favorite'>
                   <Image
-                    src="./images/heart.svg"
+                    src='./images/star.svg'
                     width={26}
                     height={26}
-                    alt={""}
+                    alt={''}
                   />
                   <span>お気に入り</span>
                 </Link>
@@ -62,10 +62,10 @@ export const Navigation = () => {
               <>
                 <span css={grayScale}>
                   <Image
-                    src="./images/heart_logout.svg"
+                    src='./images/star_logout.svg'
                     width={26}
                     height={26}
-                    alt={""}
+                    alt={''}
                   />
                   <span>お気に入り</span>
                 </span>
@@ -75,12 +75,12 @@ export const Navigation = () => {
           <li>
             {isAuth ? (
               <>
-                <Link href="./setting">
+                <Link href='./setting'>
                   <Image
-                    src="./images/gear.svg"
+                    src='./images/gear.svg'
                     width={26}
                     height={26}
-                    alt={""}
+                    alt={''}
                   />
                   <span>設定</span>
                 </Link>
@@ -89,10 +89,10 @@ export const Navigation = () => {
               <>
                 <span css={grayScale}>
                   <Image
-                    src="./images/gear_logout.svg"
+                    src='./images/gear_logout.svg'
                     width={26}
                     height={26}
-                    alt={""}
+                    alt={''}
                   />
                   <span>設定</span>
                 </span>
@@ -104,22 +104,22 @@ export const Navigation = () => {
               <>
                 <span css={logout} onClick={handleLogoutDialogOpen}>
                   <Image
-                    src="./images/loginout.svg"
+                    src='./images/loginout.svg'
                     width={26}
                     height={26}
-                    alt={""}
+                    alt={''}
                   />
                   <span>ログアウト</span>
                 </span>
               </>
             ) : (
               <>
-                <Link href="./login">
+                <Link href='./login'>
                   <Image
-                    src="./images/loginout.svg"
+                    src='./images/loginout.svg'
                     width={26}
                     height={26}
-                    alt={""}
+                    alt={''}
                   />
                   <span>ログイン</span>
                 </Link>

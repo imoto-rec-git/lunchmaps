@@ -26,10 +26,10 @@ export const Splash = () => {
         <div css={splashContainer}>
           <p>
             <Image
-              src="./images/logo.svg"
+              src='/images/splash_logo.png'
               width={72}
               height={74}
-              alt="LunchMaps"
+              alt='LunchMaps'
             />
           </p>
         </div>

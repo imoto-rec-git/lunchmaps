@@ -128,6 +128,9 @@ export const Map = ({
       setActive('active')
     }
   }
+  const unsetActive = () => {
+    setActive('')
+  }
   return (
     <>
       {isLoaded && places && (
@@ -137,6 +140,8 @@ export const Map = ({
           zoom={zoom}
           options={options}
           clickableIcons={false}
+          onClick={unsetActive}
+          onDrag={unsetActive}
         >
           <MarkerF position={center} />
           {places.map((place, index: number) => (

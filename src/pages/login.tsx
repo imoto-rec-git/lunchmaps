@@ -20,9 +20,6 @@ export default function login() {
   const loginWithGoogle = () => {
     signInWithPopup(auth, googleProvider)
       .then(() => {
-        console.log(auth)
-
-        console.log(isAuth)
         setIsAuth(true)
         router.push('/')
       })

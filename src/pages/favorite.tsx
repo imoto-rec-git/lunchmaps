@@ -128,6 +128,11 @@ export default function favorite() {
                       />
                     </div>
                     <div css={favShopDetail}>
+                      {shop.opening_hours.open_now ? (
+                        <span>営業中</span>
+                      ) : (
+                        <span>営業時間外</span>
+                      )}
                       <p onClick={() => handleFavShopDetail(shop.place_id)}>
                         {shop.name}
                       </p>
@@ -194,10 +199,19 @@ const favShopImg = css`
 const favShopDetail = css`
   width: calc(100% - 103px);
   display: flex;
-  align-items: center;
-  text-decoration: underline;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
   font-size: var(--font-size-large);
   font-weight: var(--font-weight-normal);
+  > span {
+    font-size: var(--font-size-small);
+    text-decoration: none;
+  }
+  > p {
+    font-size: var(--font-size-medium);
+    text-decoration: underline;
+  }
 `
 const favShopDel = css`
   border-left: 1px solid #ececec;

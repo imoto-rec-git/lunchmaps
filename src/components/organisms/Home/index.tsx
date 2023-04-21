@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { css } from '@emotion/react'
 import { TextBox } from '@/components/atoms/TextBox'
 import { LocateButton } from '@/components/atoms/LocateButton'
 import { ShopDetail } from '@/components/molecules/ShopDetail'
 import { Map } from '@/components/molecules/Map'
+import { PositionContext } from '@/providers/IsPositionProvider'
 
 export const Homes = () => {
+  const { positionLat, setPositionLat, positionLng, setPositionLng } =
+    useContext(PositionContext)
   const [places, setPlaces] = useState(null)
   const [shopName, setShopName] = useState('')
   const [shopPhoto, setShopPhoto] = useState('')
@@ -14,8 +17,6 @@ export const Homes = () => {
   const [shopRating, setShopRating] = useState('')
   const [shopRatingTotal, setRatingTotal] = useState('')
   const [shopBusinessHours, setShopBusinessHours] = useState([])
-  const [positionLat, setPositionLat] = useState(34.691125259452555)
-  const [positionLng, setPositionLng] = useState(135.4964441534794)
   const [placeId, setPlaceId] = useState('')
   const [active, setActive] = useState('')
 

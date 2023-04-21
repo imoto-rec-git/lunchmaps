@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { css } from '@emotion/react'
 import Image from 'next/image'
-import { arrayUnion, doc, updateDoc } from 'firebase/firestore'
+import { arrayUnion, doc, getDoc, updateDoc } from 'firebase/firestore'
 import { auth, db } from '../../../../firebase'
+import { User, onAuthStateChanged } from 'firebase/auth'
 
 export const ShopDetail = ({
   placeId,
@@ -17,6 +18,32 @@ export const ShopDetail = ({
   shopAddress,
   state,
 }) => {
+  const [user, setUser] = useState(null)
+  const [favState, setFavState] = useState(false)
+  const [favList, setFavList] = useState([])
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user)
+      if (user) {
+        userFavListData(user)
+      }
+    })
+    return () => {
+      unsubscribe()
+    }
+  }, [placeId, favList])
+  const userFavListData = async (user: User) => {
+    if (placeId) {
+      const docRef = doc(db, 'users', user.uid)
+      const docSnap = await getDoc(docRef)
+      const favList = docSnap.data().favoriteList
+      if (favList.includes(placeId)) {
+        setFavState(true)
+      } else {
+        setFavState(false)
+      }
+    }
+  }
   const handleBackClick = () => {
     setActive('')
   }
@@ -29,6 +56,9 @@ export const ShopDetail = ({
       })
     }
     washing()
+    const docSnap = await getDoc(docRef)
+    const favList = docSnap.data().favoriteList
+    setFavList(favList)
   }
 
   return (
@@ -36,7 +66,7 @@ export const ShopDetail = ({
       <div css={shopDetailStyle} className={active && 'active'}>
         {shopPhoto && (
           <div css={shopDetailImg}>
-            <Image src={shopPhoto} width={400} height={400} alt="" />
+            <Image src={shopPhoto} width={400} height={400} alt='' />
           </div>
         )}
         <div css={shopDetailTxt}>
@@ -62,13 +92,17 @@ export const ShopDetail = ({
           )}
           {shopAddress && <p css={shopDetailAddress}>{shopAddress}</p>}
           {state && (
-            <button css={favoriteButton} onClick={handleFavoritAdd}>
-              お気に入り
+            <button
+              css={favState ? favoriteButtonDisabled : favoriteButton}
+              onClick={handleFavoritAdd}
+              disabled={favState}
+            >
+              {favState ? 'お気に入り済み' : 'お気に入り'}
             </button>
           )}
         </div>
         <button css={backButton} onClick={handleBackClick}>
-          <Image src="./images/arrow.svg" width={9} height={15} alt="" />
+          <Image src='./images/arrow.svg' width={9} height={15} alt='' />
         </button>
       </div>
     </>
@@ -263,12 +297,36 @@ const shopDetailAddress = css`
 `
 const favoriteButton = css`
   margin: auto;
-  width: 127px;
+  width: auto;
   padding: 14px;
   border-radius: 26px;
   font-size: var(--font-size-small);
   color: var(--color-white);
   background: var(--color-dark-orange);
+  border: none;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+  justify-content: center;
+  &::before {
+    content: '';
+    width: 24px;
+    height: 24px;
+    background-image: url('./images/heart.svg');
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    margin: 0 8px 0 0;
+  }
+`
+const favoriteButtonDisabled = css`
+  margin: auto;
+  width: auto;
+  padding: 14px;
+  border-radius: 26px;
+  font-size: var(--font-size-small);
+  color: var(--color-dark-gray);
+  background: var(--color-gray);
   border: none;
   display: flex;
   align-items: center;

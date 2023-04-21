@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { css } from '@emotion/react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -41,28 +41,63 @@ export const Navigation = () => {
         <ul>
           <li>
             <Link href='./'>
-              <Image src='./images/map.svg' width={26} height={26} alt={''} />
-              <span>MAP</span>
+              {router.pathname === '/' ? (
+                <Image
+                  src='./images/nav_map_current.svg'
+                  width={26}
+                  height={26}
+                  alt={''}
+                />
+              ) : (
+                <Image
+                  src='./images/nav_map.svg'
+                  width={26}
+                  height={26}
+                  alt={''}
+                />
+              )}
+              <span
+                className={router.pathname === '/' ? 'current' : 'noneCurrent'}
+              >
+                MAP
+              </span>
             </Link>
           </li>
           <li>
             {isAuth ? (
               <>
                 <Link href='./favorite'>
-                  <Image
-                    src='./images/star.svg'
-                    width={26}
-                    height={26}
-                    alt={''}
-                  />
-                  <span>お気に入り</span>
+                  {router.pathname === '/favorite' ? (
+                    <Image
+                      src='./images/nav_star_current.svg'
+                      width={26}
+                      height={26}
+                      alt={''}
+                    />
+                  ) : (
+                    <Image
+                      src='./images/nav_star.svg'
+                      width={26}
+                      height={26}
+                      alt={''}
+                    />
+                  )}
+                  <span
+                    className={
+                      router.pathname === '/favorite'
+                        ? 'current'
+                        : 'noneCurrent'
+                    }
+                  >
+                    お気に入り
+                  </span>
                 </Link>
               </>
             ) : (
               <>
                 <span css={grayScale}>
                   <Image
-                    src='./images/star_logout.svg'
+                    src='./images/nav_star_logout.svg'
                     width={26}
                     height={26}
                     alt={''}
@@ -76,20 +111,35 @@ export const Navigation = () => {
             {isAuth ? (
               <>
                 <Link href='./setting'>
-                  <Image
-                    src='./images/gear.svg'
-                    width={26}
-                    height={26}
-                    alt={''}
-                  />
-                  <span>設定</span>
+                  {router.pathname === '/setting' ? (
+                    <Image
+                      src='./images/nav_gear_current.svg'
+                      width={26}
+                      height={26}
+                      alt={''}
+                    />
+                  ) : (
+                    <Image
+                      src='./images/nav_gear.svg'
+                      width={26}
+                      height={26}
+                      alt={''}
+                    />
+                  )}
+                  <span
+                    className={
+                      router.pathname === '/setting' ? 'current' : 'noneCurrent'
+                    }
+                  >
+                    設定
+                  </span>
                 </Link>
               </>
             ) : (
               <>
                 <span css={grayScale}>
                   <Image
-                    src='./images/gear_logout.svg'
+                    src='./images/nav_gear_logout.svg'
                     width={26}
                     height={26}
                     alt={''}
@@ -104,7 +154,7 @@ export const Navigation = () => {
               <>
                 <span css={logout} onClick={handleLogoutDialogOpen}>
                   <Image
-                    src='./images/loginout.svg'
+                    src='./images/nav_loginout.svg'
                     width={26}
                     height={26}
                     alt={''}
@@ -115,13 +165,28 @@ export const Navigation = () => {
             ) : (
               <>
                 <Link href='./login'>
-                  <Image
-                    src='./images/loginout.svg'
-                    width={26}
-                    height={26}
-                    alt={''}
-                  />
-                  <span>ログイン</span>
+                  {router.pathname === '/login' ? (
+                    <Image
+                      src='./images/nav_loginout_current.svg'
+                      width={26}
+                      height={26}
+                      alt={''}
+                    />
+                  ) : (
+                    <Image
+                      src='./images/nav_loginout.svg'
+                      width={26}
+                      height={26}
+                      alt={''}
+                    />
+                  )}
+                  <span
+                    className={
+                      router.pathname === '/login' ? 'current' : 'noneCurrent'
+                    }
+                  >
+                    ログイン
+                  </span>
                 </Link>
               </>
             )}
@@ -157,6 +222,12 @@ const Nav = css`
         > span {
           font-size: 10px;
           line-height: 1;
+          &.current {
+            color: var(--color-dark-orange);
+          }
+          &.noneCurrent {
+            color: var(--color-white);
+          }
         }
       }
     }

@@ -1,18 +1,28 @@
-import React from 'react';
-import Head from 'next/head';
-import { css } from '@emotion/react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { HeadTitle } from '@/components/molecules/HeadTitle';
+import React from 'react'
+import Head from 'next/head'
+import { css } from '@emotion/react'
+import Link from 'next/link'
+import Image from 'next/image'
+import { HeadTitle } from '@/components/molecules/HeadTitle'
 
 export default function login() {
   return (
     <>
       <Head>
         <title>ログイン | Lunch Maps</title>
-        <meta name="description" content="Lunch Mapsのログイン画面" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <meta name='description' content='Lunch Mapsのログイン画面' />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <link rel='icon' href='/favicon.ico' />
+        <link
+          rel='apple-touch-icon'
+          sizes='180x180'
+          href='./images/apple-touch-icon-180x180.png'
+        />
+        <link
+          rel='apple-touch-icon'
+          sizes='167x167'
+          href='./images/apple-touch-icon-167x167.png'
+        />
       </Head>
       <HeadTitle link={'./login'} title={'ログイン'} />
       <main>
@@ -20,18 +30,18 @@ export default function login() {
           <div css={Container}>
             <p>以下の項目を入力し、「ログイン」ボタンを押してください。</p>
             <form>
-              <label htmlFor="mail">メールアドレス</label>
+              <label htmlFor='mail'>メールアドレス</label>
               <input
-                type="text"
-                id="mail"
-                placeholder="yamada-taro@sample.co.jp"
+                type='text'
+                id='mail'
+                placeholder='yamada-taro@sample.co.jp'
               />
-              <label htmlFor="mail">パスワード</label>
-              <input type="password" id="password" />
-              <Link href="/" css={passwordForget}>
+              <label htmlFor='mail'>パスワード</label>
+              <input type='password' id='password' />
+              <Link href='/' css={passwordForget}>
                 パスワードをお忘れの方
               </Link>
-              <button type="submit" css={botton}>
+              <button type='submit' css={botton}>
                 ログイン
               </button>
             </form>
@@ -39,7 +49,7 @@ export default function login() {
         </section>
       </main>
     </>
-  );
+  )
 }
 
 const Container = css`
@@ -71,7 +81,7 @@ const Container = css`
       color: #ccc;
     }
   }
-`;
+`
 
 const passwordForget = css`
   text-decoration: underline;
@@ -79,7 +89,7 @@ const passwordForget = css`
   text-align: right;
   font-size: var(--font-size-small);
   margin: 0 0 40px;
-`;
+`
 
 const botton = css`
   border: none;
@@ -90,4 +100,4 @@ const botton = css`
   line-height: 1;
   margin: auto;
   display: block;
-`;
+`

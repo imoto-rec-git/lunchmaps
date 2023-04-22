@@ -23,16 +23,13 @@ export default function Login() {
     signInWithPopup(auth, googleProvider)
       .then(() => {
         const uid = auth.currentUser.uid
-        console.log(`Logged in as ${uid}`)
         const docRef = doc(db, `users/${uid}`)
         getDoc(docRef)
           .then((docSnap) => {
             if (docSnap.exists()) {
-              console.log('このドキュメントIDはすでに存在しています。')
               setIsAuth(true)
               router.push('/')
             } else {
-              console.log('ドキュメントIDを新規です。')
               setDoc(docRef, {
                 favoriteList: [],
               })

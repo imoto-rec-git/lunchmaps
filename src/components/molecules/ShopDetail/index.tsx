@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { arrayUnion, doc, getDoc, updateDoc } from 'firebase/firestore'
 import { auth, db } from '../../../../firebase'
 import { User, onAuthStateChanged } from 'firebase/auth'
+import { useRouter } from 'next/router'
 
 export const ShopDetail = ({
   placeId,
@@ -18,6 +19,7 @@ export const ShopDetail = ({
   shopAddress,
   state,
 }) => {
+  const router = useRouter()
   const [user, setUser] = useState(null)
   const [favState, setFavState] = useState(false)
   const [favList, setFavList] = useState([])
@@ -59,6 +61,7 @@ export const ShopDetail = ({
     const docSnap = await getDoc(docRef)
     const favList = docSnap.data().favoriteList
     setFavList(favList)
+    router.push('./favorite')
   }
 
   return (

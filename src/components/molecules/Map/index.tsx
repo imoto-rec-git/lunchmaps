@@ -164,7 +164,7 @@ export const Map = ({
                 lat: userFavShopLocation[index][0],
                 lng: userFavShopLocation[index][1],
               }}
-              icon="./images/favorite.svg"
+              icon='./images/favorite.svg'
               onClick={() => handleFavClick(userFavShpo)}
             />
           ))}
@@ -176,5 +176,5 @@ export const Map = ({
 
 const containerStyle = {
   width: '100%',
-  height: 'calc(100svh - 70px)',
+  height: '100%',
 }

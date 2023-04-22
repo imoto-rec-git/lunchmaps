@@ -6,7 +6,7 @@ import { css } from '@emotion/react'
 import { auth } from '../../firebase'
 import { FirstLoadingContext } from '@/providers/IsFirstLoadingProvider'
 
-export default function setting() {
+export default function Setting() {
   const { setIsFirstLoading } = useContext(FirstLoadingContext)
   const [userEmail, setUserEmail] = useState('')
   const [isGoogleSignIn, setIsGoogleSignIn] = useState(false)
@@ -21,14 +21,15 @@ export default function setting() {
       }
     })
     return unsubscribe
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
     <>
       <Head>
         <title>設定 | Lunch Maps</title>
-        <meta name="description" content="Lunch Mapsの設定画面" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <meta name='description' content='Lunch Mapsの設定画面' />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <link rel='icon' href='/favicon.ico' />
       </Head>
       <main>
         <HeadTitle link={'./'} title={'設定'} />

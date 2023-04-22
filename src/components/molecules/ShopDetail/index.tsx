@@ -24,6 +24,19 @@ export const ShopDetail = ({
   const [favState, setFavState] = useState(false)
   const [favList, setFavList] = useState([])
   useEffect(() => {
+    const userFavListData = async (user: User) => {
+      if (placeId) {
+        const docRef = doc(db, 'users', user.uid)
+        const docSnap = await getDoc(docRef)
+        const favList = docSnap.data().favoriteList
+        if (favList.includes(placeId)) {
+          setFavState(true)
+        } else {
+          setFavState(false)
+        }
+      }
+    }
+
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user)
       if (user) {
@@ -34,18 +47,6 @@ export const ShopDetail = ({
       unsubscribe()
     }
   }, [placeId, favList])
-  const userFavListData = async (user: User) => {
-    if (placeId) {
-      const docRef = doc(db, 'users', user.uid)
-      const docSnap = await getDoc(docRef)
-      const favList = docSnap.data().favoriteList
-      if (favList.includes(placeId)) {
-        setFavState(true)
-      } else {
-        setFavState(false)
-      }
-    }
-  }
   const handleBackClick = () => {
     setActive('')
   }

@@ -10,12 +10,13 @@ import { HeadTitle } from '@/components/molecules/HeadTitle'
 import { Navigation } from '@/components/organisms/Navigation'
 import { FirstLoadingContext } from '@/providers/IsFirstLoadingProvider'
 
-export default function login() {
+export default function Login() {
   const { setIsFirstLoading } = useContext(FirstLoadingContext)
   const { isAuth, setIsAuth } = useContext(IsAuthContext)
   const router = useRouter()
   useEffect(() => {
     setIsFirstLoading(false)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   const loginWithGoogle = () => {
     signInWithPopup(auth, googleProvider)
@@ -30,9 +31,9 @@ export default function login() {
     <>
       <Head>
         <title>ログイン | Lunch Maps</title>
-        <meta name="description" content="Lunch Mapsのログイン画面" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <meta name='description' content='Lunch Mapsのログイン画面' />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <link rel='icon' href='/favicon.ico' />
       </Head>
       <main>
         <HeadTitle link={'./'} title={'ログイン'} />
@@ -48,7 +49,7 @@ export default function login() {
                                 メール/パスワードを入力してログイン{' '}
                                 <span>（既に会員登録がお済みの方）</span>
                               </Link> */}
-              <Link href="./" css={otherButton}>
+              <Link href='./' css={otherButton}>
                 ログインしない<span>※一部機能が使用できません</span>
               </Link>
             </div>

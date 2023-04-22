@@ -11,7 +11,7 @@ import { arrayRemove, doc, getDoc, updateDoc } from 'firebase/firestore'
 import { useRouter } from 'next/router'
 import { FirstLoadingContext } from '@/providers/IsFirstLoadingProvider'
 
-export default function favorite() {
+export default function Favorite() {
   interface Data {
     name: string
     opening_hours: {
@@ -60,6 +60,7 @@ export default function favorite() {
     return () => {
       unsubscribe()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const fetchData = async (user: User) => {
@@ -106,9 +107,9 @@ export default function favorite() {
     <>
       <Head>
         <title>お気に入り | Lunch Maps</title>
-        <meta name="description" content="Lunch Mapsのお気に入り画面" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <meta name='description' content='Lunch Mapsのお気に入り画面' />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <link rel='icon' href='/favicon.ico' />
       </Head>
       <main>
         <HeadTitle link={'./'} title={'お気に入り'} />

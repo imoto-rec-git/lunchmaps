@@ -4,11 +4,12 @@ import { css } from '@emotion/react'
 import Link from 'next/link'
 import { IsAuthContext } from '../providers/IsAuthProvider'
 import { useRouter } from 'next/router'
-import { auth, googleProvider } from '../../firebase'
+import { auth, db, googleProvider } from '../../firebase'
 import { signInWithPopup } from 'firebase/auth'
 import { HeadTitle } from '@/components/molecules/HeadTitle'
 import { Navigation } from '@/components/organisms/Navigation'
 import { FirstLoadingContext } from '@/providers/IsFirstLoadingProvider'
+import { doc, getDoc, setDoc } from 'firebase/firestore'
 
 export default function Login() {
   const { setIsFirstLoading } = useContext(FirstLoadingContext)
@@ -21,8 +22,28 @@ export default function Login() {
   const loginWithGoogle = () => {
     signInWithPopup(auth, googleProvider)
       .then(() => {
-        setIsAuth(true)
-        router.push('/')
+        const uid = auth.currentUser.uid
+        console.log(`Logged in as ${uid}`)
+        const docRef = doc(db, `users/${uid}`)
+        getDoc(docRef)
+          .then((docSnap) => {
+            if (docSnap.exists()) {
+              console.log('このドキュメントIDはすでに存在しています。')
+              setIsAuth(true)
+              router.push('/')
+            } else {
+              console.log('ドキュメントIDを新規です。')
+              setDoc(docRef, {
+                favoriteList: [],
+              })
+                .then(() => {
+                  setIsAuth(true)
+                  router.push('/')
+                })
+                .catch((error) => console.log(error))
+            }
+          })
+          .catch((error) => console.log(error))
       })
       .catch((error) => console.log(error))
   }
@@ -45,17 +66,10 @@ export default function Login() {
                 Googleで続ける
               </button>
               <p>または</p>
-              {/* <Link href="./register" css={otherButton}>
-                                メール/パスワードを入力してログイン{' '}
-                                <span>（既に会員登録がお済みの方）</span>
-                              </Link> */}
               <Link href='./' css={otherButton}>
                 ログインしない<span>※一部機能が使用できません</span>
               </Link>
             </div>
-            {/* <Link href="./" css={registration}>
-              新規会員登録はこちら
-            </Link> */}
           </div>
         </section>
         <Navigation />
@@ -122,11 +136,3 @@ const otherButton = css`
     font-size: 10px;
   }
 `
-// const registration = css`
-//   color: var(--color-white);
-//   font-size: var(--font-size-medium);
-//   font-weight: var(--font-weight-medium);
-//   position: absolute;
-//   bottom: 20px;
-//   text-decoration: underline;
-// `;

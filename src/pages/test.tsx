@@ -2,7 +2,16 @@ import Head from 'next/head'
 import { css } from '@emotion/react'
 import { useRouter } from 'next/router'
 import { auth, db } from '../../firebase'
-import { arrayRemove, doc, updateDoc } from 'firebase/firestore'
+import {
+  addDoc,
+  arrayRemove,
+  arrayUnion,
+  collection,
+  doc,
+  getDoc,
+  setDoc,
+  updateDoc,
+} from 'firebase/firestore'
 import { useContext } from 'react'
 import { PositionContext } from '@/providers/IsPositionProvider'
 
@@ -10,16 +19,21 @@ export default function Test() {
   const { positionLat } = useContext(PositionContext)
   const router = useRouter()
   const testFunc = async () => {
-    // const docRef = doc(db, 'users', 'testId')
-    // console.log('削除処理開始')
-    // try {
-    //   await updateDoc(docRef, {
-    //     testField: arrayRemove('test1'),
-    //   })
-    //   console.log('削除完了')
-    // } catch (err) {
-    //   console.log(err)
-    // }
+    try {
+      const docId = auth.currentUser.uid
+      const docRef = doc(db, `users/${docId}`)
+      const docSnap = await getDoc(docRef)
+      if (docSnap.exists()) {
+        console.log('このドキュメントIDはすでに存在しています。')
+      } else {
+        await setDoc(docRef, {
+          favoriteList: [],
+        })
+        console.log('ドキュメントIDを追加しました。')
+      }
+    } catch (e) {
+      console.log('Error', e)
+    }
   }
   return (
     <>

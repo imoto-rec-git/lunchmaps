@@ -205,6 +205,7 @@ const favShopDetail = css`
   justify-content: flex-start;
   font-size: var(--font-size-large);
   font-weight: var(--font-weight-normal);
+  cursor: pointer;
   > span {
     font-size: var(--font-size-small);
     text-decoration: none;
@@ -222,6 +223,7 @@ const favShopDel = css`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
   > p {
     font-size: 11px;
     font-weight: var(--font-weight-light);

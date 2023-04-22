@@ -27,6 +27,9 @@ export const Navigation = () => {
       .catch((error) => console.log(error))
     handleLogoutDialogClose()
   }
+  const loginAlert = () => {
+    alert('ログインすることで、ご利用できます。')
+  }
 
   return (
     <>
@@ -95,7 +98,7 @@ export const Navigation = () => {
               </>
             ) : (
               <>
-                <span css={grayScale}>
+                <span css={grayScale} onClick={loginAlert}>
                   <Image
                     src='./images/nav_star_logout.svg'
                     width={26}
@@ -137,7 +140,7 @@ export const Navigation = () => {
               </>
             ) : (
               <>
-                <span css={grayScale}>
+                <span css={grayScale} onClick={loginAlert}>
                   <Image
                     src='./images/nav_gear_logout.svg'
                     width={26}
@@ -214,6 +217,7 @@ const Nav = css`
       text-align: center;
       > a,
       > span {
+        cursor: pointer;
         img {
           margin: 0 auto;
           width: 26px;

@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { css } from '@emotion/react'
 import Image from 'next/image'
 import { arrayUnion, doc, getDoc, updateDoc } from 'firebase/firestore'
 import { auth, db } from '../../../../firebase'
 import { User, onAuthStateChanged } from 'firebase/auth'
 import { useRouter } from 'next/router'
+import { IsAuthContext } from '@/providers/IsAuthProvider'
 
 export const ShopDetail = ({
   placeId,
@@ -20,6 +21,7 @@ export const ShopDetail = ({
   state,
 }) => {
   const router = useRouter()
+  const { isAuth } = useContext(IsAuthContext)
   const [user, setUser] = useState(null)
   const [favState, setFavState] = useState(false)
   const [favList, setFavList] = useState([])
@@ -95,13 +97,13 @@ export const ShopDetail = ({
             </ul>
           )}
           {shopAddress && <p css={shopDetailAddress}>{shopAddress}</p>}
-          {state && (
+          {state && isAuth && (
             <button
               css={favState ? favoriteButtonDisabled : favoriteButton}
               onClick={handleFavoritAdd}
               disabled={favState}
             >
-              {favState ? 'お気に入り済み' : 'お気に入り'}
+              {favState ? 'お気に入り済' : 'お気に入り'}
             </button>
           )}
         </div>
@@ -315,9 +317,9 @@ const favoriteButton = css`
   &::before {
     content: '';
     width: 24px;
-    height: 24px;
-    background-image: url('./images/heart.svg');
-    background-size: 24px 24px;
+    height: 22px;
+    background-image: url('./images/nav_star.svg');
+    background-size: 24px 22px;
     background-repeat: no-repeat;
     display: inline-block;
     margin: 0 8px 0 0;
@@ -339,9 +341,9 @@ const favoriteButtonDisabled = css`
   &::before {
     content: '';
     width: 24px;
-    height: 24px;
-    background-image: url('./images/heart.svg');
-    background-size: 24px 24px;
+    height: 22px;
+    background-image: url('./images/nav_star.svg');
+    background-size: 24px 22px;
     background-repeat: no-repeat;
     display: inline-block;
     margin: 0 8px 0 0;

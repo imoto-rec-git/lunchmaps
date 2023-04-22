@@ -22,7 +22,7 @@ export const Navigation = () => {
     signOut(auth)
       .then(() => {
         setIsAuth(false)
-        router.push('/')
+        router.reload()
       })
       .catch((error) => console.log(error))
     handleLogoutDialogClose()

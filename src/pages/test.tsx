@@ -12,12 +12,21 @@ import {
   setDoc,
   updateDoc,
 } from 'firebase/firestore'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { PositionContext } from '@/providers/IsPositionProvider'
+import { IsAuthContext } from '@/providers/IsAuthProvider'
 
 export default function Test() {
+  const { isAuth, setIsAuth } = useContext(IsAuthContext)
   const { positionLat } = useContext(PositionContext)
   const router = useRouter()
+  useEffect(() => {
+    if (isAuth) {
+      console.log('ログインしているよ！')
+    } else {
+      console.log('ログインしていないよ！x')
+    }
+  })
   const testFunc = async () => {
     try {
       const docId = auth.currentUser.uid

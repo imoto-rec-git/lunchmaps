@@ -28,8 +28,8 @@ export const Splash = () => {
           <p>
             <Image
               src='/images/splash_logo.png'
-              width={72}
-              height={74}
+              width={120}
+              height={97}
               alt='LunchMaps'
             />
           </p>

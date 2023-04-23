@@ -8,7 +8,7 @@ export const HeadTitleMap = () => {
       <header css={mapHeader}>
         <Image
           src='/images/map_logo.png'
-          width={72}
+          width={79}
           height={38}
           alt='LunchMaps'
         ></Image>

@@ -68,9 +68,9 @@ export default function Login() {
         <section>
           <div css={container}>
             <div css={loginContents}>
-              <p>かんたんログイン</p>
+              {/* <p>かんたんログイン</p> */}
               <button css={gooleButton} onClick={loginWithGoogle}>
-                Googleで続ける
+                Googleでログイン
               </button>
               <p>または</p>
               <Link href='./' css={otherButton}>

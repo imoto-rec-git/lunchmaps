@@ -1,6 +1,6 @@
 import { GoogleMap, MarkerF, useJsApiLoader } from '@react-google-maps/api'
 import { User, onAuthStateChanged } from 'firebase/auth'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { auth, db } from '../../../../firebase'
 import { doc, getDoc } from 'firebase/firestore'
 
@@ -79,6 +79,22 @@ export const Map = ({
     }
     return iconPath
   }
+  const CustomMarker = ({ place, onClick }) => {
+    const iconPath = useMemo(() => getMakerIcon(place), [place])
+    return (
+      <MarkerF
+        key={place.id}
+        position={{
+          lat: place.geometry.location.lat,
+          lng: place.geometry.location.lng,
+        }}
+        icon={{
+          url: iconPath,
+        }}
+        onClick={() => onClick(place)}
+      />
+    )
+  }
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ''
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
@@ -145,16 +161,10 @@ export const Map = ({
         >
           <MarkerF position={center} />
           {places.map((place, index: number) => (
-            <MarkerF
+            <CustomMarker
               key={index}
-              position={{
-                lat: place.geometry.location.lat,
-                lng: place.geometry.location.lng,
-              }}
-              icon={{
-                url: getMakerIcon(place),
-              }}
-              onClick={() => handleRestaurantClick(place)}
+              place={place}
+              onClick={handleRestaurantClick}
             />
           ))}
           {userFavShpoList.map((userFavShpo, index) => (

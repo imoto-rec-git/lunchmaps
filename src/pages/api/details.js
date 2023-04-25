@@ -8,5 +8,3 @@ const details = async (req, res) => {
 }
 
 export default details
-
-// https://maps.googleapis.com/maps/api/place/details/json?fields=name,rating,user_ratings_total,opening_hours,vicinity,photos,place_id&place_id=ChIJO3_3UPDmAGARn_D-9mF24iY&key=AIzaSyALKPhTFJYoWODv6U1RyCvHDKkNDl9_Z9k

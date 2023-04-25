@@ -5,6 +5,8 @@ import { HeadTitle } from '@/components/molecules/HeadTitle'
 import { css } from '@emotion/react'
 import { auth } from '../../firebase'
 import { FirstLoadingContext } from '@/providers/IsFirstLoadingProvider'
+import { Mail } from '@/components/molecules/Mail'
+import { PassWord } from '@/components/molecules/PassWord'
 
 export default function Setting() {
   const { setIsFirstLoading } = useContext(FirstLoadingContext)
@@ -44,24 +46,21 @@ export default function Setting() {
       <main>
         <HeadTitle link={'./'} title={'設定'} />
         <div css={conatiner}>
-          <div css={settingWrapper}>
-            <p css={settingTitle}>メールアドレス</p>
-            <p css={settingContent}>{userEmail}</p>
-            {!isGoogleSignIn && <p css={settingChange}>変更</p>}
-          </div>
-          {!isGoogleSignIn && (
-            <>
-              <div css={settingWrapper}>
-                <p css={settingTitle}>パスワード</p>
-                <p css={settingContent}>●●●●●●●●●</p>
-                <p css={settingChange}>変更</p>
-              </div>
-
-              <div css={memberDelWrapper}>
-                <p>会員情報削除</p>
-              </div>
-            </>
-          )}
+          <Mail
+            settingWrapper={settingWrapper}
+            settingTitle={settingTitle}
+            settingContent={settingContent}
+            userEmail={userEmail}
+            isGoogleSignIn={isGoogleSignIn}
+            settingChange={settingChange}
+          />
+          <PassWord
+            isGoogleSignIn={isGoogleSignIn}
+            settingWrapper={settingWrapper}
+            settingTitle={settingTitle}
+            settingContent={settingContent}
+            settingChange={settingChange}
+          />
         </div>
         <Navigation />
       </main>
@@ -107,23 +106,4 @@ const settingContent = css`
 `
 const settingChange = css`
   margin: 0 0 0 auto;
-`
-const memberDelWrapper = css`
-  width: 100%;
-  padding: 16px 14px;
-  background: var(--color-white);
-  display: flex;
-  align-items: center;
-  font-size: var(--font-size-small);
-  font-weight: var(--font-weight-regular);
-  color: #999;
-  border-top: 1px solid var(--color-light-gray);
-  border-bottom: 1px solid var(--color-light-gray);
-  position: absolute;
-  bottom: 14px;
-  > p {
-    font-weight: var(--font-weight-bold);
-    color: #ff4936;
-    margin: auto;
-  }
 `

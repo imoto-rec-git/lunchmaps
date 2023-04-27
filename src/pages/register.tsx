@@ -1,47 +1,34 @@
 import React from 'react'
-import Head from 'next/head'
 import { css } from '@emotion/react'
 import Link from 'next/link'
-import Image from 'next/image'
 import { HeadTitle } from '@/components/molecules/HeadTitle'
+import { HeadMeta } from '@/components/organisms/HeadMeta'
 
 export default function login() {
   return (
     <>
-      <Head>
-        <title>ログイン | Lunch Maps</title>
-        <meta name='description' content='Lunch Mapsのログイン画面' />
-        <meta name='viewport' content='width=device-width, initial-scale=1' />
-        <link rel='icon' href='/favicon.ico' />
-        <link
-          rel='apple-touch-icon'
-          sizes='180x180'
-          href='./images/apple-touch-icon-180x180.png'
-        />
-        <link
-          rel='apple-touch-icon'
-          sizes='167x167'
-          href='./images/apple-touch-icon-167x167.png'
-        />
-      </Head>
+      <HeadMeta
+        title={'ログイン | LunchMaps'}
+        description={'Lunch Mapsのログインページです。'}
+      />
       <HeadTitle link={'./login'} title={'ログイン'} />
       <main>
         <section>
           <div css={Container}>
             <p>以下の項目を入力し、「ログイン」ボタンを押してください。</p>
             <form>
-              <label htmlFor='mail'>メールアドレス</label>
+              <label htmlFor="mail">メールアドレス</label>
               <input
-                type='text'
-                id='mail'
-                placeholder='yamada-taro@sample.co.jp'
+                type="text"
+                id="mail"
+                placeholder="yamada-taro@sample.co.jp"
               />
-              <label htmlFor='mail'>パスワード</label>
-              <input type='password' id='password' />
-              <Link href='/' css={passwordForget}>
+              <label htmlFor="mail">パスワード</label>
+              <input type="password" id="password" />
+              <Link href="/" css={passwordForget}>
                 パスワードをお忘れの方
               </Link>
-              <button type='submit' css={botton}>
+              <button type="submit" css={botton}>
                 ログイン
               </button>
             </form>

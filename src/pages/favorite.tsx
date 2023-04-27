@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react'
-import Head from 'next/head'
 import { Navigation } from '@/components/organisms/Navigation'
 import { HeadTitle } from '@/components/molecules/HeadTitle'
 import { css } from '@emotion/react'
@@ -9,6 +8,7 @@ import { onAuthStateChanged, User } from 'firebase/auth'
 import { doc, getDoc } from 'firebase/firestore'
 import { FirstLoadingContext } from '@/providers/IsFirstLoadingProvider'
 import { UserFavoriteList } from '@/components/molecules/UserFavoriteList'
+import { HeadMeta } from '@/components/organisms/HeadMeta'
 
 export default function Favorite() {
   interface Data {
@@ -84,22 +84,10 @@ export default function Favorite() {
   }
   return (
     <>
-      <Head>
-        <title>お気に入り | Lunch Maps</title>
-        <meta name='description' content='Lunch Mapsのお気に入り画面' />
-        <meta name='viewport' content='width=device-width, initial-scale=1' />
-        <link rel='icon' href='/favicon.ico' />
-        <link
-          rel='apple-touch-icon'
-          sizes='180x180'
-          href='./images/apple-touch-icon-180x180.png'
-        />
-        <link
-          rel='apple-touch-icon'
-          sizes='167x167'
-          href='./images/apple-touch-icon-167x167.png'
-        />
-      </Head>
+      <HeadMeta
+        title={'お気に入り | LunchMaps'}
+        description={'Lunch Mapsのお気に入りページです。'}
+      />
       <main>
         <HeadTitle link={'./'} title={'お気に入り'} />
         <div css={conatiner}>

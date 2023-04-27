@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from 'react'
-import Head from 'next/head'
 import { css } from '@emotion/react'
 import Link from 'next/link'
 import { IsAuthContext } from '../providers/IsAuthProvider'
@@ -10,6 +9,7 @@ import { HeadTitle } from '@/components/molecules/HeadTitle'
 import { Navigation } from '@/components/organisms/Navigation'
 import { FirstLoadingContext } from '@/providers/IsFirstLoadingProvider'
 import { doc, getDoc, setDoc } from 'firebase/firestore'
+import { HeadMeta } from '@/components/organisms/HeadMeta'
 
 export default function Login() {
   const { setIsFirstLoading } = useContext(FirstLoadingContext)
@@ -47,22 +47,10 @@ export default function Login() {
 
   return (
     <>
-      <Head>
-        <title>ログイン | Lunch Maps</title>
-        <meta name='description' content='Lunch Mapsのログイン画面' />
-        <meta name='viewport' content='width=device-width, initial-scale=1' />
-        <link rel='icon' href='/favicon.ico' />
-        <link
-          rel='apple-touch-icon'
-          sizes='180x180'
-          href='./images/apple-touch-icon-180x180.png'
-        />
-        <link
-          rel='apple-touch-icon'
-          sizes='167x167'
-          href='./images/apple-touch-icon-167x167.png'
-        />
-      </Head>
+      <HeadMeta
+        title={'ログイン | LunchMaps'}
+        description={'Lunch Mapsのログインページです。'}
+      />
       <main>
         <HeadTitle link={'./'} title={'ログイン'} />
         <section>
@@ -73,7 +61,7 @@ export default function Login() {
                 Googleでログイン
               </button>
               <p>または</p>
-              <Link href='./' css={otherButton}>
+              <Link href="./" css={otherButton}>
                 ログインしない<span>※一部機能が使用できません</span>
               </Link>
             </div>

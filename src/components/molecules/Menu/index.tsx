@@ -10,8 +10,9 @@ export const Menu = () => {
   const router = useRouter()
 
   const handleLogoutDialogOpen = () => {
-    const logoutModal: HTMLDialogElement = document.querySelector('#logout')
-    logoutModal.showModal()
+    const logoutModal: HTMLDialogElement | null =
+      document.querySelector('#logout')
+    logoutModal && logoutModal.showModal()
   }
   const loginAlert = () => {
     alert('ログインすることで、ご利用できます。')

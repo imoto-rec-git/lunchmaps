@@ -19,6 +19,18 @@ export const ShopDetail = ({
   shopBusinessHours,
   shopAddress,
   state,
+}: {
+  placeId: string
+  setActive: React.Dispatch<React.SetStateAction<string>>
+  active: string
+  shopPhoto: string
+  shopName: string
+  shopRating: string
+  shopRatingTotal: string
+  shopOpen: boolean | string
+  shopBusinessHours: string[]
+  shopAddress: string
+  state: boolean
 }) => {
   const router = useRouter()
   const { isAuth } = useContext(IsAuthContext)
@@ -72,7 +84,7 @@ export const ShopDetail = ({
       <div css={shopDetailStyle} className={active && 'active'}>
         {shopPhoto && (
           <div css={shopDetailImg}>
-            <Image src={shopPhoto} width={400} height={400} alt='' />
+            <Image src={shopPhoto} width={400} height={400} alt="" />
           </div>
         )}
         <div css={shopDetailTxt}>
@@ -108,7 +120,7 @@ export const ShopDetail = ({
           )}
         </div>
         <button css={backButton} onClick={handleBackClick}>
-          <Image src='./images/arrow.svg' width={9} height={15} alt='' />
+          <Image src="./images/arrow.svg" width={9} height={15} alt="" />
         </button>
       </div>
     </>

@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { css } from '@emotion/react'
 import { signOut } from 'firebase/auth'
 import { auth } from '../../../../firebase'
+import { IsAuthContext } from '@/providers/IsAuthProvider'
+import { useRouter } from 'next/router'
 
-export const LogoutDialog = ({ setIsAuth, router }) => {
+export const LogoutDialog = () => {
+  const { setIsAuth } = useContext(IsAuthContext)
+  const router = useRouter()
+
   const handleLogoutDialogClose = () => {
     const logoutModal: HTMLDialogElement = document.querySelector('#logout')
     logoutModal.close()

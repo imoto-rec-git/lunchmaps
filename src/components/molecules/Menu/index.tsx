@@ -1,9 +1,14 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { useContext } from 'react'
 import { css } from '@emotion/react'
+import { IsAuthContext } from '@/providers/IsAuthProvider'
+import { useRouter } from 'next/router'
 
-export const Menu = ({ router, isAuth }) => {
+export const Menu = () => {
+  const { isAuth } = useContext(IsAuthContext)
+  const router = useRouter()
+
   const handleLogoutDialogOpen = () => {
     const logoutModal: HTMLDialogElement = document.querySelector('#logout')
     logoutModal.showModal()

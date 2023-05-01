@@ -6,6 +6,7 @@ import { auth, db } from '../../../../firebase'
 import { User, onAuthStateChanged } from 'firebase/auth'
 import { useRouter } from 'next/router'
 import { IsAuthContext } from '@/providers/IsAuthProvider'
+import { useSwipeable } from 'react-swipeable'
 
 export const ShopDetail = ({
   placeId,
@@ -64,6 +65,14 @@ export const ShopDetail = ({
   const handleBackClick = () => {
     setActive('')
   }
+  const handleBackSwipe = useSwipeable({
+    onSwiped: (e) => {
+      if (e.dir === 'Right') {
+        setActive('')
+      }
+    },
+    trackMouse: true,
+  })
   const handleFavoritAdd = async () => {
     const docRef = doc(db, 'users', auth.currentUser.uid)
     // fireStore書き込み
@@ -81,7 +90,11 @@ export const ShopDetail = ({
 
   return (
     <>
-      <div css={shopDetailStyle} className={active && 'active'}>
+      <div
+        css={shopDetailStyle}
+        className={active && 'active'}
+        {...handleBackSwipe}
+      >
         {shopPhoto && (
           <div css={shopDetailImg}>
             <Image src={shopPhoto} width={400} height={400} alt="" />

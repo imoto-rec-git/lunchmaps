@@ -7,12 +7,6 @@ export const PassWord = ({
   settingTitle,
   settingContent,
   settingChange,
-}: {
-  isGoogleSignIn: boolean
-  settingWrapper: string
-  settingTitle: string
-  settingContent: string
-  settingChange: string
 }) => {
   return (
     <>

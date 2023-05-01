@@ -31,8 +31,6 @@ export const Homes = () => {
     <>
       <section css={mapContainer}>
         <Map
-          positionLat={positionLat}
-          positionLng={positionLng}
           places={places}
           setShopBusinessHours={setShopBusinessHours}
           setShopName={setShopName}

@@ -1,12 +1,11 @@
+import React, { useContext, useEffect, useMemo, useState } from 'react'
 import { GoogleMap, MarkerF, useJsApiLoader } from '@react-google-maps/api'
 import { User, onAuthStateChanged } from 'firebase/auth'
-import React, { useEffect, useMemo, useState } from 'react'
 import { auth, db } from '../../../../firebase'
 import { doc, getDoc } from 'firebase/firestore'
+import { PositionContext } from '@/providers/IsPositionProvider'
 
 export const Map = ({
-  positionLat,
-  positionLng,
   places,
   setShopBusinessHours,
   setShopName,
@@ -21,6 +20,9 @@ export const Map = ({
   const [user, setUser] = useState(null)
   const [userFavShpoList, setUserFavShopList] = useState([])
   const [userFavShopLocation, setUserFavShopLoaction] = useState([])
+  const { positionLat, setPositionLat, positionLng, setPositionLng } =
+    useContext(PositionContext)
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user)
@@ -60,16 +62,12 @@ export const Map = ({
     }
     userFavListData()
   }
-  const center = {
-    lat: positionLat,
-    lng: positionLng,
-  }
   const zoom = 18
   const options = {
     disableDefaultUI: true,
   }
   const getMakerIcon = (place) => {
-    let iconPath
+    let iconPath: string
     if (place.rating >= 4 && place.user_ratings_total > 80) {
       iconPath = './images/good.svg'
     } else if (place.price_level <= 2) {
@@ -147,19 +145,30 @@ export const Map = ({
   const unsetActive = () => {
     setActive('')
   }
+  const handleLocationClick = (e) => {
+    const newMarker = {
+      lat: e.latLng.lat(),
+      lng: e.latLng.lng(),
+    }
+    setPositionLat(newMarker.lat)
+    setPositionLng(newMarker.lng)
+  }
   return (
     <>
       {isLoaded && places && (
         <GoogleMap
           mapContainerStyle={containerStyle}
-          center={center}
+          center={{ lat: positionLat, lng: positionLng }}
           zoom={zoom}
           options={options}
           clickableIcons={false}
-          onClick={unsetActive}
+          onClick={handleLocationClick}
           onDrag={unsetActive}
         >
-          <MarkerF position={center} />
+          <MarkerF
+            // position={center}
+            position={{ lat: positionLat, lng: positionLng }}
+          />
           {places.map((place, index: number) => (
             <CustomMarker
               key={index}
@@ -174,7 +183,7 @@ export const Map = ({
                 lat: userFavShopLocation[index][0],
                 lng: userFavShopLocation[index][1],
               }}
-              icon='./images/favorite.svg'
+              icon="./images/favorite.svg"
               onClick={() => handleFavClick(userFavShpo)}
             />
           ))}

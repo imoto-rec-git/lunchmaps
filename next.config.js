@@ -5,8 +5,17 @@ const nextConfig = {
     emotion: true,
   },
   images: {
-    domains: ["maps.googleapis.com"],
+    domains: ['maps.googleapis.com'],
   },
 }
+const withPWA = require('next-pwa')
+module.exports = withPWA({
+  pwa: {
+    dest: 'public',
+    register: true,
+    skipWaiting: true,
+  },
+  reactStrinctMode: true,
+})
 
 module.exports = nextConfig

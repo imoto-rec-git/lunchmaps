@@ -2,35 +2,22 @@ import React, { useContext, useEffect, useState } from 'react'
 import Image from 'next/image'
 import { css } from '@emotion/react'
 import { FirstLoadingContext } from '../../../providers/IsFirstLoadingProvider'
+import { useLoad } from '@/hooks/useLoad'
 
 export const Splash = () => {
   const { isfirstLoading, setIsFirstLoading } = useContext(FirstLoadingContext)
-  const [Load, setLoad] = useState('load')
-  useEffect(() => {
-    if (isfirstLoading) {
-      setTimeout(() => {
-        setLoad('loaded')
-      }, 3000)
-      setTimeout(() => {
-        setLoad('loadNone')
-      }, 3800)
-      setIsFirstLoading(false)
-    } else {
-      setLoad('loadNone')
-      setIsFirstLoading(false)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  const { Load } = useLoad({ isfirstLoading, setIsFirstLoading })
+
   return (
     <>
       <section css={splashSection} className={Load}>
         <div css={splashContainer}>
           <p>
             <Image
-              src='/images/splash_logo.png'
+              src="/images/splash_logo.png"
               width={120}
               height={97}
-              alt='LunchMaps'
+              alt="LunchMaps"
             />
           </p>
         </div>

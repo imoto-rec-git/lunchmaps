@@ -1,44 +1,16 @@
 import React, { useContext } from 'react'
 import Link from 'next/link'
 import { IsAuthContext } from '@/providers/IsAuthProvider'
-import { signInWithPopup } from 'firebase/auth'
-import { auth, db, googleProvider } from '../../../../firebase'
-import { doc, getDoc, setDoc } from 'firebase/firestore'
 import { useRouter } from 'next/router'
 import { css } from '@emotion/react'
+import { useGoogleAuth } from '@/hooks/useGoogleAuth'
 
 export const LoginContent = () => {
   const router = useRouter()
   const { setIsAuth } = useContext(IsAuthContext)
-
-  const loginWithGoogle = () => {
-    signInWithPopup(auth, googleProvider)
-      .then(() => {
-        const uid = auth.currentUser.uid
-        const docRef = doc(db, `users/${uid}`)
-        getDoc(docRef)
-          .then((docSnap) => {
-            if (docSnap.exists()) {
-              setIsAuth(true)
-              router.push('/')
-            } else {
-              setDoc(docRef, {
-                favoriteList: [],
-              })
-                .then(() => {
-                  setIsAuth(true)
-                  router.push('/')
-                })
-                .catch((error) => console.log(error))
-            }
-          })
-          .catch((error) => console.log(error))
-      })
-      .catch((error) => console.log(error))
-  }
+  const { loginWithGoogle } = useGoogleAuth({ setIsAuth, router })
   return (
     <div css={loginContents}>
-      {/* <p>かんたんログイン</p> */}
       <button css={gooleButton} onClick={loginWithGoogle}>
         Googleでログイン
       </button>

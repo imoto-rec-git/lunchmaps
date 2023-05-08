@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { css } from '@emotion/react'
 import Image from 'next/image'
-import { arrayUnion, doc, getDoc, updateDoc } from 'firebase/firestore'
-import { auth, db } from '../../../../firebase'
-import { User, onAuthStateChanged } from 'firebase/auth'
 import { useRouter } from 'next/router'
 import { IsAuthContext } from '@/providers/IsAuthProvider'
-import { useSwipeable } from 'react-swipeable'
+import { useFavoriteAdd } from '@/hooks/useFavoriteAdd'
+import { useBackSwipe } from '@/hooks/useBackSwipe'
+import { useUnsetActive } from '@/hooks/useUnsetActive'
+import { useFavoriteData } from '@/hooks/useFavoriteData'
 
 export const ShopDetail = ({
   placeId,
@@ -35,58 +35,13 @@ export const ShopDetail = ({
 }) => {
   const router = useRouter()
   const { isAuth } = useContext(IsAuthContext)
-  const [user, setUser] = useState(null)
   const [favState, setFavState] = useState(false)
   const [favList, setFavList] = useState([])
-  useEffect(() => {
-    const userFavListData = async (user: User) => {
-      if (placeId) {
-        const docRef = doc(db, 'users', user.uid)
-        const docSnap = await getDoc(docRef)
-        const favList = docSnap.data().favoriteList
-        if (favList.includes(placeId)) {
-          setFavState(true)
-        } else {
-          setFavState(false)
-        }
-      }
-    }
 
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user)
-      if (user) {
-        userFavListData(user)
-      }
-    })
-    return () => {
-      unsubscribe()
-    }
-  }, [placeId, favList])
-  const handleBackClick = () => {
-    setActive('')
-  }
-  const handleBackSwipe = useSwipeable({
-    onSwiped: (e) => {
-      if (e.dir === 'Right') {
-        setActive('')
-      }
-    },
-    trackMouse: true,
-  })
-  const handleFavoritAdd = async () => {
-    const docRef = doc(db, 'users', auth.currentUser.uid)
-    // fireStore書き込み
-    const washing = async () => {
-      await updateDoc(docRef, {
-        favoriteList: arrayUnion(placeId),
-      })
-    }
-    washing()
-    const docSnap = await getDoc(docRef)
-    const favList = docSnap.data().favoriteList
-    setFavList(favList)
-    router.push('./favorite')
-  }
+  useFavoriteData({ placeId, setFavState, favList })
+  const { handleReturn } = useUnsetActive({ setActive })
+  const { handleBackSwipe } = useBackSwipe({ setActive })
+  const { handleFavoritAdd } = useFavoriteAdd({ setFavList, router, placeId })
 
   return (
     <>
@@ -132,7 +87,7 @@ export const ShopDetail = ({
             </button>
           )}
         </div>
-        <button css={backButton} onClick={handleBackClick}>
+        <button css={backButton} onClick={handleReturn}>
           <Image src="./images/arrow.svg" width={9} height={15} alt="" />
         </button>
       </div>

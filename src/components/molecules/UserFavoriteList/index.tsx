@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import React from 'react'
 import { css } from '@emotion/react'
-import { arrayRemove, doc, updateDoc } from 'firebase/firestore'
-import { auth, db } from '../../../../firebase'
 import { useRouter } from 'next/router'
+import { useFavoriteDetail } from '@/hooks/useFavoriteDetail'
+import { useFavoriteDelete } from '@/hooks/useFavoriteDelete'
 
 export const UserFavoriteList = ({
   userFavShpoList,
@@ -11,24 +11,11 @@ export const UserFavoriteList = ({
   setActive,
 }) => {
   const router = useRouter()
-  const handleFavShopDetail = async (place_id: string) => {
-    const res = await fetch(`/api/details?place_id=${place_id}`)
-    const data = await res.json()
-    setFavoriteShopInfo(data.result)
-    setActive('active')
-  }
-  const handleDeleteFav = async (placeId: string) => {
-    // firestoreの特定の要素削除
-    const docRef = doc(db, 'users', auth.currentUser.uid)
-    try {
-      await updateDoc(docRef, {
-        favoriteList: arrayRemove(placeId),
-      })
-      router.reload()
-    } catch (error) {
-      console.error(error)
-    }
-  }
+  const { handleFavoriteDetail } = useFavoriteDetail({
+    setFavoriteShopInfo,
+    setActive,
+  })
+  const { handleFavoriteDelete } = useFavoriteDelete({ router })
   return (
     <ul css={favList}>
       {userFavShpoList.map((shop) => (
@@ -47,11 +34,14 @@ export const UserFavoriteList = ({
             ) : (
               <span>営業時間外</span>
             )}
-            <p onClick={() => handleFavShopDetail(shop.place_id)}>
+            <p onClick={() => handleFavoriteDetail(shop.place_id)}>
               {shop.name}
             </p>
           </div>
-          <div css={favShopDel} onClick={() => handleDeleteFav(shop.place_id)}>
+          <div
+            css={favShopDel}
+            onClick={() => handleFavoriteDelete(shop.place_id)}
+          >
             <p>削除</p>
           </div>
         </li>

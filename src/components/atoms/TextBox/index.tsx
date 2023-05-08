@@ -1,42 +1,28 @@
 import React, { useState } from 'react'
 import { css } from '@emotion/react'
 import Image from 'next/image'
+import { useAreaSearch } from '@/hooks/useAreaSearch'
 
 export const TextBox = ({ setLat, setLng }) => {
   const [areaSearch, setAreaSearch] = useState('')
-  const handleAreaSearch = (e) => {
-    setAreaSearch(e.target.value)
-  }
-  const handleAreaSubmit = (e) => {
-    e.preventDefault()
-    codeAddress()
-    setAreaSearch('')
-  }
-  const codeAddress = () => {
-    const geocoder = new google.maps.Geocoder()
-    geocoder.geocode({ address: areaSearch }, function (results, status) {
-      if (status == 'OK') {
-        const lat = results[0].geometry.location.lat()
-        setLat(lat)
-        const lng = results[0].geometry.location.lng()
-        setLng(lng)
-      } else {
-        alert('エリアが取得できませんでした。')
-      }
-    })
-  }
+  const { handleAreaSearch, handleAreaSubmit } = useAreaSearch({
+    areaSearch,
+    setAreaSearch,
+    setLat,
+    setLng,
+  })
   return (
     <>
       <div css={TextBoxStyle}>
         <form onSubmit={handleAreaSubmit}>
           <input
-            type='text'
+            type="text"
             value={areaSearch}
-            placeholder='エリア検索（例：大阪市中央区、本町駅など）'
+            placeholder="エリア検索（例：大阪市中央区、本町駅など）"
             onChange={handleAreaSearch}
           />
-          <button type='submit'>
-            <Image src='./images/search.svg' width={25} height={25} alt='' />
+          <button type="submit">
+            <Image src="./images/search.svg" width={25} height={25} alt="" />
           </button>
         </form>
       </div>

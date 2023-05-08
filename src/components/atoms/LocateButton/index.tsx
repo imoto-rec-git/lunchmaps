@@ -1,22 +1,10 @@
-import React from 'react';
-import { css } from '@emotion/react';
-import Image from 'next/image';
+import React from 'react'
+import { css } from '@emotion/react'
+import Image from 'next/image'
+import { useLocationSearch } from '@/hooks/useLocationSearch'
 
 export const LocateButton = ({ setLat, setLng }) => {
-  const handleCurrentLocationClick = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(successFunc, errorFunc);
-    } else {
-      console.log('現在地を取得できませんでした。');
-    }
-  };
-  const successFunc = (position) => {
-    setLat(position.coords.latitude);
-    setLng(position.coords.longitude);
-  };
-  const errorFunc = () => {
-    console.log('エラー発生');
-  };
+  const { handleCurrentLocationClick } = useLocationSearch({ setLat, setLng })
   return (
     <>
       <div css={LocationStyle} onClick={handleCurrentLocationClick}>
@@ -24,8 +12,8 @@ export const LocateButton = ({ setLat, setLng }) => {
         <p>現在地</p>
       </div>
     </>
-  );
-};
+  )
+}
 
 const LocationStyle = css`
   color: var(--color-white);
@@ -49,4 +37,4 @@ const LocationStyle = css`
     font-size: 10px;
     text-align: center;
   }
-`;
+`

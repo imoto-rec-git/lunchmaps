@@ -4,19 +4,17 @@ import React, { useContext } from 'react'
 import { css } from '@emotion/react'
 import { IsAuthContext } from '@/providers/IsAuthProvider'
 import { useRouter } from 'next/router'
+import { useLogoutDialogOpen } from '@/hooks/useLogoutDialogOpen'
 
 export const Menu = () => {
   const { isAuth } = useContext(IsAuthContext)
   const router = useRouter()
 
-  const handleLogoutDialogOpen = () => {
-    const logoutModal: HTMLDialogElement | null =
-      document.querySelector('#logout')
-    logoutModal && logoutModal.showModal()
-  }
-  const loginAlert = () => {
-    alert('ログインすることで、ご利用できます。')
-  }
+  const { handleLogoutDialogOpen, loginAlert } = useLogoutDialogOpen({
+    isAuth,
+    router,
+  })
+
   return (
     <nav css={Nav}>
       <ul>

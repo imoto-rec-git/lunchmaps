@@ -1,27 +1,17 @@
 import React, { useContext } from 'react'
 import { css } from '@emotion/react'
-import { signOut } from 'firebase/auth'
-import { auth } from '../../../../firebase'
 import { IsAuthContext } from '@/providers/IsAuthProvider'
 import { useRouter } from 'next/router'
+import { useLogout } from '@/hooks/useLogout'
 
 export const LogoutDialog = () => {
   const { setIsAuth } = useContext(IsAuthContext)
   const router = useRouter()
+  const { handleLogout, handleLogoutDialogClose } = useLogout({
+    setIsAuth,
+    router,
+  })
 
-  const handleLogoutDialogClose = () => {
-    const logoutModal: HTMLDialogElement = document.querySelector('#logout')
-    logoutModal.close()
-  }
-  const handleLogout = () => {
-    signOut(auth)
-      .then(() => {
-        setIsAuth(false)
-        router.reload()
-      })
-      .catch((error) => console.log(error))
-    handleLogoutDialogClose()
-  }
   return (
     <dialog id="logout" css={favShopDelDialog}>
       <p>ログアウトしますか？</p>

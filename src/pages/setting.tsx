@@ -1,30 +1,18 @@
-import React, { useContext, useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Navigation } from '@/components/organisms/Navigation'
 import { HeadTitle } from '@/components/molecules/HeadTitle'
 import { css } from '@emotion/react'
-import { auth } from '../../firebase'
-import { FirstLoadingContext } from '@/providers/IsFirstLoadingProvider'
 import { Mail } from '@/components/molecules/Mail'
 import { PassWord } from '@/components/molecules/PassWord'
 import { HeadMeta } from '@/components/organisms/HeadMeta'
+import { useUserData } from '@/hooks/useUserData'
+import { useLoadCheck } from '@/hooks/useLoadCheck'
 
 export default function Setting() {
-  const { setIsFirstLoading } = useContext(FirstLoadingContext)
   const [userEmail, setUserEmail] = useState('')
   const [isGoogleSignIn, setIsGoogleSignIn] = useState(false)
-  useEffect(() => {
-    setIsFirstLoading(false)
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        setUserEmail(user.email)
-        setIsGoogleSignIn(user.providerData[0].providerId === 'google.com')
-      } else {
-        setUserEmail('')
-      }
-    })
-    return unsubscribe
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  useLoadCheck()
+  useUserData({ setUserEmail, setIsGoogleSignIn })
   return (
     <>
       <HeadMeta

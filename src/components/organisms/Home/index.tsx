@@ -1,4 +1,3 @@
-import React, { useContext, useEffect, useState } from 'react'
 import { css } from '@emotion/react'
 import { TextBox } from '@/components/atoms/TextBox'
 import { LocateButton } from '@/components/atoms/LocateButton'

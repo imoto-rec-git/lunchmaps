@@ -1,18 +1,12 @@
-import React, { useContext, useEffect } from 'react'
 import { css } from '@emotion/react'
 import { HeadTitle } from '@/components/molecules/HeadTitle'
 import { Navigation } from '@/components/organisms/Navigation'
-import { FirstLoadingContext } from '@/providers/IsFirstLoadingProvider'
 import { HeadMeta } from '@/components/organisms/HeadMeta'
 import { LoginContent } from '@/components/molecules/LoginContent'
+import { useLoadCheck } from '@/hooks/useLoadCheck'
 
 export default function Login() {
-  const { setIsFirstLoading } = useContext(FirstLoadingContext)
-  useEffect(() => {
-    setIsFirstLoading(false)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
+  useLoadCheck()
   return (
     <>
       <HeadMeta

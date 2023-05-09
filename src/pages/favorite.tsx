@@ -1,14 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Navigation } from '@/components/organisms/Navigation'
 import { HeadTitle } from '@/components/molecules/HeadTitle'
 import { css } from '@emotion/react'
 import { ShopDetail } from '@/components/molecules/ShopDetail'
-import { auth, db } from '../../firebase'
-import { onAuthStateChanged, User } from 'firebase/auth'
-import { doc, getDoc } from 'firebase/firestore'
-import { FirstLoadingContext } from '@/providers/IsFirstLoadingProvider'
 import { UserFavoriteList } from '@/components/molecules/UserFavoriteList'
 import { HeadMeta } from '@/components/organisms/HeadMeta'
+import { useFavoriteFetchData } from '@/hooks/useFavoriteFetchData'
+import { useLoadCheck } from '@/hooks/useLoadCheck'
 
 export default function Favorite() {
   interface Data {
@@ -27,8 +25,7 @@ export default function Favorite() {
     user_ratings_total: string
     vicinity: string
   }
-  const { setIsFirstLoading } = useContext(FirstLoadingContext)
-  const [user, setUser] = useState(null)
+
   const [userFavShpoList, setUserFavShopList] = useState([])
   const [favoriteShopInfo, setFavoriteShopInfo] = useState<Data>({
     name: '',
@@ -47,41 +44,8 @@ export default function Favorite() {
     vicinity: '',
   })
   const [active, setActive] = useState(null)
-  useEffect(() => {
-    setIsFirstLoading(false)
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user)
-      if (user) {
-        fetchData(user)
-      }
-    })
-    return () => {
-      unsubscribe()
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  const fetchData = async (user: User) => {
-    // fireStore読み込み
-    const userFavListData = async () => {
-      const docRef = doc(db, 'users', user.uid)
-      const docSnap = await getDoc(docRef)
-      if (docSnap.exists() && docSnap.data().favoriteList) {
-        const fetchedData = []
-        for (let i = 0; i < docSnap.data().favoriteList.length; i++) {
-          const res = await fetch(
-            `/api/details?place_id=${docSnap.data().favoriteList[i]}`
-          )
-          const data = await res.json()
-          fetchedData.push(data.result)
-        }
-        setUserFavShopList(fetchedData)
-      } else {
-        console.log('No such document!')
-      }
-    }
-    userFavListData()
-  }
+  useLoadCheck()
+  useFavoriteFetchData({ setUserFavShopList })
   return (
     <>
       <HeadMeta

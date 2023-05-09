@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import React from 'react'
 import { css } from '@emotion/react'
 import { useRouter } from 'next/router'
 import { useFavoriteDetail } from '@/hooks/useFavoriteDetail'

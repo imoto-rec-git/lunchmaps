@@ -8,6 +8,10 @@ import { useBackSwipe } from '@/hooks/useBackSwipe'
 import { useUnsetActive } from '@/hooks/useUnsetActive'
 import { useFavoriteData } from '@/hooks/useFavoriteData'
 
+interface isAuthProps {
+  isAuth: boolean
+}
+
 export const ShopDetail = ({
   placeId,
   setActive,
@@ -34,7 +38,7 @@ export const ShopDetail = ({
   state: boolean
 }) => {
   const router = useRouter()
-  const { isAuth } = useContext(IsAuthContext)
+  const { isAuth } = useContext(IsAuthContext) as isAuthProps
   const [favState, setFavState] = useState(false)
   const [favList, setFavList] = useState([])
 

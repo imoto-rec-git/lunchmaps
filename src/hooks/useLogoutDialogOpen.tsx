@@ -1,4 +1,4 @@
-export const useLogoutDialogOpen = ({ isAuth, router }) => {
+export const useLogoutDialogOpen = () => {
   const handleLogoutDialogOpen = () => {
     const logoutModal: HTMLDialogElement | null =
       document.querySelector('#logout')

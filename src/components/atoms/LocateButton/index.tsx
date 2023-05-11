@@ -1,4 +1,3 @@
-import React from 'react'
 import { css } from '@emotion/react'
 import Image from 'next/image'
 import { useLocationSearch } from '@/hooks/useLocationSearch'

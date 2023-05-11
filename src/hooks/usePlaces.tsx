@@ -1,9 +1,16 @@
 import { useContext, useEffect, useState } from 'react'
 import { PositionContext } from '@/providers/IsPositionProvider'
 
+interface Position {
+  positionLat: number
+  setPositionLat: (value: number) => void
+  positionLng: number
+  setPositionLng: (value: number) => void
+}
+
 export const usePlaces = () => {
   const { positionLat, setPositionLat, positionLng, setPositionLng } =
-    useContext(PositionContext)
+    useContext(PositionContext) as Position
   const [places, setPlaces] = useState(null)
   const [shopName, setShopName] = useState('')
   const [shopPhoto, setShopPhoto] = useState('')

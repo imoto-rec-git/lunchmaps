@@ -7,6 +7,7 @@ import { UserFavoriteList } from '@/components/molecules/UserFavoriteList'
 import { HeadMeta } from '@/components/organisms/HeadMeta'
 import { useFavoriteFetchData } from '@/hooks/useFavoriteFetchData'
 import { useLoadCheck } from '@/hooks/useLoadCheck'
+import { DocumentData } from 'firebase/firestore'
 
 export default function Favorite() {
   interface Data {
@@ -26,7 +27,7 @@ export default function Favorite() {
     vicinity: string
   }
 
-  const [userFavShpoList, setUserFavShopList] = useState([])
+  const [userFavShpoList, setUserFavShopList] = useState<DocumentData[]>([])
   const [favoriteShopInfo, setFavoriteShopInfo] = useState<Data>({
     name: '',
     opening_hours: {
@@ -43,7 +44,7 @@ export default function Favorite() {
     user_ratings_total: '',
     vicinity: '',
   })
-  const [active, setActive] = useState(null)
+  const [active, setActive] = useState<string>('')
   useLoadCheck()
   useFavoriteFetchData({ setUserFavShopList })
   return (

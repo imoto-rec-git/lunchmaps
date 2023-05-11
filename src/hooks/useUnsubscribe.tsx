@@ -1,8 +1,13 @@
-import { onAuthStateChanged } from 'firebase/auth'
-import { useEffect } from 'react'
+import { onAuthStateChanged, User } from 'firebase/auth'
+import React, { useEffect } from 'react'
 import { auth } from '../../firebase'
 
-export const useUnsubscribe = ({ setUser, fetchData }) => {
+interface useUnsubscribe {
+  setUser: React.Dispatch<React.SetStateAction<User | null>>
+  fetchData: (user: User) => Promise<void>
+}
+
+export const useUnsubscribe = ({ setUser, fetchData }: useUnsubscribe) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user)

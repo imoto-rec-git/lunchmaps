@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import React from 'react'
 import { css } from '@emotion/react'
 
 export const HeadTitleMap = () => {
@@ -7,10 +6,10 @@ export const HeadTitleMap = () => {
     <>
       <header css={mapHeader}>
         <Image
-          src='/images/map_logo.png'
+          src="/images/map_logo.png"
           width={79}
           height={38}
-          alt='LunchMaps'
+          alt="LunchMaps"
         ></Image>
       </header>
     </>

@@ -1,7 +1,11 @@
 import Head from 'next/head'
-import React from 'react'
 
-export const HeadMeta = ({ title, description }) => {
+interface HeadMetaProps {
+  title: string
+  description: string
+}
+
+export const HeadMeta = ({ title, description }: HeadMetaProps) => {
   return (
     <Head>
       <title>{title}</title>

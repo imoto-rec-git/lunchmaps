@@ -16,7 +16,6 @@ export default function Home() {
         <Splash />
         <Homes />
         <Navigation />
-        saaaa
       </main>
     </>
   )

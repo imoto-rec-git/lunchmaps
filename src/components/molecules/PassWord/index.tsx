@@ -1,5 +1,13 @@
 import React from 'react'
-import { css } from '@emotion/react'
+import { css, SerializedStyles } from '@emotion/react'
+
+interface PassWordProps {
+  isGoogleSignIn: boolean
+  settingWrapper: SerializedStyles
+  settingTitle: SerializedStyles
+  settingContent: SerializedStyles
+  settingChange: SerializedStyles
+}
 
 export const PassWord = ({
   isGoogleSignIn,
@@ -7,7 +15,7 @@ export const PassWord = ({
   settingTitle,
   settingContent,
   settingChange,
-}) => {
+}: PassWordProps) => {
   return (
     <>
       {!isGoogleSignIn && (

@@ -6,7 +6,10 @@ interface IsAuthContext {
   setIsAuth: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const IsAuthContext = createContext<IsAuthContext | undefined>(undefined)
+export const IsAuthContext = createContext<IsAuthContext>({
+  isAuth: false,
+  setIsAuth: () => {},
+})
 export const IsAuthProvider = ({ children }: { children: ReactNode }) => {
   const [isAuth, setIsAuth] = useState(false)
 

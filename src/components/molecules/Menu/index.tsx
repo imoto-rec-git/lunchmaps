@@ -10,10 +10,7 @@ export const Menu = () => {
   const { isAuth } = useContext(IsAuthContext)
   const router = useRouter()
 
-  const { handleLogoutDialogOpen, loginAlert } = useLogoutDialogOpen({
-    isAuth,
-    router,
-  })
+  const { handleLogoutDialogOpen, loginAlert } = useLogoutDialogOpen()
 
   return (
     <nav css={Nav}>

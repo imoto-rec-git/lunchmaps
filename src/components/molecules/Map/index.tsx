@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { Dispatch, SetStateAction, useContext, useState } from 'react'
 import { GoogleMap, MarkerF, useJsApiLoader } from '@react-google-maps/api'
 import { PositionContext } from '@/providers/IsPositionProvider'
 import { useMapClick } from '@/hooks/useMapClick'
@@ -9,6 +9,19 @@ import { useCustomMarker } from '@/hooks/useCustomMarker'
 import { useGetMakerIcon } from '@/hooks/useGetMakerIcon'
 import { useMapFavoriteDisplay } from '@/hooks/useMapFavoriteDisplay'
 import { useUnsubscribe } from '@/hooks/useUnsubscribe'
+
+interface MapProps {
+  places: string
+  setShopBusinessHours: Dispatch<SetStateAction<string[]>>
+  setShopName: Dispatch<SetStateAction<string>>
+  setShopOpen: Dispatch<SetStateAction<boolean>>
+  setShopPhoto: Dispatch<SetStateAction<string>>
+  setShopAddress: Dispatch<SetStateAction<string>>
+  setShopRating: Dispatch<SetStateAction<string>>
+  setRatingTotal: Dispatch<SetStateAction<string>>
+  setPlaceId: Dispatch<SetStateAction<string>>
+  setActive: Dispatch<SetStateAction<string>>
+}
 
 export const Map = ({
   places,
@@ -21,7 +34,7 @@ export const Map = ({
   setRatingTotal,
   setPlaceId,
   setActive,
-}) => {
+}: MapProps) => {
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ''
   const zoom = 18
   const options = {

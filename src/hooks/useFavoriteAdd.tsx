@@ -6,10 +6,11 @@ import {
   updateDoc,
 } from 'firebase/firestore'
 import { NextRouter } from 'next/router'
+import { Dispatch, SetStateAction } from 'react'
 import { auth, db } from '../../firebase'
 
 interface UseFavoriteAddProps {
-  setFavList: React.Dispatch<React.SetStateAction<DocumentData[]>>
+  setFavList: Dispatch<SetStateAction<DocumentData[]>>
   router: NextRouter
   placeId: string
 }

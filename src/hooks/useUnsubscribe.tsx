@@ -1,5 +1,5 @@
 import { onAuthStateChanged, User } from 'firebase/auth'
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { auth } from '../../firebase'
 
 interface useUnsubscribe {
@@ -8,15 +8,19 @@ interface useUnsubscribe {
 }
 
 export const useUnsubscribe = ({ setUser, fetchData }: useUnsubscribe) => {
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+  const handleAuthStateChanged = useCallback(
+    (user: User | null) => {
       setUser(user)
       if (user) {
         fetchData(user)
       }
-    })
+    },
+    [setUser, fetchData]
+  )
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, handleAuthStateChanged)
     return () => {
       unsubscribe()
     }
-  }, [])
+  }, [handleAuthStateChanged])
 }

@@ -9,6 +9,19 @@ interface Place {
       lng: number
     }
   }
+  place_id: string
+  name: string
+  opening_hours: {
+    weekday_text: string[]
+    open_now: boolean
+  }
+  photos: {
+    photo_reference: string
+  }[]
+  vicinity: string
+  rating: number
+  user_ratings_total: number
+  price_level: number
 }
 
 interface CustomMarkerProps {

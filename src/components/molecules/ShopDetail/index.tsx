@@ -7,6 +7,7 @@ import { useFavoriteAdd } from '@/hooks/useFavoriteAdd'
 import { useBackSwipe } from '@/hooks/useBackSwipe'
 import { useUnsetActive } from '@/hooks/useUnsetActive'
 import { useFavoriteData } from '@/hooks/useFavoriteData'
+import { DocumentData } from 'firebase/firestore'
 
 interface isAuthProps {
   isAuth: boolean
@@ -30,8 +31,8 @@ export const ShopDetail = ({
   active: string
   shopPhoto: string
   shopName: string
-  shopRating: string
-  shopRatingTotal: string
+  shopRating: number
+  shopRatingTotal: number
   shopOpen: boolean | string
   shopBusinessHours: string[]
   shopAddress: string
@@ -40,8 +41,7 @@ export const ShopDetail = ({
   const router = useRouter()
   const { isAuth } = useContext(IsAuthContext) as isAuthProps
   const [favState, setFavState] = useState(false)
-  const [favList, setFavList] = useState([])
-
+  const [favList, setFavList] = useState<DocumentData[]>([])
   useFavoriteData({ placeId, setFavState, favList })
   const { handleReturn } = useUnsetActive({ setActive })
   const { handleBackSwipe } = useBackSwipe({ setActive })

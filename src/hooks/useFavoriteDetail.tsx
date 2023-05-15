@@ -11,8 +11,8 @@ interface Data {
     }
   }
   place_id: string
-  rating: string
-  user_ratings_total: string
+  rating: number
+  user_ratings_total: number
   vicinity: string
 }
 interface UseFavoriteDetail {

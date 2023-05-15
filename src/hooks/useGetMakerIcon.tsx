@@ -1,4 +1,11 @@
 interface Place {
+  id: number
+  geometry: {
+    location: {
+      lat: number
+      lng: number
+    }
+  }
   rating: number
   user_ratings_total: number
   price_level: number

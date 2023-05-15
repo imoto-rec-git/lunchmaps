@@ -3,14 +3,14 @@ import React from 'react'
 interface useMapFavoriteDetailProps {
   setShopName: React.Dispatch<React.SetStateAction<string>>
   setShopBusinessHours: React.Dispatch<React.SetStateAction<string[]>>
-  setShopOpen: React.Dispatch<React.SetStateAction<string>>
+  setShopOpen: React.Dispatch<React.SetStateAction<boolean>>
   setShopPhoto: React.Dispatch<React.SetStateAction<string>>
   setShopAddress: React.Dispatch<React.SetStateAction<string>>
-  setShopRating: React.Dispatch<React.SetStateAction<string>>
-  setRatingTotal: React.Dispatch<React.SetStateAction<string>>
+  setShopRating: React.Dispatch<React.SetStateAction<number>>
+  setRatingTotal: React.Dispatch<React.SetStateAction<number>>
   setPlaceId: React.Dispatch<React.SetStateAction<string>>
   setActive: React.Dispatch<React.SetStateAction<string>>
-  apiKey: React.Dispatch<React.SetStateAction<string>>
+  apiKey: string
 }
 
 export const useMapFavoriteDetail = ({

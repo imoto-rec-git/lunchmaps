@@ -1,5 +1,18 @@
+interface Place {
+  id: number
+  geometry: {
+    location: {
+      lat: number
+      lng: number
+    }
+  }
+  rating: number
+  user_ratings_total: number
+  price_level: number
+}
+
 export const useGetMakerIcon = () => {
-  const getMakerIcon = (place) => {
+  const getMakerIcon = (place: Place) => {
     let iconPath: string
     if (place.rating >= 4 && place.user_ratings_total > 80) {
       iconPath = './images/good.svg'

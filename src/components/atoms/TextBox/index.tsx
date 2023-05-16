@@ -1,9 +1,14 @@
-import React, { useState } from 'react'
+import { Dispatch, SetStateAction, useState } from 'react'
 import { css } from '@emotion/react'
 import Image from 'next/image'
 import { useAreaSearch } from '@/hooks/useAreaSearch'
 
-export const TextBox = ({ setLat, setLng }) => {
+interface TextBoxProps {
+  setLat: Dispatch<SetStateAction<number>>
+  setLng: Dispatch<SetStateAction<number>>
+}
+
+export const TextBox = ({ setLat, setLng }: TextBoxProps) => {
   const [areaSearch, setAreaSearch] = useState('')
   const { handleAreaSearch, handleAreaSubmit } = useAreaSearch({
     areaSearch,

@@ -1,4 +1,4 @@
-import { create } from 'zustand';
+import { create } from 'zustand'
 
 const useStore = create((set) => ({
   currentLat: 0,
@@ -7,7 +7,10 @@ const useStore = create((set) => ({
   // decrease: () => set((state) => ({ count: state.count - 1 })),
   // reset: () => set({ count: 0 })
 
-  position: () => set((position) => ({ currentLat: position.currentLat + 1 })),
-}));
+  position: () =>
+    set((position: { currentLat: number }) => ({
+      currentLat: position.currentLat + 1,
+    })),
+}))
 
-export default useStore;
+export default useStore

@@ -3,12 +3,37 @@ import { css } from '@emotion/react'
 import { useRouter } from 'next/router'
 import { useFavoriteDetail } from '@/hooks/useFavoriteDetail'
 import { useFavoriteDelete } from '@/hooks/useFavoriteDelete'
+import { Dispatch, SetStateAction } from 'react'
+import { DocumentData } from 'firebase/firestore'
+
+interface Data {
+  name: string
+  opening_hours: {
+    open_now: boolean
+    weekday_text: string[]
+  }
+  photos: {
+    0: {
+      photo_reference: string
+    }
+  }
+  place_id: string
+  rating: number
+  user_ratings_total: number
+  vicinity: string
+}
+
+interface UserFavoriteListProps {
+  userFavShpoList: DocumentData[]
+  setFavoriteShopInfo: Dispatch<SetStateAction<Data>>
+  setActive: Dispatch<SetStateAction<string>>
+}
 
 export const UserFavoriteList = ({
   userFavShpoList,
   setFavoriteShopInfo,
   setActive,
-}) => {
+}: UserFavoriteListProps) => {
   const router = useRouter()
   const { handleFavoriteDetail } = useFavoriteDetail({
     setFavoriteShopInfo,

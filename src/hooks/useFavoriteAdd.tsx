@@ -1,20 +1,42 @@
-import { arrayUnion, doc, getDoc, updateDoc } from 'firebase/firestore'
+import {
+  arrayUnion,
+  doc,
+  DocumentData,
+  getDoc,
+  updateDoc,
+} from 'firebase/firestore'
+import { NextRouter } from 'next/router'
+import { Dispatch, SetStateAction } from 'react'
 import { auth, db } from '../../firebase'
 
-export const useFavoriteAdd = ({ setFavList, router, placeId }) => {
+interface UseFavoriteAddProps {
+  setFavList: Dispatch<SetStateAction<DocumentData[]>>
+  router: NextRouter
+  placeId: string
+}
+
+export const useFavoriteAdd = ({
+  setFavList,
+  router,
+  placeId,
+}: UseFavoriteAddProps) => {
   const handleFavoritAdd = async () => {
-    const docRef = doc(db, 'users', auth.currentUser.uid)
-    // fireStore書き込み
-    const washing = async () => {
-      await updateDoc(docRef, {
-        favoriteList: arrayUnion(placeId),
-      })
+    if (auth.currentUser) {
+      const docRef = doc(db, 'users', auth.currentUser.uid)
+      // fireStore書き込み
+      const washing = async () => {
+        await updateDoc(docRef, {
+          favoriteList: arrayUnion(placeId),
+        })
+      }
+      washing()
+      const docSnap = await getDoc(docRef)
+      if (docSnap.exists()) {
+        const favList = docSnap.data()?.favoriteList as DocumentData[]
+        setFavList(favList)
+        router.push('./favorite')
+      }
     }
-    washing()
-    const docSnap = await getDoc(docRef)
-    const favList = docSnap.data().favoriteList
-    setFavList(favList)
-    router.push('./favorite')
   }
   return { handleFavoritAdd }
 }

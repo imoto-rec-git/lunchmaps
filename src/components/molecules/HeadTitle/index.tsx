@@ -3,7 +3,12 @@ import Link from 'next/link'
 import React from 'react'
 import { css } from '@emotion/react'
 
-export const HeadTitle = ({ link, title }) => {
+interface HeadTitleProps {
+  link: string
+  title: string
+}
+
+export const HeadTitle = ({ link, title }: HeadTitleProps) => {
   return (
     <>
       <div css={headTitle}>

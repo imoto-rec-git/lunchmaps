@@ -1,3 +1,18 @@
+import React from 'react'
+
+interface useMapFavoriteDetailProps {
+  setShopName: React.Dispatch<React.SetStateAction<string>>
+  setShopBusinessHours: React.Dispatch<React.SetStateAction<string[]>>
+  setShopOpen: React.Dispatch<React.SetStateAction<boolean>>
+  setShopPhoto: React.Dispatch<React.SetStateAction<string>>
+  setShopAddress: React.Dispatch<React.SetStateAction<string>>
+  setShopRating: React.Dispatch<React.SetStateAction<number>>
+  setRatingTotal: React.Dispatch<React.SetStateAction<number>>
+  setPlaceId: React.Dispatch<React.SetStateAction<string>>
+  setActive: React.Dispatch<React.SetStateAction<string>>
+  apiKey: string
+}
+
 export const useMapFavoriteDetail = ({
   setShopName,
   setShopBusinessHours,
@@ -9,8 +24,8 @@ export const useMapFavoriteDetail = ({
   setPlaceId,
   setActive,
   apiKey,
-}) => {
-  const handleFavClick = async (data) => {
+}: useMapFavoriteDetailProps) => {
+  const handleFavClick = async (data: string) => {
     if (data) {
       const res = await fetch(`/api/details?place_id=${data}`)
       const detailData = await res.json()
@@ -21,9 +36,9 @@ export const useMapFavoriteDetail = ({
         setShopBusinessHours(favData.opening_hours.weekday_text)
       favData.opening_hours && setShopOpen(favData.opening_hours.open_now)
       favData.photos &&
+        favData.photos.length > 0 &&
         setShopPhoto(
-          favData.photos !== undefined &&
-            `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${favData.photos[0].photo_reference}&key=${apiKey}`
+          `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${favData.photos[0].photo_reference}&key=${apiKey}`
         )
       favData.vicinity && setShopAddress(favData.vicinity)
       favData.rating && setShopRating(favData.rating)

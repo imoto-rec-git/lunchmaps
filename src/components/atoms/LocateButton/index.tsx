@@ -1,9 +1,14 @@
-import React from 'react'
 import { css } from '@emotion/react'
 import Image from 'next/image'
 import { useLocationSearch } from '@/hooks/useLocationSearch'
+import { Dispatch, SetStateAction } from 'react'
 
-export const LocateButton = ({ setLat, setLng }) => {
+interface LocateButtonProps {
+  setLat: Dispatch<SetStateAction<number>>
+  setLng: Dispatch<SetStateAction<number>>
+}
+
+export const LocateButton = ({ setLat, setLng }: LocateButtonProps) => {
   const { handleCurrentLocationClick } = useLocationSearch({ setLat, setLng })
   return (
     <>

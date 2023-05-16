@@ -1,6 +1,14 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
-export const useLoad = ({ isfirstLoading, setIsFirstLoading }) => {
+interface useLoadProps {
+  isfirstLoading: boolean
+  setIsFirstLoading: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export const useLoad = ({
+  isfirstLoading,
+  setIsFirstLoading,
+}: useLoadProps) => {
   const [Load, setLoad] = useState('load')
 
   useEffect(() => {

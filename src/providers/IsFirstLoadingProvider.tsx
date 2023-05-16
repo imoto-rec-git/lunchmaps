@@ -1,10 +1,23 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, ReactNode, useContext, useState } from 'react'
 
-export const FirstLoadingContext = createContext(undefined)
-export const useFirstLoading = () => {
-  return useContext(FirstLoadingContext)
+interface FirstLoadingContext {
+  isfirstLoading: boolean
+  setIsFirstLoading: (value: boolean) => void
 }
-export const FirstLoadingProvider = ({ children }) => {
+
+export const FirstLoadingContext = createContext<
+  FirstLoadingContext | undefined
+>(undefined)
+export const useFirstLoading = () => {
+  const context = useContext(FirstLoadingContext)
+  if (context === undefined) {
+    throw new Error(
+      'useFirstLoading must be used within a FirstLoadingProvider'
+    )
+  }
+  return context
+}
+export const FirstLoadingProvider = ({ children }: { children: ReactNode }) => {
   const [isfirstLoading, setIsFirstLoading] = useState(true)
   return (
     <FirstLoadingContext.Provider value={{ isfirstLoading, setIsFirstLoading }}>

@@ -1,26 +1,44 @@
 import { onAuthStateChanged, User } from 'firebase/auth'
-import { doc, getDoc } from 'firebase/firestore'
-import { useEffect, useState } from 'react'
+import { doc, DocumentData, getDoc } from 'firebase/firestore'
+import { useCallback, useEffect, useState } from 'react'
 import { auth, db } from '../../firebase'
 
-export const useFavoriteData = ({ placeId, setFavState, favList }) => {
-  const [user, setUser] = useState(null)
+interface UseFavoriteDataProps {
+  placeId: string
+  setFavState: React.Dispatch<React.SetStateAction<boolean>>
+  favList: DocumentData[]
+}
+interface UserDocData {
+  favoriteList: string[]
+}
 
-  useEffect(() => {
-    const userFavListData = async (user: User) => {
+export const useFavoriteData = ({
+  placeId,
+  setFavState,
+  favList,
+}: UseFavoriteDataProps) => {
+  const [user, setUser] = useState<User | null>(null)
+
+  const userFavListData = useCallback(
+    async (user: User) => {
       if (placeId) {
         const docRef = doc(db, 'users', user.uid)
         const docSnap = await getDoc(docRef)
-        const favList = docSnap.data().favoriteList
+        const userData = docSnap.data() as UserDocData
+        const favList = userData.favoriteList
         if (favList.includes(placeId)) {
           setFavState(true)
         } else {
           setFavState(false)
         }
       }
-    }
+    },
+    [placeId, setFavState]
+  )
+
+  useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user)
+      setUser((prevUser) => user)
       if (user) {
         userFavListData(user)
       }
@@ -28,7 +46,7 @@ export const useFavoriteData = ({ placeId, setFavState, favList }) => {
     return () => {
       unsubscribe()
     }
-  }, [placeId, favList])
+  }, [userFavListData])
 
   return { user }
 }

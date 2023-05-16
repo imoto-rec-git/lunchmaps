@@ -1,8 +1,16 @@
-import React, { createContext, useState } from "react"
-import { auth } from "../../firebase"
+import React, { createContext, ReactNode, useState } from 'react'
+import { auth } from '../../firebase'
 
-export const IsAuthContext = createContext(undefined)
-export const IsAuthProvider = ({ children }) => {
+interface IsAuthContext {
+  isAuth: boolean
+  setIsAuth: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export const IsAuthContext = createContext<IsAuthContext>({
+  isAuth: false,
+  setIsAuth: () => {},
+})
+export const IsAuthProvider = ({ children }: { children: ReactNode }) => {
   const [isAuth, setIsAuth] = useState(false)
 
   auth.onAuthStateChanged((user) => {

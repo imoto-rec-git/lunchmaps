@@ -4,8 +4,15 @@ import { css } from '@emotion/react'
 import { FirstLoadingContext } from '../../../providers/IsFirstLoadingProvider'
 import { useLoad } from '@/hooks/useLoad'
 
+interface setIsFirstLoading {
+  isfirstLoading: boolean
+  setIsFirstLoading: React.Dispatch<React.SetStateAction<boolean>>
+}
+
 export const Splash = () => {
-  const { isfirstLoading, setIsFirstLoading } = useContext(FirstLoadingContext)
+  const { isfirstLoading, setIsFirstLoading } = useContext(
+    FirstLoadingContext
+  ) as setIsFirstLoading
   const { Load } = useLoad({ isfirstLoading, setIsFirstLoading })
 
   return (

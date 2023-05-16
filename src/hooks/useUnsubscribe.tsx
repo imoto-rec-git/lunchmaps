@@ -22,5 +22,5 @@ export const useUnsubscribe = ({ setUser, fetchData }: useUnsubscribe) => {
     return () => {
       unsubscribe()
     }
-  }, [handleAuthStateChanged])
+  }, [])
 }

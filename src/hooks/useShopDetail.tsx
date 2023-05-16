@@ -58,7 +58,6 @@ export const useShopDetail = ({
     place.name && setShopName(place.name)
     place.opening_hours && setShopOpen(place.opening_hours.open_now)
     place.photos &&
-      place.photos.length < 0 &&
       setShopPhoto(
         `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${place.photos[0].photo_reference}&key=${apiKey}`
       )

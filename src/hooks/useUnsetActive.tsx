@@ -1,7 +1,7 @@
-import React from 'react'
+import { Dispatch, SetStateAction } from 'react'
 
 interface useUnsetActiveProps {
-  setActive: React.Dispatch<React.SetStateAction<string>>
+  setActive: Dispatch<SetStateAction<string>>
 }
 
 export const useUnsetActive = ({ setActive }: useUnsetActiveProps) => {

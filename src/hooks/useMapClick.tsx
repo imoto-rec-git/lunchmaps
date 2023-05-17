@@ -1,8 +1,8 @@
-import React, { MouseEvent } from 'react'
+import { Dispatch, SetStateAction } from 'react'
 
 interface useMapClickProps {
-  setPositionLat: React.Dispatch<React.SetStateAction<number>>
-  setPositionLng: React.Dispatch<React.SetStateAction<number>>
+  setPositionLat: Dispatch<SetStateAction<number>>
+  setPositionLng: Dispatch<SetStateAction<number>>
 }
 
 export const useMapClick = ({

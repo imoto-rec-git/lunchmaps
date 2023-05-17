@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { Dispatch, SetStateAction, useContext, useState } from 'react'
 import { css } from '@emotion/react'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
@@ -27,7 +27,7 @@ export const ShopDetail = ({
   state,
 }: {
   placeId: string
-  setActive: React.Dispatch<React.SetStateAction<string>>
+  setActive: Dispatch<SetStateAction<string>>
   active: string
   shopPhoto: string
   shopName: string

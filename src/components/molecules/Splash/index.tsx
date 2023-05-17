@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import { Dispatch, SetStateAction, useContext } from 'react'
 import Image from 'next/image'
 import { css } from '@emotion/react'
 import { FirstLoadingContext } from '../../../providers/IsFirstLoadingProvider'
@@ -6,7 +6,7 @@ import { useLoad } from '@/hooks/useLoad'
 
 interface setIsFirstLoading {
   isfirstLoading: boolean
-  setIsFirstLoading: React.Dispatch<React.SetStateAction<boolean>>
+  setIsFirstLoading: Dispatch<SetStateAction<boolean>>
 }
 
 export const Splash = () => {

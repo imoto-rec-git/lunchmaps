@@ -1,13 +1,15 @@
+import { Dispatch, SetStateAction } from 'react'
+
 interface useShopDetailProps {
-  setShopBusinessHours: React.Dispatch<React.SetStateAction<string[]>>
-  setShopName: React.Dispatch<React.SetStateAction<string>>
-  setShopOpen: React.Dispatch<React.SetStateAction<boolean>>
-  setShopPhoto: React.Dispatch<React.SetStateAction<string>>
-  setShopAddress: React.Dispatch<React.SetStateAction<string>>
-  setShopRating: React.Dispatch<React.SetStateAction<number>>
-  setRatingTotal: React.Dispatch<React.SetStateAction<number>>
-  setPlaceId: React.Dispatch<React.SetStateAction<string>>
-  setActive: React.Dispatch<React.SetStateAction<string>>
+  setShopBusinessHours: Dispatch<SetStateAction<string[]>>
+  setShopName: Dispatch<SetStateAction<string>>
+  setShopOpen: Dispatch<SetStateAction<boolean>>
+  setShopPhoto: Dispatch<SetStateAction<string>>
+  setShopAddress: Dispatch<SetStateAction<string>>
+  setShopRating: Dispatch<SetStateAction<number>>
+  setRatingTotal: Dispatch<SetStateAction<number>>
+  setPlaceId: Dispatch<SetStateAction<string>>
+  setActive: Dispatch<SetStateAction<string>>
   apiKey: string
 }
 

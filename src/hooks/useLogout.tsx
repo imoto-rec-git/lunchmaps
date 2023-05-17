@@ -1,9 +1,10 @@
 import { signOut } from 'firebase/auth'
 import { NextRouter } from 'next/router'
+import { Dispatch, SetStateAction } from 'react'
 import { auth } from '../../firebase'
 
 interface useLogoutProps {
-  setIsAuth: React.Dispatch<React.SetStateAction<boolean>>
+  setIsAuth: Dispatch<SetStateAction<boolean>>
   router: NextRouter
 }
 

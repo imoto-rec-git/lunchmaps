@@ -1,9 +1,9 @@
 import { onAuthStateChanged, User } from 'firebase/auth'
-import React, { useCallback, useEffect } from 'react'
+import { Dispatch, SetStateAction, useCallback, useEffect } from 'react'
 import { auth } from '../../firebase'
 
 interface useUnsubscribe {
-  setUser: React.Dispatch<React.SetStateAction<User | null>>
+  setUser: Dispatch<SetStateAction<User | null>>
   fetchData: (user: User) => Promise<void>
 }
 

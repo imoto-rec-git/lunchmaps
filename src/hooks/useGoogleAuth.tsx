@@ -1,11 +1,11 @@
 import { signInWithPopup } from 'firebase/auth'
 import { doc, getDoc, setDoc } from 'firebase/firestore'
 import { NextRouter } from 'next/router'
-import React from 'react'
+import { Dispatch, SetStateAction } from 'react'
 import { auth, db, googleProvider } from '../../firebase'
 
 interface useGoogleAuthProps {
-  setIsAuth: React.Dispatch<React.SetStateAction<boolean>>
+  setIsAuth: Dispatch<SetStateAction<boolean>>
   router: NextRouter
 }
 

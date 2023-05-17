@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react'
+import { Dispatch, SetStateAction, useEffect } from 'react'
 import { auth } from '../../firebase'
 
 interface useUserData {
-  setUserEmail: React.Dispatch<React.SetStateAction<string>>
-  setIsGoogleSignIn: React.Dispatch<React.SetStateAction<boolean>>
+  setUserEmail: Dispatch<SetStateAction<string>>
+  setIsGoogleSignIn: Dispatch<SetStateAction<boolean>>
 }
 
 export const useUserData = ({

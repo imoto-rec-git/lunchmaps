@@ -1,11 +1,11 @@
 import { User } from 'firebase/auth'
 import { doc, getDoc } from 'firebase/firestore'
-import React from 'react'
+import { Dispatch, SetStateAction } from 'react'
 import { db } from '../../firebase'
 
 interface UseMapFavoriteDisplay {
-  setUserFavShopList: React.Dispatch<React.SetStateAction<string[]>>
-  setUserFavShopLoaction: React.Dispatch<React.SetStateAction<number[][]>>
+  setUserFavShopList: Dispatch<SetStateAction<string[]>>
+  setUserFavShopLoaction: Dispatch<SetStateAction<number[][]>>
 }
 
 export const useMapFavoriteDisplay = ({

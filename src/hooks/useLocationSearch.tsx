@@ -1,8 +1,8 @@
-import React from 'react'
+import { Dispatch, SetStateAction } from 'react'
 
 interface UseLocationSearchProps {
-  setLat: React.Dispatch<React.SetStateAction<number>>
-  setLng: React.Dispatch<React.SetStateAction<number>>
+  setLat: Dispatch<SetStateAction<number>>
+  setLng: Dispatch<SetStateAction<number>>
 }
 interface GeolocationPosition {
   coords: {

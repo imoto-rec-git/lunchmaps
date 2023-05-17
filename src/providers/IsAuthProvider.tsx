@@ -1,9 +1,15 @@
-import React, { createContext, ReactNode, useState } from 'react'
+import {
+  createContext,
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  useState,
+} from 'react'
 import { auth } from '../../firebase'
 
 interface IsAuthContext {
   isAuth: boolean
-  setIsAuth: React.Dispatch<React.SetStateAction<boolean>>
+  setIsAuth: Dispatch<SetStateAction<boolean>>
 }
 
 export const IsAuthContext = createContext<IsAuthContext>({

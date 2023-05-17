@@ -1,4 +1,4 @@
-import { SetStateAction } from 'react'
+import { Dispatch, SetStateAction } from 'react'
 
 export const useAreaSearch = ({
   areaSearch,
@@ -7,9 +7,9 @@ export const useAreaSearch = ({
   setLng,
 }: {
   areaSearch: string
-  setAreaSearch: React.Dispatch<React.SetStateAction<string>>
-  setLat: React.Dispatch<React.SetStateAction<number>>
-  setLng: React.Dispatch<React.SetStateAction<number>>
+  setAreaSearch: Dispatch<SetStateAction<string>>
+  setLat: Dispatch<SetStateAction<number>>
+  setLng: Dispatch<SetStateAction<number>>
 }) => {
   const handleAreaSearch = (e: {
     target: { value: SetStateAction<string> }

@@ -1,4 +1,4 @@
-import React from 'react'
+import { Dispatch, SetStateAction } from 'react'
 interface Data {
   name: string
   opening_hours: {
@@ -16,8 +16,8 @@ interface Data {
   vicinity: string
 }
 interface UseFavoriteDetail {
-  setFavoriteShopInfo: React.Dispatch<React.SetStateAction<Data>>
-  setActive: React.Dispatch<React.SetStateAction<string>>
+  setFavoriteShopInfo: Dispatch<SetStateAction<Data>>
+  setActive: Dispatch<SetStateAction<string>>
 }
 
 export const useFavoriteDetail = ({

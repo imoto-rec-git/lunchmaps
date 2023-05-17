@@ -1,10 +1,10 @@
 import { onAuthStateChanged, User } from 'firebase/auth'
 import { doc, DocumentData, getDoc } from 'firebase/firestore'
-import React, { useEffect, useState } from 'react'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { auth, db } from '../../firebase'
 
 interface UseFavoriteFetchDataProps {
-  setUserFavShopList: React.Dispatch<React.SetStateAction<DocumentData[]>>
+  setUserFavShopList: Dispatch<SetStateAction<DocumentData[]>>
 }
 interface Periods {
   close: {

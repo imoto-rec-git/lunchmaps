@@ -1,11 +1,17 @@
 import { onAuthStateChanged, User } from 'firebase/auth'
 import { doc, DocumentData, getDoc } from 'firebase/firestore'
-import { useCallback, useEffect, useState } from 'react'
+import {
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react'
 import { auth, db } from '../../firebase'
 
 interface UseFavoriteDataProps {
   placeId: string
-  setFavState: React.Dispatch<React.SetStateAction<boolean>>
+  setFavState: Dispatch<SetStateAction<boolean>>
   favList: DocumentData[]
 }
 interface UserDocData {

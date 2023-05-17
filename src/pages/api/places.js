@@ -18,11 +18,11 @@ export default places
 //   while (results.length < 60) {
 //     const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=${
 //       process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
-//     }&location=${location}&radius=150&type=restaurant&keyword="ランチ"&language=ja&pagetoken=${
-//       nextPageToken || ''
+//     }&location=${location}&radius=150&type=restaurant&keyword="ランチ"&language=ja${
+//       nextPageToken ? `&pagetoken=${nextPageToken}` : ''
 //     }`
-
 //     const response = await fetch(url)
+//     console.log(response)
 //     const data = await response.json()
 //     results.push(...data.results)
 
@@ -32,7 +32,6 @@ export default places
 //       break
 //     }
 //   }
-
 //   console.log(results.length)
 //   res.status(200).json({ results })
 // }
